@@ -50,7 +50,7 @@ export default function Home() {
         </motion.div>
 
         <motion.div variants={fade} className="px-2 md:px-4 mb-16 md:mb-24 lg:mb-40">
-          <div className="flex flex-wrap border-b items-end border-black mb-8 md:mb-10 lg:mb-16">
+          <div className="flex flex-wrap border-b items-end border-black mb-8 md:mb-10 lg:mb-16 pb-1 md:pb-0">
             <div className="w-1/2 md:w-1/4">
               <span className="block uppercase tracking-tight text-xs md:text-base">(1)</span>
               <span className="block uppercase tracking-tight text-xs md:text-base lg:text-xl">Selected Works</span>
@@ -69,25 +69,25 @@ export default function Home() {
               <nav>
                 <ul className="text-[12vw] md:text-[4.7vw] lg:text-[4.9vw] 2xl:text-[5vw] leading-none tracking-tighter">
                   <li className="block my-1 pb-0">
-                    <FancyLink destination="#" label="Reform" a11yText="Reform Project" index="a" />
+                    <FancyLink destination="/project" label="Reform" a11yText="Reform Project" index="a" />
                   </li>
                   <li className="block my-0 pb-0 text-red">
-                    <FancyLink destination="#" label="Paul Smith" a11yText="Reform Project" index="b" />
+                    <FancyLink destination="/project" label="Paul Smith" a11yText="Reform Project" index="b" />
                   </li>
                   <li className="block my-1 pb-0">
-                    <FancyLink destination="#" label="PRB Architects" a11yText="Reform Project" index="c" />
+                    <FancyLink destination="/project" label="PRB Architects" a11yText="Reform Project" index="c" />
                   </li>
                   <li className="block my-1 pb-0">
-                    <FancyLink destination="#" label="Mat Hayward" a11yText="Reform Project" index="d" />
+                    <FancyLink destination="/project" label="Mat Hayward" a11yText="Reform Project" index="d" />
                   </li>
                   <li className="block my-1 pb-0">
-                    <FancyLink destination="#" label="Fat Free" a11yText="Reform Project" index="e" />
+                    <FancyLink destination="/project" label="Fat Free" a11yText="Reform Project" index="e" />
                   </li>
                   <li className="block my-1 pb-0">
-                    <FancyLink destination="#" label="Sam Goddard" a11yText="Reform Project" index="f" />
+                    <FancyLink destination="/project" label="Sam Goddard" a11yText="Reform Project" index="f" />
                   </li>
                   <li className="block my-0 pb-0">
-                    <FancyLink destination="#" label="Misc" a11yText="Reform Project" index="g" />
+                    <FancyLink destination="/project" label="Misc" a11yText="Reform Project" index="g" />
                   </li>
                 </ul>
               </nav>
@@ -96,7 +96,7 @@ export default function Home() {
         </motion.div>
 
         <motion.div variants={fade} className="px-2 md:px-4 mb-16 md:mb-24 lg:mb-40">
-          <div className="flex md:hidden flex-wrap border-b items-end border-black mb-3 md:mb-12 lg:mb-16">
+          <div className="flex md:hidden flex-wrap border-b items-end border-black mb-3 md:mb-12 lg:mb-16 pb-1 md:pb-0">
             <div className="flex-1">
               <span className="block uppercase tracking-tight text-xs md:text-base">(2)</span>
               <span className="block uppercase tracking-tight text-xs md:text-base lg:text-xl">Biography</span>

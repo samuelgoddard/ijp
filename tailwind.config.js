@@ -12,6 +12,7 @@ module.exports = {
     fontFamily: {
       'sans': ['Favorit', 'Arial', 'sans-serif'],
       'book': ['Favorit Book', 'Arial', 'sans-serif'],
+      'display': ['Plaak', 'Arial', 'sans-serif'],
     },
     screens: {
       sm: "640px",
@@ -37,7 +38,7 @@ module.exports = {
     },
     extend: {
       colors: {
-        'black': '#000',
+        'black': '#1a1a1a',
         'white': '#FFF',
         'off-white': '#f7f7f5',
         red: {
@@ -45,6 +46,9 @@ module.exports = {
           DEFAULT: '#db4623',
           dark: '#ce8860',
         },
+      },
+      lineHeight: {
+        'negative': '0.825'
       }
     },
   },
