@@ -67,7 +67,7 @@ export default function Home() {
             </div>
             <div className="w-full md:w-1/2 px-2">
               <nav>
-                <ul className="text-[12vw] md:text-[4.7vw] lg:text-[4.9vw] 2xl:text-[5vw] leading-none">
+                <ul className="text-[12vw] md:text-[4.7vw] lg:text-[4.9vw] 2xl:text-[5vw] leading-none tracking-tighter">
                   <li className="block my-1 pb-0">
                     <FancyLink destination="#" label="Reform" a11yText="Reform Project" index="a" />
                   </li>
@@ -111,7 +111,7 @@ export default function Home() {
               <span className="block uppercase tracking-tight text-xs md:text-base lg:text-xl">Biography</span>
             </div>
             <div className="w-full md:w-1/2">
-              <p className="block tracking-tight font-book leading-tight text-[6.2vw] md:text-[2.9vw] lg:text-[2.6vw] xl:text-[2.45vw] 2xl:text-[2.2vw] 3xl:text-[2vw] indented-text pr-4 md:pr-0">Donec pellentesque ligula mattis mauris  bibendum, sed sodales arcu ornare. Quisque dictum turpis est, at efficitur ex fringilla id. Maecenas pharetra sodales dictum. Sed posuere neque in tortor tincidunt, et mollis metus mattis. Suspendisse diam lacus, mattis porta tempus nec, maximus non massa. Sed a elit quis dolor.</p>
+              <p className="block tracking-tighter font-book leading-tight text-[6.2vw] md:text-[2.9vw] lg:text-[2.6vw] xl:text-[2.45vw] 2xl:text-[2.2vw] 3xl:text-[2vw] indented-text pr-4 md:pr-0">Donec pellentesque ligula mattis mauris  bibendum, sed sodales arcu ornare. Quisque dictum turpis est, at efficitur ex fringilla id. Maecenas pharetra sodales dictum. Sed posuere neque in tortor tincidunt, et mollis metus mattis. Suspendisse diam lacus, mattis porta tempus nec, maximus non massa. Sed a elit quis dolor.</p>
             </div>
           </div>
         </motion.div>
@@ -122,7 +122,9 @@ export default function Home() {
               <div className="max-w-sm md:max-w-xs">
                 <p className="text-base md:text-lg tracking-tight font-book leading-tight mb-8 indented-text">Donec pellentesque ligula mattis mauris bibendum, sed sodales arcu ornare. Quisque dictum turpis est, at efficitur ex fringilla id. Maecenas pharetra sodales dictum. Sed posuere neque in tortor  tincidunt, et mollis metus mattis. Suspendisse diam lacus, mattis porta tempus nec, maximus non massa.</p>
 
-                <a href="#" className="underline mb-1 block text-lg md:text-2xl tracking-tight font-book leading-tight hover:text-red">Instagram</a>
+                <a href="#" className="underline mb-1 block text-lg md:text-2xl tracking-tight font-book leading-tight hover:text-red">
+                  Instagram
+                </a>
                 <a href="#" className="underline mb-1 block text-lg md:text-2xl tracking-tight font-book leading-tight hover:text-red">Dribbble</a>
                 <a href="#" className="underline block text-lg md:text-2xl tracking-tight font-book leading-tight hover:text-red">Email</a>
               </div>
