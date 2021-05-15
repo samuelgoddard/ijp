@@ -28,7 +28,7 @@ export default function About() {
             <span className="block text-2xl lg:text-3xl font-book tracking-tighter leading-tight px-2 md:px-4 relative z-20">
               <FancyLink destination="/" label="All Projects" />
             </span>
-            <span className="block text-2xl lg:text-3xl font-book tracking-tighter leading-tight px-2 md:px-4 ml-auto text-right"><span className="block">IJP—22</span> <span className="hidden md:inline-block">/</span> <span className="block md:inline-block">Paul Smith</span></span>
+            <span className="block text-2xl lg:text-3xl font-book tracking-tighter leading-tight px-2 md:px-4 ml-auto text-right"><span className="block md:inline-block">IJP—22</span> <span className="hidden md:inline-block">/</span> <span className="block md:inline-block">Paul Smith</span></span>
           </div>
 
           <div className="relative overflow-hidden w-full self-end mt-auto mb-4">
