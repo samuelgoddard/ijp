@@ -23,7 +23,7 @@ export default function About() {
         animate="enter"
         exit="exit"
       >
-        <motion.div variants={fade} className="h-[75vh] relative flex flex-wrap bg-red text-off-white">
+        <motion.div variants={fade} className="h-[100vh] relative flex flex-wrap bg-red text-off-white">
           <div className="relative z-20 pt-2 md:pt-3 flex flex-wrap w-full">
             <span className="block text-2xl lg:text-3xl font-book tracking-tighter leading-tight px-2 md:px-4 relative z-20">
               <FancyLink destination="/" label="All Projects" />
