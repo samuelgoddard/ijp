@@ -6,6 +6,7 @@ import { motion } from 'framer-motion'
 import { SmoothScrollProvider } from '../contexts/SmoothScroll.context'
 import SanityPageService from '../services/SanityPageService'
 
+
 const query = `*[_type == "home"][0]{
 	title,
   awards[]{
