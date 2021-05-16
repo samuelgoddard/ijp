@@ -8,7 +8,7 @@ export default function App({ Component, pageProps }) {
 
   return (
     <div data-scroll-container id="scroll-container">
-      <AnimatePresence exitBeforeEnter>
+      <AnimatePresence exitBeforeEnter initial={false}>
         <Component {...pageProps} key={router.asPath} />
       </AnimatePresence>
     </div>
