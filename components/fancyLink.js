@@ -5,7 +5,7 @@ export default function fancyLink( {destination, a11yText, label, extraClasses, 
     <Link href={destination}>
       <a aria-label={a11yText} className={`${extraClasses} hover:text-red flex items-start`}>
         <span className="block">{label}</span>
-        { index && (<span className="block text-[1.25vw] xl:text-[1.1vw] uppercase ml-1 mt-[0.65vw] tracking-tight">({index})</span>)}
+        { index && (<span className="block text-[1.25vw] xl:text-[1.1vw] uppercase ml-1 mt-[0.65vw] tracking-tight font-serif italic">({index})</span>)}
       </a>
     </Link>
   )

@@ -1,4 +1,9 @@
+html {
+  scroll-behavior: smooth;
+}
+
 body {
+  scroll-behavior: smooth;
   @apply font-sans antialiased text-black bg-off-white;
 }
   
@@ -37,3 +42,22 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, h6 {
 ::selection {
   @apply bg-red;
 }
+
+.project-hero {
+  filter: url(#transmissionerror);
+}
+
+html.has-scroll-smooth {
+  overflow: hidden; }
+
+html.has-scroll-dragging {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
+
+.has-scroll-smooth body {
+  overflow: hidden; }
+
+.has-scroll-smooth [data-scroll-container] {
+  min-height: 100vh; }

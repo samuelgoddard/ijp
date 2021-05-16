@@ -10,6 +10,7 @@ module.exports = {
   darkMode: false,
   theme: {
     fontFamily: {
+      'serif': ['Editorial New', 'Georgia', 'serif'],
       'sans': ['Favorit', 'Arial', 'sans-serif'],
       'book': ['Favorit Book', 'Arial', 'sans-serif'],
       'display': ['Plaak', 'Arial', 'sans-serif'],
