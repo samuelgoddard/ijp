@@ -39,6 +39,21 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, h6 {
   @apply text-3xl;
 }
 
+.css-cols {
+  & p {
+    @apply mb-4;
+  }
+}
+@screen md {
+  .css-cols {
+    column-count: 2;
+    column-gap: 25px;
+    & p {
+      @apply mb-0;
+    }
+  }
+}
+
 ::selection {
   @apply bg-red;
 }

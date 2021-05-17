@@ -33,7 +33,7 @@ const checkIfAuthorized = async (slug) => {
 
 const checkIfSlugIsKnown = (slug) => {
   const globalSlugs = [
-    'project',
+    'projects',
     'home'
   ]
   return globalSlugs.includes(slug)

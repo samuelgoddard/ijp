@@ -6,7 +6,6 @@ import { motion } from 'framer-motion'
 import { SmoothScrollProvider } from '../contexts/SmoothScroll.context'
 import SanityPageService from '../services/SanityPageService'
 
-
 const query = `*[_type == "home"][0]{
 	title,
   awards[]{
@@ -102,7 +101,7 @@ export default function Home(initialData) {
                     <motion.div variants={fade}>
                       <img src="/images/ps.jpg" className="w-full" alt="Change Me!" />
                     </motion.div>
-                    <motion.div className="absolute inset-0" variants={projectImage}>
+                    <motion.div className="absolute inset-0" variants={fade}>
                       <img src="/images/ps.jpg" className="w-full h-full object-cover" alt="Change Me!" />
                     </motion.div>
                   </div>
@@ -113,7 +112,7 @@ export default function Home(initialData) {
                       {featuredProjects.map((item, i) => {
                         return (
                           <li key={i} className="block my-1 pb-0">
-                            <FancyLink destination="/project" label={item.title} a11yText={item.title} index={item.indexLetter} />
+                            <FancyLink destination={`/projects/${item.slug.current}`} label={item.title} a11yText={item.title} index={item.indexLetter} />
                           </li>
                         )
                       })}
@@ -158,7 +157,7 @@ export default function Home(initialData) {
                   
                   {socialLinks.map((item, i) => {
                     return (
-                      <a href={item.socialUrl} target="_blank" rel="noopener noreferrer" className="underline mb-1 block text-lg md:text-2xl tracking-tight font-serif uppercase leading-tight hover:text-red">
+                      <a key={i} href={item.socialUrl} target="_blank" rel="noopener noreferrer" className="underline mb-1 block text-lg md:text-2xl tracking-tight font-serif uppercase leading-tight hover:text-red">
                         {item.socialTitle}
                       </a>
                     )
