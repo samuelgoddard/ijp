@@ -56,11 +56,11 @@ export default function Home(initialData) {
           animate="enter"
           exit="exit"
         >
-          <div className="bg-gray-100 relative">
+          <div className="relative">
             <motion.div variants={fade} className="md:text-right mb-10 md:mb-8 lg:mb-16 relative md:pt-16 lg:pt-20">
               <div className="absolute top-0 left-0 md:relative z-10 md:mb-3 pt-2 md:pt-0">
-                <span className="block text-2xl lg:text-3xl font-serif italic tracking-tighter leading-tight px-2 md:px-4">Independant</span>
-                <span className="block text-2xl lg:text-3xl font-serif italic tracking-tighter leading-tight px-2 md:px-4 mb-8 md:mb-0">Interaction, Brand, Art Direction</span>
+                <span className="block text-2xl lg:text-3xl font-sans tracking-tighter leading-tight px-2 md:px-4">Independant</span>
+                <span className="block text-2xl lg:text-3xl font-sans tracking-tighter leading-tight px-2 md:px-4 mb-8 md:mb-0">Interaction, Brand, Art Direction</span>
 
                 <a className="items-center text-2xl lg:text-3xl font-book tracking-tighter leading-tight px-2 md:px-4 flex md:hidden hover:text-red" href="#">
                   <span className="h-3 w-3 mt-[-3px] bg-red block rounded-full mr-1"></span>
@@ -116,6 +116,9 @@ export default function Home(initialData) {
                           </li>
                         )
                       })}
+                      <li className="block my-1 pb-0">
+                        <FancyLink destination={`/projects-index`} label={'All Projects'} a11yText={'All Projects'} index={'A-Z'} />
+                      </li>
                     </ul>
                   </nav>
                 </motion.div>
@@ -135,7 +138,7 @@ export default function Home(initialData) {
 
             <div className="flex flex-wrap">
               <div className="hidden md:block w-1/4">
-                <span className="block uppercase tracking-tight text-xs md:text-base font-serif itlaic">(2)</span>
+                <span className="block uppercase tracking-tight text-xs md:text-base font-serif italic">(2)</span>
                 <span className="block uppercase tracking-tight text-xs md:text-base lg:text-xl font-serif">Biography</span>
               </div>
 

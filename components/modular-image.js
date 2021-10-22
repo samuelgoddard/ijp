@@ -12,7 +12,7 @@ export default function ModularImage({layout, caption, image}) {
             </div>
             { caption && (
               <div className="w-full md:w-5/12 lg:w-4/12 md:px-2 flex flex-wrap">
-                <span className="md:w-full block md:mb-12 text-sm md:text-base font-serif italic">(3)</span>
+                <span className="md:w-full block md:mb-12 text-sm md:text-base font-serif italic border-b border-current pb-2">(3)</span>
                 <p className="ml-auto md:ml-0 w-9/12 md:w-auto text-sm text-right md:text-left md:text-base tracking-tight font-book leading-snug max-w-xs">{caption}</p>
               </div>
             )}
@@ -30,7 +30,7 @@ export default function ModularImage({layout, caption, image}) {
             </div>
             { caption && (
               <div className="w-full md:w-5/12 lg:w-4/12 md:px-2 flex flex-wrap">
-                <span className="md:w-full block md:mb-12 text-sm md:text-base font-serif italic">(3)</span>
+                <span className="md:w-full block md:mb-12 text-sm md:text-base font-serif italic border-b border-current pb-2">(3)</span>
                 <p className="ml-auto md:ml-0 w-9/12 md:w-auto text-sm text-right md:text-left md:text-base tracking-tight font-book leading-snug max-w-xs">{caption}</p>
               </div>
             )}
@@ -42,8 +42,8 @@ export default function ModularImage({layout, caption, image}) {
         <div className="w-full mb-12 md:mb-32 lg:mb-48">
           <div className="w-full lg:w-11/12 flex flex-wrap items-start md:-mx-2">
             { caption && (
-              <div className="w-full md:w-5/12 lg:w-4/12 md:px-2 flex flex-wrap order-2 md:order-1">
-                <span className="md:w-full block md:mb-12 text-sm md:text-base font-serif italic">(3)</span>
+              <div className="w-full md:w-5/12 lg:w-4/12 md:px-2 flex flex-wrap order-2 md:order-1 ">
+                <span className="md:w-full block md:mb-12 text-sm md:text-base font-serif italic border-b border-current pb-2">(3)</span>
                 <p className="ml-auto md:ml-0 w-9/12 md:w-auto text-sm text-right md:text-left md:text-base tracking-tight font-book leading-snug max-w-xs">{caption}</p>
               </div>
             )}

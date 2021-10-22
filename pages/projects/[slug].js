@@ -16,7 +16,7 @@ const query = `*[_type == "project" && slug.current == $slug][0]{
 		  ...
     },
 	},
-  abstractImage {
+  abstractmIage {
     asset->{
 		  ...
     },
@@ -38,7 +38,7 @@ const query = `*[_type == "project" && slug.current == $slug][0]{
 const pageService = new SanityPageService(query)
 
 export default function ProjectSlug(initialData) {
-  const { data: { title, slug, client, years, disciplines, heroImage, indexLetter, abstractIntro, abstractImage, detailIntro, contentBlocks }  } = pageService.getPreviewHook(initialData)()
+  const { data: { title, slug, client, years, disciplines, heroImage, indexLetter, abstractIntro, abstractmIage, detailIntro, contentBlocks }  } = pageService.getPreviewHook(initialData)()
   return (
     <SmoothScrollProvider options={{ smooth: true, lerp: 0.13 }}>
       <Layout>
@@ -72,14 +72,14 @@ export default function ProjectSlug(initialData) {
               </div>
               
               <motion.div variants={fade} className="relative z-20 px-2 md:px-4 w-full">
-                <ul className="text-sm md:text-lg tracking-tight font-book leading-none border-t border-off-white w-full">
-                  <li className="mb-0 py-3 flex flex-wrap border-b border-off-white">
+                <ul className="text-sm md:text-lg tracking-tight font-book leading-none border-t border-white w-full">
+                  <li className="mb-0 py-3 flex flex-wrap border-b border-white">
                     <span className="block">Client</span><span className="block text-right ml-auto font-serif italic">{client ? client : 'Coming Soon'}</span>
                   </li>
-                  <li className="mb-0 py-3 flex flex-wrap border-b border-off-white">
+                  <li className="mb-0 py-3 flex flex-wrap border-b border-white">
                     <span className="block">Years</span><span className="block text-right ml-auto font-serif italic">{years ? years : 'Coming Soon'}</span>
                   </li>
-                  <li className="mb-0 py-3 flex flex-wrap border-b border-off-white">
+                  <li className="mb-0 py-3 flex flex-wrap border-b border-white">
                     <span className="block">Disciplines</span><span className="block text-right ml-auto font-serif italic">{disciplines ? disciplines : 'Coming Soon'}</span>
                   </li>
                 </ul>
@@ -93,9 +93,9 @@ export default function ProjectSlug(initialData) {
             )}
           </div>
 
-          <motion.div variants={fade} className="bg-black text-off-white pt-12 md:pt-20 lg:pt-32 pb-4 md:pb-12 3xl:pb-16 px-2 md:px-4">
+          <motion.div variants={fade} className="pt-12 md:pt-20 lg:pt-32 pb-4 md:pb-12 3xl:pb-16 px-2 md:px-4">
             {/* Abstract */}
-            <div className="flex flex-wrap border-b items-end border-off-white mb-20 md:mb-24 lg:mb-32 pb-1 md:pb-0">
+            <div className="flex flex-wrap border-b items-end border-black mb-20 md:mb-24 lg:mb-32 pb-1 md:pb-0">
               <div className="w-1/2 md:w-1/4">
                 <span className="block uppercase tracking-tight text-xs md:text-base font-serif italic">(1)</span>
                 <span className="block uppercase tracking-tight text-xs md:text-base lg:text-xl font-serif">Abstract</span>
@@ -113,12 +113,12 @@ export default function ProjectSlug(initialData) {
             </div>
             
             <div className="w-full md:w-11/12 mb-20 md:mb-32 lg:mb-48 bg-red">
-              <img src={abstractImage ? abstractImage.asset.url : null} className="w-full" alt="Change Me!" />
+              <img src={abstractmIage ? abstractmIage.asset.url : null} className="w-full" alt="Change Me!" />
             </div>
 
             {/* Details */}
             <div className="flex flex-wrap w-full mb-20 md:mb-32 lg:mb-48">
-              <div className="flex md:hidden flex-wrap w-full border-b items-end border-off-white mb-3 md:mb-12 lg:mb-16 pb-1 md:pb-0">
+              <div className="flex md:hidden flex-wrap w-full border-b items-end border-black mb-3 md:mb-12 lg:mb-16 pb-1 md:pb-0">
                 <div className="flex-1">
                   <span className="block uppercase tracking-tight text-xs md:text-base font-serif italic">(2)</span>
                   <span className="block uppercase tracking-tight text-xs md:text-base lg:text-xl font-serif">Detail</span>
@@ -144,14 +144,14 @@ export default function ProjectSlug(initialData) {
             <BodyRenderer body={contentBlocks} />
 
             {/* Next Project */}
-            <div className="flex flex-wrap border-b items-end border-off-white pb-1 mb-1 md:pb-0">
+            <div className="flex flex-wrap border-b items-end border-black pb-1 mb-1 md:pb-0">
               <div className="w-1/2 md:w-1/4">
                 <span className="block uppercase tracking-tight text-xs md:text-base font-serif italic">(4)</span>
                 <span className="block uppercase tracking-tight text-xs md:text-base lg:text-xl font-serif">Next Project</span>
               </div>
             </div>
 
-            <span className="block text-[13vw] md:text-[15vw] relative z-20 font-display tracking-[-0.075em] md:whitespace-nowrap leading-negative text-red text-right ml-auto mb-0 pb-0">Reform</span>
+            <span className="block text-[13vw] md:text-[15vw] relative z-20 font-display tracking-[-0.075em] md:whitespace-nowrap leading-negative text-red text-left mb-0 pb-0 ml-[-1vw]">Reform</span>
           </motion.div>
         </motion.div>
       </Layout>
