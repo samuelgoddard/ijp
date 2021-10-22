@@ -122,6 +122,7 @@ export default function ProjectSlug(initialData) {
                 <div className="flex-1">
                   <span className="block uppercase tracking-tight text-xs md:text-base font-serif italic">(2)</span>
                   <span className="block uppercase tracking-tight text-xs md:text-base lg:text-xl font-serif">Detail</span>
+                  
                 </div>
               </div>
 
