@@ -19,7 +19,7 @@ body {
   @apply underline;
 
   &:hover, &:focus {
-    @apply underline;
+    @apply underline text-red;
   }
 }
 

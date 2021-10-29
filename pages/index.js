@@ -4,6 +4,7 @@ import FancyLink from '../components/fancyLink'
 import { fade, projectImage } from "../helpers/transitions"
 import { motion } from 'framer-motion'
 import { SmoothScrollProvider } from '../contexts/SmoothScroll.context'
+import BlockContent from '@sanity/block-content-to-react'
 import SanityPageService from '../services/SanityPageService'
 
 const query = `*[_type == "home"][0]{
@@ -141,10 +142,10 @@ export default function Home(initialData) {
                 <span className="block uppercase tracking-tight text-xs md:text-base font-serif italic">(2)</span>
                 <span className="block uppercase tracking-tight text-xs md:text-base lg:text-xl font-serif">Biography</span>
               </div>
-
+              
               {biography && (
-                <div className="w-full md:w-1/2">
-                  <p className="block tracking-tighter font-book leading-tight text-[6.2vw] md:text-[2.9vw] lg:text-[2.6vw] xl:text-[2.45vw] 2xl:text-[2.2vw] 3xl:text-[2vw] indented-text pr-4 md:pr-0">{biography}</p>
+                <div className="w-full md:w-1/2 block tracking-tighter font-book leading-tight text-[6.2vw] md:text-[2.9vw] lg:text-[2.6vw] xl:text-[2.45vw] 2xl:text-[2.2vw] 3xl:text-[2vw] indented-text pr-4 md:pr-0 content">
+                  <BlockContent serializers={{ container: ({ children }) => children }} blocks={biography} />
                 </div>
               )}
             </div>
