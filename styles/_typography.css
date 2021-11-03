@@ -76,3 +76,7 @@ html.has-scroll-dragging {
 
 .has-scroll-smooth [data-scroll-container] {
   min-height: 100vh; }
+
+.will-change {
+  will-change: transform;
+}

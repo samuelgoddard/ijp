@@ -1,3 +1,4 @@
+import ImageWrapper from './image-wrapper'
 
 export default function ModularImage({layout, caption, image}) {
   return (
@@ -7,7 +8,15 @@ export default function ModularImage({layout, caption, image}) {
           <div className="w-full lg:w-11/12 flex flex-wrap items-end md:-mx-2">
             <div className="w-full md:w-7/12 lg:w-8/12 md:px-2 mb-2 md:mb-0">
               <div className="w-full bg-red">
-                <img src={image ? image.asset.url : null} className="w-full" alt="Change Me!" />
+                {/* <img src={image ? image.asset.url : null} className="w-full" alt="Change Me!" /> */}
+
+                <ImageWrapper
+                  src={image ? image.asset.url : null} 
+                  layout="responsive"
+                  className="w-full"
+                  width={image.asset.metadata.dimensions.width}
+                  height={image.asset.metadata.dimensions.height}
+                />
               </div>
             </div>
             { caption && (
@@ -25,7 +34,13 @@ export default function ModularImage({layout, caption, image}) {
           <div className="w-full md:w-10/12 flex flex-wrap items-end">
             <div className={`w-full md:px-2 mb-2 md:mb-0 ${caption ? 'md:w-7/12 lg:w-8/12' : ''}`}>
               <div className="w-full bg-red">
-                <img src={image ? image.asset.url : null} className="w-full" alt="Change Me!" />
+                <ImageWrapper
+                  src={image ? image.asset.url : null} 
+                  layout="responsive"
+                  className="w-full"
+                  width={image.asset.metadata.dimensions.width}
+                  height={image.asset.metadata.dimensions.height}
+                />
               </div>
             </div>
             { caption && (
@@ -50,7 +65,13 @@ export default function ModularImage({layout, caption, image}) {
 
             <div className="w-full md:w-7/12 lg:w-8/12 md:px-2 mb-2 md:mb-0 order-1 md:order-2">
               <div className="w-full bg-red">
-                <img src={image ? image.asset.url : null} className="w-full" alt="Change Me!" />
+                <ImageWrapper
+                  src={image ? image.asset.url : null} 
+                  layout="responsive"
+                  className="w-full"
+                  width={image.asset.metadata.dimensions.width}
+                  height={image.asset.metadata.dimensions.height}
+                />
               </div>
             </div>
           </div>

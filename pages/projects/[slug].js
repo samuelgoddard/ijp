@@ -7,6 +7,9 @@ import { SmoothScrollProvider } from '../../contexts/SmoothScroll.context'
 import SanityPageService from '../../services/SanityPageService'
 import BlockContent from '@sanity/block-content-to-react'
 import BodyRenderer from '../../components/body-renderer'
+import next from 'next'
+import Link from 'next/link'
+import ImageWrapper from '../../components/image-wrapper'
 
 const query = `*[_type == "project" && slug.current == $slug][0]{
 	title,
@@ -21,6 +24,7 @@ const query = `*[_type == "project" && slug.current == $slug][0]{
 		  ...
     },
 	},
+  order,
   client,
   years,
   disciplines,
@@ -30,7 +34,9 @@ const query = `*[_type == "project" && slug.current == $slug][0]{
   contentBlocks[] {
     ...,
     image {
-      asset->
+      asset-> {
+        ...
+      }
     },
   }
 }`
@@ -43,14 +49,14 @@ export default function ProjectSlug(initialData) {
     <SmoothScrollProvider options={{ smooth: true, lerp: 0.13 }}>
       <Layout>
         <Head>
-            <link rel="icon" href="/favicon.ico" />
-            <title>Nextjs boilerplate - Project</title>
-            <meta
-            name="description"
-            content="nextJS boilerplate"
-            />
-            <meta name="og:title" content="Website Title" />
-            <meta name="twitter:card" content="summary_large_image" />
+          <link rel="icon" href="/favicon.ico" />
+          <title>Nextjs boilerplate - Project</title>
+          <meta
+          name="description"
+          content="nextJS boilerplate"
+          />
+          <meta name="og:title" content="Website Title" />
+          <meta name="twitter:card" content="summary_large_image" />
         </Head>
 
         <motion.div
@@ -88,7 +94,12 @@ export default function ProjectSlug(initialData) {
 
             {heroImage && (
               <motion.div variants={noFade} className="absolute inset-0 z-0">
-                <img src={heroImage ? heroImage.asset.url : null} className="w-full h-full object-cover object-center md:mb-3" alt="Change Me!" />
+                <ImageWrapper
+                  src={heroImage ? heroImage.asset.url : null} 
+                  className="w-full h-full object-cover object-center md:mb-3"
+                  fill
+                  
+                />
               </motion.div>
             )}
           </div>
@@ -148,11 +159,13 @@ export default function ProjectSlug(initialData) {
             <div className="flex flex-wrap border-b items-end border-black pb-1 mb-1 md:pb-0">
               <div className="w-1/2 md:w-1/4">
                 <span className="block uppercase tracking-tight text-xs md:text-base font-serif italic">(4)</span>
-                <span className="block uppercase tracking-tight text-xs md:text-base lg:text-xl font-serif">Next Project</span>
+                <span className="block uppercase tracking-tight text-xs md:text-base lg:text-xl font-serif">Projects Index</span>
               </div>
             </div>
 
-            <span className="block text-[13vw] md:text-[15vw] relative z-20 font-display tracking-[-0.075em] md:whitespace-nowrap leading-negative text-red text-left mb-0 pb-0 ml-[-1vw]">Reform</span>
+            <Link href={`/projects-index`}>
+              <a className="block text-[14vw] md:text-[10.6vw] lg:text-[11.8wv] xl:text-[10.8vw] relative z-20 font-display tracking-[-0.075em] md:whitespace-nowrap leading-negative text-red text-left mb-0 pb-0 ml-[-1vw]">All projects</a>
+            </Link> 
           </motion.div>
         </motion.div>
       </Layout>

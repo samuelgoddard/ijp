@@ -29,7 +29,7 @@ export const SmoothScrollProvider = ({ children, options }) => {
       if (scroll) {
         scroll.update();
       }
-    }, 150)
+    }, 500)
 
     return () => {
       scroll && scroll.destroy()
