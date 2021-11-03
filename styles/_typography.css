@@ -5,6 +5,12 @@ html {
 body {
   scroll-behavior: smooth;
   @apply font-sans antialiased text-black bg-off-white;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
 }
   
 .content > p {
@@ -79,4 +85,10 @@ html.has-scroll-dragging {
 
 .will-change {
   will-change: transform;
+}
+
+.displace {
+  filter: url(#displacementFilter);
+	transform: translate3d(0, 0, 0);
+	/* transform: scaleY(1.8) rotateY(-2deg); */
 }

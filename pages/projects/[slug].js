@@ -1,15 +1,17 @@
 import Head from 'next/head'
 import Layout from '../../components/layout'
 import FancyLink from '../../components/fancyLink'
-import { noFade, fade } from "../../helpers/transitions"
+import { noFade, reveal, fade } from "../../helpers/transitions"
 import { motion } from 'framer-motion'
-import { SmoothScrollProvider } from '../../contexts/SmoothScroll.context'
+import { LocomotiveScrollProvider } from 'react-locomotive-scroll'
 import SanityPageService from '../../services/SanityPageService'
 import BlockContent from '@sanity/block-content-to-react'
 import BodyRenderer from '../../components/body-renderer'
+import ProgressBar from '../../components/progress-bar'
 import next from 'next'
 import Link from 'next/link'
 import ImageWrapper from '../../components/image-wrapper'
+import { useRef } from 'react'
 
 const query = `*[_type == "project" && slug.current == $slug][0]{
 	title,
@@ -44,9 +46,26 @@ const query = `*[_type == "project" && slug.current == $slug][0]{
 const pageService = new SanityPageService(query)
 
 export default function ProjectSlug(initialData) {
+  const containerRef = useRef(null)
+
   const { data: { title, slug, client, years, disciplines, heroImage, indexLetter, abstractIntro, abstractmIage, detailIntro, contentBlocks }  } = pageService.getPreviewHook(initialData)()
   return (
-    <SmoothScrollProvider options={{ smooth: true, lerp: 0.13 }}>
+    <LocomotiveScrollProvider
+      options={{ smooth: true, lerp: 0.125 }}
+      containerRef={containerRef}
+      watch={[]}
+    >
+      <motion.div
+        initial="initial"
+        animate="enter"
+        exit="exit"
+      >
+        <motion.div variants={fade}>
+          <ProgressBar />
+        </motion.div>
+      </motion.div>
+
+      <div data-scroll-container ref={containerRef} id="scroll-container">
       <Layout>
         <Head>
           <link rel="icon" href="/favicon.ico" />
@@ -64,36 +83,50 @@ export default function ProjectSlug(initialData) {
           animate="enter"
           exit="exit"
         >
-          <div className="h-[100vh] relative flex flex-wrap text-off-white bg-red">
-            <motion.div variants={fade} className="relative z-20 pt-2 md:pt-3 flex flex-wrap w-full">
-              <span className="block text-2xl lg:text-3xl font-book tracking-tighter leading-tight px-2 md:px-4 relative z-20">
-                <FancyLink destination="/" label="All Projects" />
+          <div className="h-[100vh] relative flex flex-wrap text-off-white">
+            <motion.div variants={fade} className="relative z-20 pt-2 md:pt-3 flex flex-wrap w-full h-12">
+              <span className="block text-2xl lg:text-3xl font-book tracking-tighter leading-tight px-2 md:px-4 relative z-20 overflow-hidden mb-0 pb-0">
+                <motion.span className="block" variants={reveal}>
+                  <FancyLink destination="/" label="All Projects" />
+                </motion.span>
               </span>
-              <span className="block text-2xl lg:text-3xl font-serif italic tracking-tighter leading-tight px-2 md:px-4 ml-auto text-right"><span className="block md:inline-block">IJP—22</span> <span className="hidden md:inline-block">/</span> <span className="block md:inline-block">{title}</span></span>
+              <span className="block text-2xl lg:text-3xl font-serif italic tracking-tighter leading-tight px-2 md:px-4 ml-auto text-right overflow-hidden">
+                <motion.span className="block" variants={reveal}>
+                  <span className="block md:inline-block">IJP—22</span> <span className="hidden md:inline-block">/</span> <span className="block md:inline-block">{title}</span>
+                </motion.span>
+              </span>
             </motion.div>
 
             <div className="relative overflow-hidden w-full self-end mt-auto mb-4">
-              <div className="md:flex md:items-center md:justify-center">
-                <motion.h1 data-scroll data-scroll-speed="1.25" data-scroll-direction="horizontal" variants={fade} className="text-[26vw] md:text-[30vw] relative z-20 font-display tracking-[-0.075em] md:whitespace-nowrap leading-negative">{title}</motion.h1>
+              <div className="md:flex md:items-center md:justify-center relative z-[100] overflow-hidden">
+                  <h1 data-scroll data-scroll-speed="1.25" data-scroll-direction="horizontal" className="text-[26vw] md:text-[30vw] relative z-20 font-display tracking-[-0.075em] md:whitespace-nowrap leading-negative will-change">
+                    <motion.span className="block" variants={reveal}>{title}</motion.span>
+                  </h1>
               </div>
               
               <motion.div variants={fade} className="relative z-20 px-2 md:px-4 w-full">
-                <ul className="text-sm md:text-lg tracking-tight font-book leading-none border-t border-white w-full">
-                  <li className="mb-0 py-3 flex flex-wrap border-b border-white">
-                    <span className="block">Client</span><span className="block text-right ml-auto font-serif italic">{client ? client : 'Coming Soon'}</span>
+                <ul className="text-sm md:text-lg tracking-tight font-book leading-tight border-t border-white w-full">
+                  <li className="mb-0 py-3 overflow-hidden border-b border-white">
+                    <div className="flex flex-wrap overflow-hidden">
+                      <motion.span className="block" variants={reveal}>Client</motion.span><motion.span variants={reveal} className="block text-right ml-auto font-serif italic">{client ? client : 'Coming Soon'}</motion.span>
+                    </div>
                   </li>
-                  <li className="mb-0 py-3 flex flex-wrap border-b border-white">
-                    <span className="block">Years</span><span className="block text-right ml-auto font-serif italic">{years ? years : 'Coming Soon'}</span>
+                  <li className="mb-0 py-3 overflow-hidden border-b border-white">
+                    <div className="flex flex-wrap overflow-hidden">
+                      <motion.span className="block" variants={reveal}>Year</motion.span><motion.span variants={reveal} className="block text-right ml-auto font-serif italic">{years ? years : 'Coming Soon'}</motion.span>
+                    </div>
                   </li>
-                  <li className="mb-0 py-3 flex flex-wrap border-b border-white">
-                    <span className="block">Disciplines</span><span className="block text-right ml-auto font-serif italic">{disciplines ? disciplines : 'Coming Soon'}</span>
+                  <li className="mb-0 py-3 border-b border-white">
+                    <div className="flex flex-wrap overflow-hidden">
+                      <motion.span className="block" variants={reveal}>Disciplines</motion.span><motion.span variants={reveal} className="block text-right ml-auto font-serif italic">{disciplines ? disciplines : 'Coming Soon'}</motion.span>
+                    </div>
                   </li>
                 </ul>
               </motion.div>
             </div>
 
             {heroImage && (
-              <motion.div variants={noFade} className="absolute inset-0 z-0">
+              <motion.div variants={fade} className="absolute inset-0 z-0 bg-red">
                 <ImageWrapper
                   src={heroImage ? heroImage.asset.url : null} 
                   className="w-full h-full object-cover object-center md:mb-3"
@@ -169,7 +202,8 @@ export default function ProjectSlug(initialData) {
           </motion.div>
         </motion.div>
       </Layout>
-    </SmoothScrollProvider>
+    </div>
+    </LocomotiveScrollProvider>
   )
 }
 

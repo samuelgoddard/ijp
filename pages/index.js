@@ -1,11 +1,14 @@
 import Head from 'next/head'
 import Layout from '../components/layout'
 import FancyLink from '../components/fancyLink'
-import { fade, projectImage } from "../helpers/transitions"
+import { fade, projectImage, reveal } from "../helpers/transitions"
 import { motion } from 'framer-motion'
-import { SmoothScrollProvider } from '../contexts/SmoothScroll.context'
+import { LocomotiveScrollProvider } from 'react-locomotive-scroll'
 import BlockContent from '@sanity/block-content-to-react'
+import ProgressBar from '../components/progress-bar'
 import SanityPageService from '../services/SanityPageService'
+import { useRef, useState } from 'react'
+import ImageWrapper from '../components/image-wrapper'
 
 const query = `*[_type == "home"][0]{
 	title,
@@ -33,7 +36,12 @@ const query = `*[_type == "home"][0]{
     indexLetter,
     slug {
 	    current
-  	}
+  	},
+    thumbnailImage {
+      asset->{
+        ...
+      },
+    },
   },
   biography,
   emailAddress,
@@ -43,9 +51,27 @@ const query = `*[_type == "home"][0]{
 const pageService = new SanityPageService(query)
 
 export default function Home(initialData) {
+  const containerRef = useRef(null)
+  const [currentHoveredImage, setCurrentHoveredImage] = useState(null);
+
   const { data: { title, awards, featuredProjects, biography, emailAddress, socialLinks, heroImage, heroImageMobile, footerBlurb }  } = pageService.getPreviewHook(initialData)()
   return (
-    <SmoothScrollProvider options={{ smooth: true, lerp: 0.13 }}>
+    <LocomotiveScrollProvider
+      options={{ smooth: true, lerp: 0.125 }}
+      containerRef={containerRef}
+      watch={[]}
+    >
+    <motion.div
+      initial="initial"
+      animate="enter"
+      exit="exit"
+    >
+      <motion.div variants={fade}>
+        <ProgressBar />
+      </motion.div>
+    </motion.div>
+
+    <div data-scroll-container ref={containerRef} id="scroll-container">
       <Layout>
         <Head>
           <link rel="icon" href="/favicon.ico" />
@@ -60,12 +86,15 @@ export default function Home(initialData) {
           <div className="relative">
             <motion.div variants={fade} className="md:text-right mb-10 md:mb-8 lg:mb-16 relative md:pt-16 lg:pt-20">
               <div className="absolute top-0 left-0 md:relative z-10 md:mb-3 pt-2 md:pt-0">
-                <span className="block text-2xl lg:text-3xl font-sans tracking-tighter leading-tight px-2 md:px-4">Independant</span>
-                <span className="block text-2xl lg:text-3xl font-sans tracking-tighter leading-tight px-2 md:px-4 mb-8 md:mb-0">Interaction, Brand, Art Direction</span>
+                <span className="block text-2xl lg:text-3xl font-sans tracking-tighter leading-tight px-2 md:px-4 overflow-hidden">
+                  <motion.span className="block" variants={reveal}>Independant</motion.span></span>
+                <span className="block text-2xl lg:text-3xl font-sans tracking-tighter leading-tight px-2 md:px-4 mb-8 md:mb-0 overflow-hidden"><motion.span className="block" variants={reveal}>Interaction, Brand, Art Direction</motion.span></span>
 
                 <a className="items-center text-2xl lg:text-3xl font-book tracking-tighter leading-tight px-2 md:px-4 flex md:hidden hover:text-red" href="#">
                   <span className="h-3 w-3 mt-[-3px] bg-red block rounded-full mr-1"></span>
-                  <span className="block leading-none">Email</span>
+                  <span className="block leading-none overflow-hidden">
+                    <motion.span className="block" variants={reveal}>Email</motion.span>
+                  </span>
                 </a>
               </div>
 
@@ -79,7 +108,9 @@ export default function Home(initialData) {
               <a className="items-center justify-end text-2xl lg:text-3xl font-book tracking-tighter leading-tight px-2 md:px-4 hidden md:inline-block hover:text-red" href="#">
                 <span className="flex flex-wrap items-center">
                   <span className="md:h-3 lg:h-4 md:w-3 lg:w-4 md:mt-[-3px] lg:mt-[-4px] bg-red block rounded-full mr-1"></span>
-                  <span className="inline-block leading-none">Email</span>
+                  <span className="block leading-none overflow-hidden">
+                    <motion.span className="block" variants={reveal}>Email</motion.span>
+                  </span>
                 </span>
               </a>
             </motion.div>
@@ -87,24 +118,88 @@ export default function Home(initialData) {
             <div className="px-2 md:px-4 mb-16 md:mb-24 lg:mb-40">
               <motion.div variants={fade} className="flex flex-wrap border-b items-end border-black mb-8 md:mb-10 lg:mb-16 pb-1 md:pb-0">
                 <div className="w-1/2 md:w-1/4">
-                  <span className="block uppercase tracking-tight text-xs md:text-base font-serif italic">(1)</span>
-                  <span className="block uppercase tracking-tight text-xs md:text-base lg:text-xl font-serif">Selected Works</span>
+                  <span className="block uppercase tracking-tight text-xs md:text-base font-serif italic overflow-hidden"><motion.span variants={reveal} className="block">(1)</motion.span></span>
+                  <span className="block uppercase tracking-tight text-xs md:text-base lg:text-xl font-serif overflow-hidden"><motion.span variants={reveal} className="block">Selected Works</motion.span></span>
                 </div>
 
-                <span className="hidden md:block w-1/4 uppercase tracking-tight text-xs md:text-base lg:text-xl font-serif">2016—{new Date().getFullYear().toString().substr(-2)}</span>
+                <span className="hidden md:block w-1/4 uppercase tracking-tight text-xs md:text-base lg:text-xl font-serif overflow-hidden"><motion.span variants={reveal} className="block">2016—{new Date().getFullYear().toString().substr(-2)}</motion.span></span>
 
-                <span className="block flex-1 text-right uppercase tracking-tight text-xs md:text-base lg:text-xl font-serif">52.9548° N, 1.1581° W</span>
+                <span className="block flex-1 text-right uppercase tracking-tight text-xs md:text-base lg:text-xl font-serif overflow-hidden">
+                  <motion.span variants={reveal} className="block">52.9548° N, 1.1581° W</motion.span></span>
               </motion.div>
 
               <motion.div className="flex flex-wrap -mx-2 items-center">
                 <div className="hidden md:block w-1/2 px-2">
-                  <div className="overflow-visible relative">
+                  <div className="overflow-hidden relative">
                     <motion.div variants={fade}>
-                      <img src="/images/ps.jpg" className="w-full" alt="Change Me!" />
+                      <div className={`transition-all ease-in-out duration-[750ms] transform ${ currentHoveredImage == null ? 'opacity-100 scale-100' : 'opacity-0 scale-105' }`}>
+                        <img src="/images/ijp@2x.jpg" className="w-full will-change" alt="Change Me!" />
+                      </div>
+
+                      <div className={`absolute inset-0 z-100 transition-all ease-in-out duration-[750ms] transform ${ currentHoveredImage == 0 ? 'opacity-100 scale-100' : 'opacity-0 scale-105' }`}>
+                        <div className="w-full h-full transform inset-0">
+                          <ImageWrapper
+                            src={featuredProjects[0].thumbnailImage.asset.url}
+                            className="object-cover object-top absolute inset-0 will-change"
+                            fill
+                          />
+                        </div>
+                      </div>
+
+                      <div className={`absolute inset-0 z-100 transition-all ease-in-out duration-[750ms] transform ${ currentHoveredImage == 1 ? 'opacity-100 scale-100' : 'opacity-0 scale-105' }`}>
+                        <div className="w-full h-full transform inset-0">
+                          <ImageWrapper
+                            src={featuredProjects[1].thumbnailImage.asset.url}
+                            className="object-cover object-top absolute inset-0 will-change"
+                            fill
+                          />
+                        </div>
+                      </div>
+
+                      <div className={`absolute inset-0 z-100 transition-all ease-in-out duration-[750ms] transform ${ currentHoveredImage == 2 ? 'opacity-100 scale-100' : 'opacity-0 scale-105' }`}>
+                        <div className="w-full h-full transform inset-0">
+                          <ImageWrapper
+                            src={featuredProjects[2].thumbnailImage.asset.url}
+                            className="object-cover object-top absolute inset-0 will-change"
+                            fill
+                          />
+                        </div>
+                      </div>
+
+                      <div className={`absolute inset-0 z-100 transition-all ease-in-out duration-[750ms] transform ${ currentHoveredImage == 3 ? 'opacity-100 scale-100' : 'opacity-0 scale-105' }`}>
+                        <div className="w-full h-full transform inset-0">
+                          <ImageWrapper
+                            src={featuredProjects[3].thumbnailImage.asset.url}
+                            className="object-cover object-top absolute inset-0 will-change"
+                            fill
+                          />
+                        </div>
+                      </div>
+
+                      <div className={`absolute inset-0 z-100 transition-all ease-in-out duration-[750ms] transform ${ currentHoveredImage == 4 ? 'opacity-100 scale-100' : 'opacity-0 scale-105' }`}>
+                        <div className="w-full h-full transform inset-0">
+                          <ImageWrapper
+                            src={featuredProjects[4].thumbnailImage.asset.url}
+                            className="object-cover object-top absolute inset-0 will-change"
+                            fill
+                          />
+                        </div>
+                      </div>
+
+                      <div className={`absolute inset-0 z-100 transition-all ease-in-out duration-[750ms] transform ${ currentHoveredImage == 5 ? 'opacity-100 scale-100' : 'opacity-0 scale-105' }`}>
+                        <div className="w-full h-full transform inset-0">
+                          <ImageWrapper
+                            src={featuredProjects[5].thumbnailImage.asset.url}
+                            className="object-cover object-top absolute inset-0 will-change"
+                            fill
+                          />
+                        </div>
+                      </div>
                     </motion.div>
-                    <motion.div className="absolute inset-0" variants={fade}>
+
+                    {/* <motion.div className="absolute inset-0" variants={fade}>
                       <img src="/images/ps.jpg" className="w-full h-full object-cover" alt="Change Me!" />
-                    </motion.div>
+                    </motion.div> */}
                   </div>
                 </div>
                 <motion.div variants={fade} className="w-full md:w-1/2 px-2">
@@ -113,12 +208,34 @@ export default function Home(initialData) {
                       {featuredProjects.map((item, i) => {
                         return (
                           <li key={i} className="block my-1 pb-0">
-                            <FancyLink destination={`/projects/${item.slug.current}`} label={item.title} a11yText={item.title} index={item.indexLetter} />
+                            <div className="overflow-hidden">
+                              <motion.div
+                                variants={reveal}
+                                onMouseOver={() => setCurrentHoveredImage(i)}
+                                onMouseOut={() => setCurrentHoveredImage(null)}
+                              >
+                                <FancyLink
+                                  destination={`/projects/${item.slug.current}`}
+                                  label={item.title}
+                                  a11yText={item.title}
+                                  index={item.indexLetter}
+                                />
+                              </motion.div>
+                            </div>
                           </li>
                         )
                       })}
                       <li className="block my-1 pb-0">
-                        <FancyLink destination={`/projects-index`} label={'All Projects'} a11yText={'All Projects'} index={'A-Z'} />
+                        <div className="overflow-hidden">
+                          <motion.div variants={reveal}>
+                            <FancyLink 
+                              destination={`/projects-index`}
+                              label={'All Projects'}
+                              a11yText={'All Projects'}
+                              index={'A-Z'}
+                            />
+                          </motion.div>
+                        </div>
                       </li>
                     </ul>
                   </nav>
@@ -130,17 +247,17 @@ export default function Home(initialData) {
           <motion.div variants={fade} className="px-2 md:px-4 mb-16 md:mb-24 lg:mb-40">
             <div className="flex md:hidden flex-wrap border-b items-end border-black mb-3 md:mb-12 lg:mb-16 pb-1 md:pb-0">
               <div className="flex-1">
-                <span className="block uppercase tracking-tight text-xs md:text-base font-serif italic">(2)</span>
-                <span className="block uppercase tracking-tight text-xs md:text-base lg:text-xl font-serif">Biography</span>
+                <span className="block uppercase tracking-tight text-xs md:text-base font-serif italic overflow-hidden"><motion.span variants={reveal} className="block">(2)</motion.span></span>
+                <span className="block uppercase tracking-tight text-xs md:text-base lg:text-xl font-serif overflow-hidden"><motion.span variants={reveal} className="block">Biography</motion.span></span>
               </div>
 
-              <span className="flex-1 uppercase tracking-tight text-xs md:text-base lg:text-xl text-right font-serif">2016—{new Date().getFullYear().toString().substr(-2)}</span>
+              <span className="flex-1 uppercase tracking-tight text-xs md:text-base lg:text-xl text-right font-serif overflow-hidden"><motion.span variants={reveal} className="block">2016—{new Date().getFullYear().toString().substr(-2)}</motion.span></span>
             </div>
 
             <div className="flex flex-wrap">
               <div className="hidden md:block w-1/4">
-                <span className="block uppercase tracking-tight text-xs md:text-base font-serif italic">(2)</span>
-                <span className="block uppercase tracking-tight text-xs md:text-base lg:text-xl font-serif">Biography</span>
+                <span className="block uppercase tracking-tight text-xs md:text-base font-serif italic overflow-hidden"><motion.span variants={reveal} className="block">(2)</motion.span></span>
+                <span className="block uppercase tracking-tight text-xs md:text-base lg:text-xl font-serif overflow-hidden"><motion.span variants={reveal} className="block">Biography</motion.span></span>
               </div>
               
               {biography && (
@@ -161,13 +278,15 @@ export default function Home(initialData) {
                   
                   {socialLinks.map((item, i) => {
                     return (
-                      <a key={i} href={item.socialUrl} target="_blank" rel="noopener noreferrer" className="underline mb-1 block text-lg md:text-2xl tracking-tight font-serif uppercase leading-tight hover:text-red">
-                        {item.socialTitle}
+                      <a key={i} href={item.socialUrl} target="_blank" rel="noopener noreferrer" className="underline mb-1 block text-lg md:text-2xl tracking-tight font-serif uppercase leading-tight hover:text-red overflow-hidden">
+                        <motion.span variants={reveal} className="block">
+                          {item.socialTitle}
+                        </motion.span>
                       </a>
                     )
                   })}
                   
-                  <a href={`mailto:${emailAddress}`} className="underline block text-lg md:text-2xl tracking-tight font-serif uppercase leading-tight hover:text-red">Email</a>
+                  <a href={`mailto:${emailAddress}`} className="underline block text-lg md:text-2xl tracking-tight font-serif uppercase leading-tight hover:text-red overflow-hidden"><motion.span variants={reveal} className="block">Email</motion.span></a>
                 </div>
               </div>
 
@@ -175,8 +294,10 @@ export default function Home(initialData) {
                 <ul className="text-sm md:text-lg tracking-tight font-book leading-none border-t border-black">
                   {awards.map((item, i) => {
                     return (
-                      <li key={i} className="mb-0 py-3 flex flex-wrap border-b border-black">
-                        <span className="block">{item.awardWebsite}{ item.awardTimesWon && (<>&nbsp;<span className="text-[7px] md:text-2xs align-top">({item.awardTimesWon})</span></>)}</span><span className="block text-right ml-auto font-serif italic">{item.awardTitle}</span>
+                      <li key={i} className="mb-0 border-b border-black overflow-hidden">
+                        <motion.span variants={reveal} className="flex flex-wrap py-3">
+                          <span className="block">{item.awardWebsite}{ item.awardTimesWon && (<>&nbsp;<span className="text-[7px] md:text-2xs align-top">({item.awardTimesWon})</span></>)}</span><span className="block text-right ml-auto font-serif italic">{item.awardTitle}</span>
+                        </motion.span>
                       </li>
                     )
                   })}
@@ -186,7 +307,8 @@ export default function Home(initialData) {
           </motion.div>
         </motion.div>
       </Layout>
-    </SmoothScrollProvider>
+    </div>
+    </LocomotiveScrollProvider>
   )
 }
 
