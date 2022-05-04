@@ -487,7 +487,7 @@ export default function Home(initialData) {
             </div>
           </div>
 
-          <motion.div variants={fade} className="px-2 md:px-4 pb-16 md:pb-24 lg:pb-40 bg-white z-50 relative">
+          <motion.div variants={fade} className="px-2 md:px-4 pb-16 md:pb-24 lg:pb-40 bg-white z-50 relative -mt-2">
             <div className="flex md:hidden flex-wrap border-b items-end border-black mb-3 md:mb-12 lg:mb-16 pb-1 md:pb-0">
               <div className="flex-1">
                 <span className="block uppercase tracking-tight text-xs md:text-base font-serif italic overflow-hidden"><motion.span variants={reveal} className="block">(2)</motion.span></span>
@@ -512,7 +512,7 @@ export default function Home(initialData) {
             </div>
           </motion.div>
 
-          <motion.div variants={fade} className="px-2 md:px-4 bg-white z-50 relative">
+          <motion.div variants={fade} className="px-2 md:px-4 bg-white z-50 relative -mt-2">
             <div className="flex flex-wrap items-end pb-4">
               <div className="w-full md:w-1/3 lg:w-1/4 order-2 md:order-1">
                 <div className="max-w-sm md:max-w-xs">

@@ -12,10 +12,10 @@ export default function Logo() {
     if (scroll) {
       scroll.on('scroll', ({ limit, scroll }) => {
         const progress = scroll.y / limit.y * 100
-        progressBar.style.transform = `scale(${100 - (progress * 3)}%)`
+        progressBar.style.transform = `scale(${1 - (progress / 34)})`
 
         if ((progress * 3) >= 90) {
-          progressBar.style.transform = `scale(0.1)`
+          progressBar.style.transform = `scale(0.115)`
         }
       })
     }
