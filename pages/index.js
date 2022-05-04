@@ -137,7 +137,7 @@ export default function Home(initialData) {
               </a>
             </motion.div>
 
-            <div className="px-2 md:px-4 mb-12 md:mb-16 lg:mb-28">
+            <div className="px-2 md:px-4 mb-12 md:mb-16 lg:mb-20">
               <motion.div variants={fade} className="flex flex-wrap border-b items-end border-black mb-8 md:mb-10 lg:mb-16 pb-1 md:pb-0">
                 <div className="w-1/2 md:w-1/4">
                   <span className="block uppercase tracking-tight text-xs md:text-base font-serif italic overflow-hidden"><motion.span variants={reveal} className="block">(1)</motion.span></span>
@@ -149,10 +149,6 @@ export default function Home(initialData) {
                 <span className="block flex-1 text-right uppercase tracking-tight text-xs md:text-base lg:text-xl font-serif overflow-hidden">
                   <motion.span variants={reveal} className="block">52.9548° N, 1.1581° W</motion.span></span>
               </motion.div>
-
-
-
-
 
               
               <motion.div variants={fade} className="mb-8 md:mb-12 lg:mb-0">
