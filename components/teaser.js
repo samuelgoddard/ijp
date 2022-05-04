@@ -11,8 +11,8 @@ export default function Teaser({ slug, imageSrc, imageWidth, imageHeight, title,
             image={imageSrc} 
             layout="responsive"
             className="w-full transform"
-            width={imageWidth}
-            height={imageHeight}
+            widthOverride={imageWidth}
+            heightOverride={imageHeight}
           />
         </div>
       </div>

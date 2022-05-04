@@ -116,15 +116,19 @@ export default function Home(initialData) {
                 <ImageWrapper
                   image={heroImageMobile}
                   className="w-full block md:hidden"
+                  widthOverride={900}
                   priority
                 />
                 <ImageWrapper
                   image={heroImage}
                   className="w-full hidden md:block md:mb-3"
+                  widthOverride={1800}
                   priority
                 />
+              </div>
 
-                <svg className="absolute bottom-0 md:bottom-auto md:top-0 left-0 w-[70%] md:w-[45%] ml-2 md:ml-4 md:mt-[-7.5%]" viewBox="0 0 712.422 360.72"><path data-name="Path 6" d="M77.655 350.7V0H0v350.7zm8.517-95.19c20.043 70.641 76.653 105.21 140.781 105.21 96.693 0 146.292-63.627 146.292-160.32V0H295.59v200.4c0 53.607-24.048 82.665-67.635 82.665-35.07 0-58.116-21.543-70.641-61.623zm499.5-21.042c84.168 0 126.753-56.613 126.753-117.735S669.336 0 585.168 0H396.792v350.7h77.655V234.468zm-111.225-77.655V77.655h112.224c30.06 0 48.1 18.036 48.1 40.08s-18.036 39.078-48.1 39.078z" fill="#db4623"/></svg>
+              <div className="absolute bottom-0 md:bottom-auto md:top-0 left-0 w-[70%] md:w-[45%] ml-2 md:ml-4 mt-4">
+                <svg className="w-full" viewBox="0 0 712.422 360.72"><path data-name="Path 6" d="M77.655 350.7V0H0v350.7Zm8.517-95.19c20.043 70.641 76.653 105.21 140.781 105.21 96.693 0 146.292-63.627 146.292-160.32V0H295.59v200.4c0 53.607-24.048 82.665-67.635 82.665-35.07 0-58.116-21.543-70.641-61.623Zm499.5-21.042c84.168 0 126.753-56.613 126.753-117.735S669.336 0 585.168 0H396.792v350.7h77.655V234.468Zm-111.225-77.655V77.655h112.224c30.06 0 48.1 18.036 48.1 40.08s-18.036 39.078-48.1 39.078Z" fill="#db4623"/></svg>
               </div>
 
               <a className="items-center justify-end text-2xl lg:text-3xl font-book tracking-tighter leading-tight px-2 md:px-4 hidden md:inline-block hover:text-red" href="#">
@@ -160,8 +164,7 @@ export default function Home(initialData) {
                     <Teaser
                       slug={projects[0].slug.current}
                       imageSrc={projects[0].thumbnailImage ? projects[0].thumbnailImage : null}
-                      imageWidth={projects[0].thumbnailImage.asset.metadata.dimensions.width / 2}
-                      imageHeight={projects[0].thumbnailImage.asset.metadata.dimensions.height / 2}
+                      imageWidth={700}
                       title={projects[0].title}
                       disciplines={projects[0].disciplines}
                       inverse
@@ -172,7 +175,7 @@ export default function Home(initialData) {
                     <Teaser
                       slug={projects[1].slug.current}
                       imageSrc={projects[1].thumbnailImage ? projects[1].thumbnailImage : null}
-                      imageWidth={projects[1].thumbnailImage.asset.metadata.dimensions.width / 2}
+                      imageWidth={700}
                       imageHeight={projects[1].thumbnailImage.asset.metadata.dimensions.height / 2}
                       title={projects[1].title}
                       disciplines={projects[1].disciplines}
@@ -187,7 +190,7 @@ export default function Home(initialData) {
                     <Teaser
                       slug={projects[2].slug.current}
                       imageSrc={projects[2].thumbnailImage ? projects[2].thumbnailImage : null}
-                      imageWidth={projects[2].thumbnailImage.asset.metadata.dimensions.width / 2}
+                      imageWidth={700}
                       imageHeight={projects[2].thumbnailImage.asset.metadata.dimensions.height / 2}
                       title={projects[2].title}
                       disciplines={projects[2].disciplines}
@@ -199,7 +202,7 @@ export default function Home(initialData) {
                     <Teaser
                       slug={projects[3].slug.current}
                       imageSrc={projects[3].thumbnailImage ? projects[3].thumbnailImage : null}
-                      imageWidth={projects[3].thumbnailImage.asset.metadata.dimensions.width / 2}
+                      imageWidth={700}
                       imageHeight={projects[3].thumbnailImage.asset.metadata.dimensions.height / 2}
                       title={projects[3].title}
                       disciplines={projects[3].disciplines}
@@ -213,7 +216,7 @@ export default function Home(initialData) {
                     <Teaser
                       slug={projects[4].slug.current}
                       imageSrc={projects[4].thumbnailImage ? projects[4].thumbnailImage : null}
-                      imageWidth={projects[4].thumbnailImage.asset.metadata.dimensions.width / 2}
+                      imageWidth={700}
                       imageHeight={projects[4].thumbnailImage.asset.metadata.dimensions.height / 2}
                       title={projects[4].title}
                       disciplines={projects[4].disciplines}
@@ -225,7 +228,7 @@ export default function Home(initialData) {
                     <Teaser
                       slug={projects[5].slug.current}
                       imageSrc={projects[5].thumbnailImage ? projects[5].thumbnailImage : null}
-                      imageWidth={projects[5].thumbnailImage.asset.metadata.dimensions.width / 2}
+                      imageWidth={700}
                       imageHeight={projects[5].thumbnailImage.asset.metadata.dimensions.height / 2}
                       title={projects[5].title}
                       disciplines={projects[5].disciplines}
@@ -239,7 +242,7 @@ export default function Home(initialData) {
                     <Teaser
                       slug={projects[6].slug.current}
                       imageSrc={projects[6].thumbnailImage ? projects[6].thumbnailImage : null}
-                      imageWidth={projects[6].thumbnailImage.asset.metadata.dimensions.width / 2}
+                      imageWidth={700}
                       imageHeight={projects[6].thumbnailImage.asset.metadata.dimensions.height / 2}
                       title={projects[6].title}
                       disciplines={projects[6].disciplines}
@@ -251,7 +254,7 @@ export default function Home(initialData) {
                     <Teaser
                       slug={projects[7].slug.current}
                       imageSrc={projects[7].thumbnailImage ? projects[7].thumbnailImage : null}
-                      imageWidth={projects[7].thumbnailImage.asset.metadata.dimensions.width / 2}
+                      imageWidth={700}
                       imageHeight={projects[7].thumbnailImage.asset.metadata.dimensions.height / 2}
                       title={projects[7].title}
                       disciplines={projects[7].disciplines}
@@ -265,7 +268,7 @@ export default function Home(initialData) {
                     <Teaser
                       slug={projects[8].slug.current}
                       imageSrc={projects[8].thumbnailImage ? projects[8].thumbnailImage : null}
-                      imageWidth={projects[8].thumbnailImage.asset.metadata.dimensions.width / 2}
+                      imageWidth={700}
                       imageHeight={projects[8].thumbnailImage.asset.metadata.dimensions.height / 2}
                       title={projects[8].title}
                       disciplines={projects[8].disciplines}
@@ -280,7 +283,7 @@ export default function Home(initialData) {
                     <Teaser
                       slug={projects[9].slug.current}
                       imageSrc={projects[9].thumbnailImage ? projects[9].thumbnailImage : null}
-                      imageWidth={projects[9].thumbnailImage.asset.metadata.dimensions.width / 2}
+                      imageWidth={700}
                       imageHeight={projects[9].thumbnailImage.asset.metadata.dimensions.height / 2}
                       title={projects[9].title}
                       disciplines={projects[9].disciplines}
@@ -291,7 +294,7 @@ export default function Home(initialData) {
                     <Teaser
                       slug={projects[10].slug.current}
                       imageSrc={projects[10].thumbnailImage ? projects[10].thumbnailImage : null}
-                      imageWidth={projects[10].thumbnailImage.asset.metadata.dimensions.width / 2}
+                      imageWidth={700}
                       imageHeight={projects[10].thumbnailImage.asset.metadata.dimensions.height / 2}
                       title={projects[10].title}
                       disciplines={projects[10].disciplines}
@@ -306,7 +309,7 @@ export default function Home(initialData) {
                     <Teaser
                       slug={projects[11].slug.current}
                       imageSrc={projects[11].thumbnailImage ? projects[11].thumbnailImage : null}
-                      imageWidth={projects[11].thumbnailImage.asset.metadata.dimensions.width / 2}
+                      imageWidth={700}
                       imageHeight={projects[11].thumbnailImage.asset.metadata.dimensions.height / 2}
                       title={projects[11].title}
                       disciplines={projects[11].disciplines}
@@ -317,7 +320,7 @@ export default function Home(initialData) {
                     <Teaser
                       slug={projects[12].slug.current}
                       imageSrc={projects[12].thumbnailImage ? projects[12].thumbnailImage : null}
-                      imageWidth={projects[12].thumbnailImage.asset.metadata.dimensions.width / 2}
+                      imageWidth={700}
                       imageHeight={projects[12].thumbnailImage.asset.metadata.dimensions.height / 2}
                       title={projects[12].title}
                       disciplines={projects[12].disciplines}
