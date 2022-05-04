@@ -69,26 +69,37 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, h6 {
 }
 
 html.has-scroll-smooth {
-  overflow: hidden; }
+  overflow: hidden;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.has-scroll-smooth body {
+  @apply overflow-hidden;
+}
 
 html.has-scroll-dragging {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
-  user-select: none; }
-
-.has-scroll-smooth body {
-  overflow: hidden; }
+  user-select: none;
+}
 
 .has-scroll-smooth [data-scroll-container] {
-  min-height: 100vh; }
+  @apply min-h-screen;
+}
+
+[data-scroll-direction="horizontal"] [data-scroll-container] {
+  @apply h-screen inline-block whitespace-nowrap;
+}
+
+[data-scroll-direction="horizontal"] [data-scroll-section] {
+  @apply inline-block align-top whitespace-nowrap h-full;
+}
 
 .will-change {
   will-change: transform;
-}
-
-.displace {
-  filter: url(#displacementFilter);
-	transform: translate3d(0, 0, 0);
-	/* transform: scaleY(1.8) rotateY(-2deg); */
 }

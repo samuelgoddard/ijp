@@ -9,6 +9,7 @@ import ProgressBar from '../components/progress-bar'
 import SanityPageService from '../services/SanityPageService'
 import { useRef, useState } from 'react'
 import ImageWrapper from '../components/image-wrapper'
+import Teaser from '../components/teaser'
 
 const query = `*[_type == "home"][0]{
 	title,
@@ -45,7 +46,20 @@ const query = `*[_type == "home"][0]{
   },
   biography,
   emailAddress,
-  footerBlurb
+  footerBlurb,
+  'projects': *[_type == "project"] {
+    title,
+    thumbnailImage {
+      asset->{
+        ...
+      },
+    },
+    indexLetter,
+    disciplines,
+    slug {
+	    current
+  	}
+  },
 }`
 
 const pageService = new SanityPageService(query)
@@ -54,10 +68,10 @@ export default function Home(initialData) {
   const containerRef = useRef(null)
   const [currentHoveredImage, setCurrentHoveredImage] = useState(null);
 
-  const { data: { title, awards, featuredProjects, biography, emailAddress, socialLinks, heroImage, heroImageMobile, footerBlurb }  } = pageService.getPreviewHook(initialData)()
+  const { data: { title, awards, featuredProjects, projects, biography, emailAddress, socialLinks, heroImage, heroImageMobile, footerBlurb }  } = pageService.getPreviewHook(initialData)()
   return (
     <LocomotiveScrollProvider
-      options={{ smooth: true, lerp: 0.125 }}
+      options={{ smooth: true, lerp: 0.1 }}
       containerRef={containerRef}
       watch={[]}
     >
@@ -99,10 +113,18 @@ export default function Home(initialData) {
               </div>
 
               <div className="relative pb-20 md:pb-0">
-                <img src={heroImageMobile.asset.url} className="w-full block md:hidden" alt="Change Me!" />
-                <img src={heroImage.asset.url} className="w-full hidden md:block md:mb-3" alt="Change Me!" />
+                <ImageWrapper
+                  image={heroImageMobile}
+                  className="w-full block md:hidden"
+                  priority
+                />
+                <ImageWrapper
+                  image={heroImage}
+                  className="w-full hidden md:block md:mb-3"
+                  priority
+                />
 
-                <svg className="absolute bottom-0 md:bottom-auto md:top-0 left-0 w-[70%] md:w-[45%] ml-2 md:ml-4 md:mt-[-7.5%]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 712.422 360.72"><path data-name="Path 6" d="M77.655 350.7V0H0v350.7zm8.517-95.19c20.043 70.641 76.653 105.21 140.781 105.21 96.693 0 146.292-63.627 146.292-160.32V0H295.59v200.4c0 53.607-24.048 82.665-67.635 82.665-35.07 0-58.116-21.543-70.641-61.623zm499.5-21.042c84.168 0 126.753-56.613 126.753-117.735S669.336 0 585.168 0H396.792v350.7h77.655V234.468zm-111.225-77.655V77.655h112.224c30.06 0 48.1 18.036 48.1 40.08s-18.036 39.078-48.1 39.078z" fill="#db4623"/></svg>
+                <svg className="absolute bottom-0 md:bottom-auto md:top-0 left-0 w-[70%] md:w-[45%] ml-2 md:ml-4 md:mt-[-7.5%]" viewBox="0 0 712.422 360.72"><path data-name="Path 6" d="M77.655 350.7V0H0v350.7zm8.517-95.19c20.043 70.641 76.653 105.21 140.781 105.21 96.693 0 146.292-63.627 146.292-160.32V0H295.59v200.4c0 53.607-24.048 82.665-67.635 82.665-35.07 0-58.116-21.543-70.641-61.623zm499.5-21.042c84.168 0 126.753-56.613 126.753-117.735S669.336 0 585.168 0H396.792v350.7h77.655V234.468zm-111.225-77.655V77.655h112.224c30.06 0 48.1 18.036 48.1 40.08s-18.036 39.078-48.1 39.078z" fill="#db4623"/></svg>
               </div>
 
               <a className="items-center justify-end text-2xl lg:text-3xl font-book tracking-tighter leading-tight px-2 md:px-4 hidden md:inline-block hover:text-red" href="#">
@@ -115,7 +137,7 @@ export default function Home(initialData) {
               </a>
             </motion.div>
 
-            <div className="px-2 md:px-4 mb-16 md:mb-24 lg:mb-40">
+            <div className="px-2 md:px-4 mb-12 md:mb-16 lg:mb-28">
               <motion.div variants={fade} className="flex flex-wrap border-b items-end border-black mb-8 md:mb-10 lg:mb-16 pb-1 md:pb-0">
                 <div className="w-1/2 md:w-1/4">
                   <span className="block uppercase tracking-tight text-xs md:text-base font-serif italic overflow-hidden"><motion.span variants={reveal} className="block">(1)</motion.span></span>
@@ -128,7 +150,212 @@ export default function Home(initialData) {
                   <motion.span variants={reveal} className="block">52.9548° N, 1.1581° W</motion.span></span>
               </motion.div>
 
-              <motion.div className="flex flex-wrap -mx-2 items-center">
+
+
+
+
+              
+              <motion.div variants={fade} className="mb-8 md:mb-12 lg:mb-0">
+              <div className="">
+                
+                {/* LAYER 1 */}
+                <div className="flex flex-wrap md:flex-none md:grid md:grid-cols-4 xl:grid-cols-5 md:gap-6 xl:gap-12 2xl:gap-16">
+                  <div className="w-9/12 md:w-full md:col-span-1 mb-8 md:mb-12 xl:mb-16" data-scroll data-scroll-speed={-0.8}>
+                    <Teaser
+                      slug={projects[0].slug.current}
+                      imageSrc={projects[0].thumbnailImage ? projects[0].thumbnailImage : null}
+                      imageWidth={projects[0].thumbnailImage.asset.metadata.dimensions.width / 2}
+                      imageHeight={projects[0].thumbnailImage.asset.metadata.dimensions.height / 2}
+                      title={projects[0].title}
+                      disciplines={projects[0].disciplines}
+                      inverse
+                    />
+                  </div>
+
+                  <div className="w-9/12 ml-auto md:w-full md:col-span-1 md:col-start-4 xl:col-start-5 mb-8 md:mb-12 xl:mb-1">
+                    <Teaser
+                      slug={projects[1].slug.current}
+                      imageSrc={projects[1].thumbnailImage ? projects[1].thumbnailImage : null}
+                      imageWidth={projects[1].thumbnailImage.asset.metadata.dimensions.width / 2}
+                      imageHeight={projects[1].thumbnailImage.asset.metadata.dimensions.height / 2}
+                      title={projects[1].title}
+                      disciplines={projects[1].disciplines}
+                    />
+                  </div>
+                </div>
+
+                
+                {/* LAYER 2 */}
+                <div className="flex flex-wrap md:flex-none md:grid md:grid-cols-4 xl:grid-cols-5 md:gap-6 xl:gap-12 2xl:gap-16">
+                  <div className="w-9/12 md:w-full md:col-span-1 md:col-start-2 xl:col-start-3 mb-8 md:mb-12 xl:mb-16" data-scroll data-scroll-speed={1}>
+                    <Teaser
+                      slug={projects[2].slug.current}
+                      imageSrc={projects[2].thumbnailImage ? projects[2].thumbnailImage : null}
+                      imageWidth={projects[2].thumbnailImage.asset.metadata.dimensions.width / 2}
+                      imageHeight={projects[2].thumbnailImage.asset.metadata.dimensions.height / 2}
+                      title={projects[2].title}
+                      disciplines={projects[2].disciplines}
+                      inverse
+                    />
+                  </div>
+
+                  <div className="w-9/12 ml-auto md:w-full md:col-span-1 md:col-start-3 xl:col-start-4 mb-8 md:mb-12 xl:mb-1" data-scroll data-scroll-speed={-0.5}>
+                    <Teaser
+                      slug={projects[3].slug.current}
+                      imageSrc={projects[3].thumbnailImage ? projects[3].thumbnailImage : null}
+                      imageWidth={projects[3].thumbnailImage.asset.metadata.dimensions.width / 2}
+                      imageHeight={projects[3].thumbnailImage.asset.metadata.dimensions.height / 2}
+                      title={projects[3].title}
+                      disciplines={projects[3].disciplines}
+                    />
+                  </div>
+                </div>
+
+                {/* LAYER 3 */}
+                <div className="flex flex-wrap md:flex-none md:grid md:grid-cols-4 xl:grid-cols-5 md:gap-6 xl:gap-12 2xl:gap-16">
+                  <div className="w-9/12 md:w-full md:col-span-1 md:col-start-2 xl:col-start-2 mb-8 md:mb-12 xl:mb-16" data-scroll data-scroll-speed={1.2}>
+                    <Teaser
+                      slug={projects[4].slug.current}
+                      imageSrc={projects[4].thumbnailImage ? projects[4].thumbnailImage : null}
+                      imageWidth={projects[4].thumbnailImage.asset.metadata.dimensions.width / 2}
+                      imageHeight={projects[4].thumbnailImage.asset.metadata.dimensions.height / 2}
+                      title={projects[4].title}
+                      disciplines={projects[4].disciplines}
+                      inverse
+                    />
+                  </div>
+
+                  <div className="w-9/12 ml-auto md:w-full md:col-span-1 md:col-start-4 xl:col-start-5 mb-8 md:mb-12 xl:mb-1" data-scroll data-scroll-speed={-1.3}>
+                    <Teaser
+                      slug={projects[5].slug.current}
+                      imageSrc={projects[5].thumbnailImage ? projects[5].thumbnailImage : null}
+                      imageWidth={projects[5].thumbnailImage.asset.metadata.dimensions.width / 2}
+                      imageHeight={projects[5].thumbnailImage.asset.metadata.dimensions.height / 2}
+                      title={projects[5].title}
+                      disciplines={projects[5].disciplines}
+                    />
+                  </div>
+                </div>
+
+                {/* LAYER 4 */}
+                <div className="flex flex-wrap md:flex-none md:grid md:grid-cols-4 xl:grid-cols-5 md:gap-6 xl:gap-12 2xl:gap-16">
+                  <div className="w-9/12 md:w-full md:col-span-1 md:col-start-1 xl:col-start-1 mb-8 md:mb-12 xl:mb-16" data-scroll data-scroll-speed={1.2}>
+                    <Teaser
+                      slug={projects[6].slug.current}
+                      imageSrc={projects[6].thumbnailImage ? projects[6].thumbnailImage : null}
+                      imageWidth={projects[6].thumbnailImage.asset.metadata.dimensions.width / 2}
+                      imageHeight={projects[6].thumbnailImage.asset.metadata.dimensions.height / 2}
+                      title={projects[6].title}
+                      disciplines={projects[6].disciplines}
+                      inverse
+                    />
+                  </div>
+
+                  <div className="w-9/12 ml-auto md:w-full md:col-span-1 md:col-start-2 xl:col-start-3 mb-8 md:mb-12 xl:mb-1" data-scroll data-scroll-speed={-0.6}>
+                    <Teaser
+                      slug={projects[7].slug.current}
+                      imageSrc={projects[7].thumbnailImage ? projects[7].thumbnailImage : null}
+                      imageWidth={projects[7].thumbnailImage.asset.metadata.dimensions.width / 2}
+                      imageHeight={projects[7].thumbnailImage.asset.metadata.dimensions.height / 2}
+                      title={projects[7].title}
+                      disciplines={projects[7].disciplines}
+                    />
+                  </div>
+                </div>
+
+                {/* LAYER 5 */}
+                <div className="flex flex-wrap md:flex-none md:grid md:grid-cols-4 xl:grid-cols-5 md:gap-6 xl:gap-12 2xl:gap-16">
+                  <div className="w-9/12 md:w-full md:col-span-1 md:col-start-3 xl:col-start-4 mb-8 md:mb-12 xl:mb-16" data-scroll data-scroll-speed={0.8}>
+                    <Teaser
+                      slug={projects[8].slug.current}
+                      imageSrc={projects[8].thumbnailImage ? projects[8].thumbnailImage : null}
+                      imageWidth={projects[8].thumbnailImage.asset.metadata.dimensions.width / 2}
+                      imageHeight={projects[8].thumbnailImage.asset.metadata.dimensions.height / 2}
+                      title={projects[8].title}
+                      disciplines={projects[8].disciplines}
+                      inverse
+                    />
+                  </div>
+                </div>
+
+                {/* LAYER 6 */}
+                <div className="flex flex-wrap md:flex-none md:grid md:grid-cols-4 xl:grid-cols-5 md:gap-6 xl:gap-12 2xl:gap-16">
+                  <div className="w-9/12 ml-auto md:w-full md:col-span-1 md:col-start-1 xl:col-start-2 mb-8 md:mb-12 xl:mb-16" data-scroll data-scroll-speed={1.2}>
+                    <Teaser
+                      slug={projects[9].slug.current}
+                      imageSrc={projects[9].thumbnailImage ? projects[9].thumbnailImage : null}
+                      imageWidth={projects[9].thumbnailImage.asset.metadata.dimensions.width / 2}
+                      imageHeight={projects[9].thumbnailImage.asset.metadata.dimensions.height / 2}
+                      title={projects[9].title}
+                      disciplines={projects[9].disciplines}
+                    />
+                  </div>
+
+                  <div className="w-9/12 md:w-full md:col-span-1 md:col-start-4 xl:col-start-5 mb-8 md:mb-12 xl:mb-1" data-scroll data-scroll-speed={-1.2}>
+                    <Teaser
+                      slug={projects[10].slug.current}
+                      imageSrc={projects[10].thumbnailImage ? projects[10].thumbnailImage : null}
+                      imageWidth={projects[10].thumbnailImage.asset.metadata.dimensions.width / 2}
+                      imageHeight={projects[10].thumbnailImage.asset.metadata.dimensions.height / 2}
+                      title={projects[10].title}
+                      disciplines={projects[10].disciplines}
+                      inverse
+                    />
+                  </div>
+                </div>
+
+                {/* LAYER 7 */}
+                <div className="flex flex-wrap md:flex-none md:grid md:grid-cols-4 xl:grid-cols-5 md:gap-6 xl:gap-12 2xl:gap-16">
+                  <div className="w-9/12 ml-auto md:w-full md:col-span-1 md:col-start-1 xl:col-start-1 mb-8 md:mb-12 xl:mb-16" data-scroll data-scroll-speed={-0.9}>
+                    <Teaser
+                      slug={projects[11].slug.current}
+                      imageSrc={projects[11].thumbnailImage ? projects[11].thumbnailImage : null}
+                      imageWidth={projects[11].thumbnailImage.asset.metadata.dimensions.width / 2}
+                      imageHeight={projects[11].thumbnailImage.asset.metadata.dimensions.height / 2}
+                      title={projects[11].title}
+                      disciplines={projects[11].disciplines}
+                    />
+                  </div>
+
+                  <div className="w-9/12 md:w-full md:col-span-1 md:col-start-3 xl:col-start-3 mb-8 md:mb-12 xl:mb-1" data-scroll data-scroll-speed={0.8}>
+                    <Teaser
+                      slug={projects[12].slug.current}
+                      imageSrc={projects[12].thumbnailImage ? projects[12].thumbnailImage : null}
+                      imageWidth={projects[12].thumbnailImage.asset.metadata.dimensions.width / 2}
+                      imageHeight={projects[12].thumbnailImage.asset.metadata.dimensions.height / 2}
+                      title={projects[12].title}
+                      disciplines={projects[12].disciplines}
+                      inverse
+                    />
+                  </div>
+                </div>
+
+                {/* LAYER 8 */}
+                <div className="flex flex-wrap md:flex-none md:grid md:grid-cols-4 xl:grid-cols-5 md:gap-6 xl:gap-12 2xl:gap-16">
+                  <div className="w-9/12 ml-auto md:w-full md:col-span-1 md:col-start-3 xl:col-start-4 mb-8 md:mb-12 xl:mb-16" data-scroll data-scroll-speed={1.5}>
+                    <Teaser
+                      slug={projects[13].slug.current}
+                      imageSrc={projects[13].thumbnailImage ? projects[13].thumbnailImage : null}
+                      imageWidth={projects[13].thumbnailImage.asset.metadata.dimensions.width / 2}
+                      imageHeight={projects[13].thumbnailImage.asset.metadata.dimensions.height / 2}
+                      title={projects[13].title}
+                      disciplines={projects[13].disciplines}
+                    />
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+
+
+
+
+
+
+
+
+
+              {/* <motion.div className="flex flex-wrap -mx-2 items-center">
                 <div className="hidden md:block w-1/2 px-2">
                   <div className="overflow-hidden relative">
                     <motion.div variants={fade}>
@@ -139,7 +366,7 @@ export default function Home(initialData) {
                       <div className={`absolute inset-0 z-100 transition-all ease-in-out duration-[750ms] transform ${ currentHoveredImage == 0 ? 'opacity-100 scale-100' : 'opacity-0 scale-105' }`}>
                         <div className="w-full h-full transform inset-0">
                           <ImageWrapper
-                            src={featuredProjects[0].thumbnailImage.asset.url}
+                            image={featuredProjects[0].thumbnailImage}
                             className="object-cover object-top absolute inset-0 will-change"
                             fill
                           />
@@ -149,7 +376,7 @@ export default function Home(initialData) {
                       <div className={`absolute inset-0 z-100 transition-all ease-in-out duration-[750ms] transform ${ currentHoveredImage == 1 ? 'opacity-100 scale-100' : 'opacity-0 scale-105' }`}>
                         <div className="w-full h-full transform inset-0">
                           <ImageWrapper
-                            src={featuredProjects[1].thumbnailImage.asset.url}
+                            image={featuredProjects[1].thumbnailImage}
                             className="object-cover object-top absolute inset-0 will-change"
                             fill
                           />
@@ -159,7 +386,7 @@ export default function Home(initialData) {
                       <div className={`absolute inset-0 z-100 transition-all ease-in-out duration-[750ms] transform ${ currentHoveredImage == 2 ? 'opacity-100 scale-100' : 'opacity-0 scale-105' }`}>
                         <div className="w-full h-full transform inset-0">
                           <ImageWrapper
-                            src={featuredProjects[2].thumbnailImage.asset.url}
+                            image={featuredProjects[2].thumbnailImage}
                             className="object-cover object-top absolute inset-0 will-change"
                             fill
                           />
@@ -169,7 +396,7 @@ export default function Home(initialData) {
                       <div className={`absolute inset-0 z-100 transition-all ease-in-out duration-[750ms] transform ${ currentHoveredImage == 3 ? 'opacity-100 scale-100' : 'opacity-0 scale-105' }`}>
                         <div className="w-full h-full transform inset-0">
                           <ImageWrapper
-                            src={featuredProjects[3].thumbnailImage.asset.url}
+                            image={featuredProjects[3].thumbnailImage}
                             className="object-cover object-top absolute inset-0 will-change"
                             fill
                           />
@@ -179,7 +406,7 @@ export default function Home(initialData) {
                       <div className={`absolute inset-0 z-100 transition-all ease-in-out duration-[750ms] transform ${ currentHoveredImage == 4 ? 'opacity-100 scale-100' : 'opacity-0 scale-105' }`}>
                         <div className="w-full h-full transform inset-0">
                           <ImageWrapper
-                            src={featuredProjects[4].thumbnailImage.asset.url}
+                            image={featuredProjects[4].thumbnailImage}
                             className="object-cover object-top absolute inset-0 will-change"
                             fill
                           />
@@ -189,17 +416,13 @@ export default function Home(initialData) {
                       <div className={`absolute inset-0 z-100 transition-all ease-in-out duration-[750ms] transform ${ currentHoveredImage == 5 ? 'opacity-100 scale-100' : 'opacity-0 scale-105' }`}>
                         <div className="w-full h-full transform inset-0">
                           <ImageWrapper
-                            src={featuredProjects[5].thumbnailImage.asset.url}
+                            image={featuredProjects[5].thumbnailImage}
                             className="object-cover object-top absolute inset-0 will-change"
                             fill
                           />
                         </div>
                       </div>
                     </motion.div>
-
-                    {/* <motion.div className="absolute inset-0" variants={fade}>
-                      <img src="/images/ps.jpg" className="w-full h-full object-cover" alt="Change Me!" />
-                    </motion.div> */}
                   </div>
                 </div>
                 <motion.div variants={fade} className="w-full md:w-1/2 px-2">
@@ -214,12 +437,10 @@ export default function Home(initialData) {
                                 onMouseOver={() => setCurrentHoveredImage(i)}
                                 onMouseOut={() => setCurrentHoveredImage(null)}
                               >
-                                <FancyLink
-                                  destination={`/projects/${item.slug.current}`}
-                                  label={item.title}
-                                  a11yText={item.title}
-                                  index={item.indexLetter}
-                                />
+                                <span className={`hover:text-red flex items-start`}>
+                                  <span className="block">{item.title}</span>
+                                  { item.indexLetter && (<span className="block text-[1.25vw] xl:text-[1.1vw] uppercase ml-1 mt-[0.65vw] tracking-tight font-serif italic">({item.indexLetter})</span>)}
+                                </span>
                               </motion.div>
                             </div>
                           </li>
@@ -240,7 +461,7 @@ export default function Home(initialData) {
                     </ul>
                   </nav>
                 </motion.div>
-              </motion.div>
+              </motion.div> */}
             </div>
           </div>
 

@@ -10,7 +10,7 @@ export default function Teaser({ slug, imageSrc, imageWidth, imageHeight, title,
         <div className={`overflow-hidden mb-4 transform ${ inverse ? '-translate-x-3 md:translate-x-0' : '' }`}>
           <div className="transform group-hover:scale-[1.05] group-focus:scale-[1.05] transition-transform ease-in-out duration-500">
             <ImageWrapper
-              src={imageSrc} 
+              image={imageSrc} 
               layout="responsive"
               className="w-full"
               width={imageWidth}

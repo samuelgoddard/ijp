@@ -10,13 +10,15 @@ export default function ModularImage({layout, caption, image}) {
               <div className="w-full bg-red">
                 {/* <img src={image ? image.asset.url : null} className="w-full" alt="Change Me!" /> */}
 
-                <ImageWrapper
-                  src={image ? image.asset.url : null} 
-                  layout="responsive"
-                  className="w-full"
-                  width={image.asset.metadata.dimensions.width}
-                  height={image.asset.metadata.dimensions.height}
-                />
+                { image && (
+                  <ImageWrapper
+                    image={image ? image : null} 
+                    layout="responsive"
+                    className="w-full"
+                    width={image.asset.metadata.dimensions.width}
+                    height={image.asset.metadata.dimensions.height}
+                  />
+                )}
               </div>
             </div>
             { caption && (
@@ -33,15 +35,17 @@ export default function ModularImage({layout, caption, image}) {
         <div className="w-full mb-12 md:mb-32 lg:mb-48 flex flex-wrap justify-center">
           <div className="w-full md:w-10/12 flex flex-wrap items-end">
             <div className={`w-full md:px-2 mb-2 md:mb-0 ${caption ? 'md:w-7/12 lg:w-8/12' : ''}`}>
-              <div className="w-full bg-red">
-                <ImageWrapper
-                  src={image ? image.asset.url : null} 
-                  layout="responsive"
-                  className="w-full"
-                  width={image.asset.metadata.dimensions.width}
-                  height={image.asset.metadata.dimensions.height}
-                />
-              </div>
+              { image && (
+                <div className="w-full bg-red">
+                  <ImageWrapper
+                    image={image ? image : null} 
+                    layout="responsive"
+                    className="w-full"
+                    width={image.asset.metadata.dimensions.width}
+                    height={image.asset.metadata.dimensions.height}
+                  />
+                </div>
+              )}
             </div>
             { caption && (
               <div className="w-full md:w-5/12 lg:w-4/12 md:px-2 flex flex-wrap">
@@ -64,15 +68,17 @@ export default function ModularImage({layout, caption, image}) {
             )}
 
             <div className="w-full md:w-7/12 lg:w-8/12 md:px-2 mb-2 md:mb-0 order-1 md:order-2">
-              <div className="w-full bg-red">
-                <ImageWrapper
-                  src={image ? image.asset.url : null} 
-                  layout="responsive"
-                  className="w-full"
-                  width={image.asset.metadata.dimensions.width}
-                  height={image.asset.metadata.dimensions.height}
-                />
-              </div>
+              { image && (
+                <div className="w-full bg-red">
+                  <ImageWrapper
+                    image={image ? image : null} 
+                    layout="responsive"
+                    className="w-full"
+                    width={image.asset.metadata.dimensions.width}
+                    height={image.asset.metadata.dimensions.height}
+                  />
+                </div>
+              )}
             </div>
           </div>
         </div>

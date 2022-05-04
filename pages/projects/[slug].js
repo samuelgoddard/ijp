@@ -128,10 +128,10 @@ export default function ProjectSlug(initialData) {
             {heroImage && (
               <motion.div variants={fade} className="absolute inset-0 z-0 bg-red">
                 <ImageWrapper
-                  src={heroImage ? heroImage.asset.url : null} 
+                  image={heroImage ? heroImage : null} 
                   className="w-full h-full object-cover object-center md:mb-3"
                   fill
-                  
+                  priority
                 />
               </motion.div>
             )}
@@ -157,7 +157,10 @@ export default function ProjectSlug(initialData) {
             </div>
             
             <div className="w-full md:w-11/12 mb-20 md:mb-32 lg:mb-48 bg-red">
-              <img src={abstractmIage ? abstractmIage.asset.url : null} className="w-full" alt="Change Me!" />
+              <ImageWrapper
+                image={abstractmIage ? abstractmIage : null} 
+                className="w-full "
+              />
             </div>
 
             {/* Details */}

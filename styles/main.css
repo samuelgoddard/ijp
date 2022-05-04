@@ -6,3 +6,13 @@
 @import '_typography.css';
 
 @import 'tailwindcss/utilities';
+
+.cover-image {
+  img {
+    @apply w-full h-full object-cover object-center absolute inset-0;
+  }
+
+  div {
+    @apply w-full h-full !important;
+  }
+}

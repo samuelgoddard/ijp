@@ -129,7 +129,7 @@ export default function ProjectsIndex(initialData) {
                   <div className="w-9/12 md:w-full md:col-span-1 mb-8 md:mb-12 xl:mb-16" data-scroll data-scroll-speed={-1.3}>
                     <Teaser
                       slug={projects[0].slug.current}
-                      imageSrc={projects[0].thumbnailImage ? projects[0].thumbnailImage.asset.url : null}
+                      imageSrc={projects[0].thumbnailImage ? projects[0].thumbnailImage : null}
                       imageWidth={projects[0].thumbnailImage.asset.metadata.dimensions.width / 2}
                       imageHeight={projects[0].thumbnailImage.asset.metadata.dimensions.height / 2}
                       title={projects[0].title}
@@ -141,7 +141,7 @@ export default function ProjectsIndex(initialData) {
                   <div className="w-9/12 ml-auto md:w-full md:col-span-1 md:col-start-4 xl:col-start-5 mb-8 md:mb-12 xl:mb-1">
                     <Teaser
                       slug={projects[1].slug.current}
-                      imageSrc={projects[1].thumbnailImage ? projects[1].thumbnailImage.asset.url : null}
+                      imageSrc={projects[1].thumbnailImage ? projects[1].thumbnailImage : null}
                       imageWidth={projects[1].thumbnailImage.asset.metadata.dimensions.width / 2}
                       imageHeight={projects[1].thumbnailImage.asset.metadata.dimensions.height / 2}
                       title={projects[1].title}
@@ -156,7 +156,7 @@ export default function ProjectsIndex(initialData) {
                   <div className="w-9/12 md:w-full md:col-span-1 md:col-start-2 xl:col-start-3 mb-8 md:mb-12 xl:mb-16" data-scroll data-scroll-speed={1}>
                     <Teaser
                       slug={projects[2].slug.current}
-                      imageSrc={projects[2].thumbnailImage ? projects[2].thumbnailImage.asset.url : null}
+                      imageSrc={projects[2].thumbnailImage ? projects[2].thumbnailImage : null}
                       imageWidth={projects[2].thumbnailImage.asset.metadata.dimensions.width / 2}
                       imageHeight={projects[2].thumbnailImage.asset.metadata.dimensions.height / 2}
                       title={projects[2].title}
@@ -168,7 +168,7 @@ export default function ProjectsIndex(initialData) {
                   <div className="w-9/12 ml-auto md:w-full md:col-span-1 md:col-start-3 xl:col-start-4 mb-8 md:mb-12 xl:mb-1" data-scroll data-scroll-speed={-0.5}>
                     <Teaser
                       slug={projects[3].slug.current}
-                      imageSrc={projects[3].thumbnailImage ? projects[3].thumbnailImage.asset.url : null}
+                      imageSrc={projects[3].thumbnailImage ? projects[3].thumbnailImage : null}
                       imageWidth={projects[3].thumbnailImage.asset.metadata.dimensions.width / 2}
                       imageHeight={projects[3].thumbnailImage.asset.metadata.dimensions.height / 2}
                       title={projects[3].title}
@@ -182,7 +182,7 @@ export default function ProjectsIndex(initialData) {
                   <div className="w-9/12 md:w-full md:col-span-1 md:col-start-2 xl:col-start-2 mb-8 md:mb-12 xl:mb-16" data-scroll data-scroll-speed={1.2}>
                     <Teaser
                       slug={projects[4].slug.current}
-                      imageSrc={projects[4].thumbnailImage ? projects[4].thumbnailImage.asset.url : null}
+                      imageSrc={projects[4].thumbnailImage ? projects[4].thumbnailImage : null}
                       imageWidth={projects[4].thumbnailImage.asset.metadata.dimensions.width / 2}
                       imageHeight={projects[4].thumbnailImage.asset.metadata.dimensions.height / 2}
                       title={projects[4].title}
@@ -194,7 +194,7 @@ export default function ProjectsIndex(initialData) {
                   <div className="w-9/12 ml-auto md:w-full md:col-span-1 md:col-start-4 xl:col-start-5 mb-8 md:mb-12 xl:mb-1" data-scroll data-scroll-speed={-1.3}>
                     <Teaser
                       slug={projects[5].slug.current}
-                      imageSrc={projects[5].thumbnailImage ? projects[5].thumbnailImage.asset.url : null}
+                      imageSrc={projects[5].thumbnailImage ? projects[5].thumbnailImage : null}
                       imageWidth={projects[5].thumbnailImage.asset.metadata.dimensions.width / 2}
                       imageHeight={projects[5].thumbnailImage.asset.metadata.dimensions.height / 2}
                       title={projects[5].title}
@@ -208,7 +208,7 @@ export default function ProjectsIndex(initialData) {
                   <div className="w-9/12 md:w-full md:col-span-1 md:col-start-1 xl:col-start-1 mb-8 md:mb-12 xl:mb-16" data-scroll data-scroll-speed={1.2}>
                     <Teaser
                       slug={projects[6].slug.current}
-                      imageSrc={projects[6].thumbnailImage ? projects[6].thumbnailImage.asset.url : null}
+                      imageSrc={projects[6].thumbnailImage ? projects[6].thumbnailImage : null}
                       imageWidth={projects[6].thumbnailImage.asset.metadata.dimensions.width / 2}
                       imageHeight={projects[6].thumbnailImage.asset.metadata.dimensions.height / 2}
                       title={projects[6].title}
@@ -220,7 +220,7 @@ export default function ProjectsIndex(initialData) {
                   <div className="w-9/12 ml-auto md:w-full md:col-span-1 md:col-start-2 xl:col-start-3 mb-8 md:mb-12 xl:mb-1" data-scroll data-scroll-speed={-0.6}>
                     <Teaser
                       slug={projects[7].slug.current}
-                      imageSrc={projects[7].thumbnailImage ? projects[7].thumbnailImage.asset.url : null}
+                      imageSrc={projects[7].thumbnailImage ? projects[7].thumbnailImage : null}
                       imageWidth={projects[7].thumbnailImage.asset.metadata.dimensions.width / 2}
                       imageHeight={projects[7].thumbnailImage.asset.metadata.dimensions.height / 2}
                       title={projects[7].title}
@@ -234,7 +234,7 @@ export default function ProjectsIndex(initialData) {
                   <div className="w-9/12 md:w-full md:col-span-1 md:col-start-3 xl:col-start-4 mb-8 md:mb-12 xl:mb-16" data-scroll data-scroll-speed={0.8}>
                     <Teaser
                       slug={projects[8].slug.current}
-                      imageSrc={projects[8].thumbnailImage ? projects[8].thumbnailImage.asset.url : null}
+                      imageSrc={projects[8].thumbnailImage ? projects[8].thumbnailImage : null}
                       imageWidth={projects[8].thumbnailImage.asset.metadata.dimensions.width / 2}
                       imageHeight={projects[8].thumbnailImage.asset.metadata.dimensions.height / 2}
                       title={projects[8].title}
@@ -249,7 +249,7 @@ export default function ProjectsIndex(initialData) {
                   <div className="w-9/12 ml-auto md:w-full md:col-span-1 md:col-start-1 xl:col-start-2 mb-8 md:mb-12 xl:mb-16" data-scroll data-scroll-speed={1.2}>
                     <Teaser
                       slug={projects[9].slug.current}
-                      imageSrc={projects[9].thumbnailImage ? projects[9].thumbnailImage.asset.url : null}
+                      imageSrc={projects[9].thumbnailImage ? projects[9].thumbnailImage : null}
                       imageWidth={projects[9].thumbnailImage.asset.metadata.dimensions.width / 2}
                       imageHeight={projects[9].thumbnailImage.asset.metadata.dimensions.height / 2}
                       title={projects[9].title}
@@ -260,7 +260,7 @@ export default function ProjectsIndex(initialData) {
                   <div className="w-9/12 md:w-full md:col-span-1 md:col-start-4 xl:col-start-5 mb-8 md:mb-12 xl:mb-1" data-scroll data-scroll-speed={-1.2}>
                     <Teaser
                       slug={projects[10].slug.current}
-                      imageSrc={projects[10].thumbnailImage ? projects[10].thumbnailImage.asset.url : null}
+                      imageSrc={projects[10].thumbnailImage ? projects[10].thumbnailImage : null}
                       imageWidth={projects[10].thumbnailImage.asset.metadata.dimensions.width / 2}
                       imageHeight={projects[10].thumbnailImage.asset.metadata.dimensions.height / 2}
                       title={projects[10].title}
@@ -275,7 +275,7 @@ export default function ProjectsIndex(initialData) {
                   <div className="w-9/12 ml-auto md:w-full md:col-span-1 md:col-start-1 xl:col-start-1 mb-8 md:mb-12 xl:mb-16" data-scroll data-scroll-speed={-0.9}>
                     <Teaser
                       slug={projects[11].slug.current}
-                      imageSrc={projects[11].thumbnailImage ? projects[11].thumbnailImage.asset.url : null}
+                      imageSrc={projects[11].thumbnailImage ? projects[11].thumbnailImage : null}
                       imageWidth={projects[11].thumbnailImage.asset.metadata.dimensions.width / 2}
                       imageHeight={projects[11].thumbnailImage.asset.metadata.dimensions.height / 2}
                       title={projects[11].title}
@@ -286,7 +286,7 @@ export default function ProjectsIndex(initialData) {
                   <div className="w-9/12 md:w-full md:col-span-1 md:col-start-3 xl:col-start-3 mb-8 md:mb-12 xl:mb-1" data-scroll data-scroll-speed={0.8}>
                     <Teaser
                       slug={projects[12].slug.current}
-                      imageSrc={projects[12].thumbnailImage ? projects[12].thumbnailImage.asset.url : null}
+                      imageSrc={projects[12].thumbnailImage ? projects[12].thumbnailImage : null}
                       imageWidth={projects[12].thumbnailImage.asset.metadata.dimensions.width / 2}
                       imageHeight={projects[12].thumbnailImage.asset.metadata.dimensions.height / 2}
                       title={projects[12].title}
@@ -301,7 +301,7 @@ export default function ProjectsIndex(initialData) {
                   <div className="w-9/12 ml-auto md:w-full md:col-span-1 md:col-start-3 xl:col-start-4 mb-8 md:mb-12 xl:mb-16" data-scroll data-scroll-speed={-2}>
                     <Teaser
                       slug={projects[13].slug.current}
-                      imageSrc={projects[13].thumbnailImage ? projects[13].thumbnailImage.asset.url : null}
+                      imageSrc={projects[13].thumbnailImage ? projects[13].thumbnailImage : null}
                       imageWidth={projects[13].thumbnailImage.asset.metadata.dimensions.width / 2}
                       imageHeight={projects[13].thumbnailImage.asset.metadata.dimensions.height / 2}
                       title={projects[13].title}
