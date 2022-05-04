@@ -10,6 +10,9 @@ import SanityPageService from '../services/SanityPageService'
 import { useRef, useState } from 'react'
 import ImageWrapper from '../components/image-wrapper'
 import Teaser from '../components/teaser'
+import Logo from '../components/logo'
+import EmailReveal from '../components/emailReveal'
+import FadeInWhenInView from '../components/fade-in-when-in-view'
 
 const query = `*[_type == "home"][0]{
 	title,
@@ -98,6 +101,11 @@ export default function Home(initialData) {
           exit="exit"
           id="test"
         >
+          <div className="fixed top-0 left-0 w-[45%] ml-4 mt-4 hidden md:block z-[100]" data-scroll data-scroll-sticky data-scroll-target="#test">
+            <Logo/>
+          </div>
+          <EmailReveal />
+
           <div className="relative">
             <motion.div variants={fade} className="md:text-right relative md:pt-16 lg:pt-20 bg-white" data-scroll data-scroll-sticky data-scroll-target="#test">
               <div className="absolute top-0 left-0 md:relative z-10 md:mb-3 pt-2 md:pt-0">
@@ -113,7 +121,7 @@ export default function Home(initialData) {
                 </a>
               </div>
 
-              <div className="relative pb-20 md:pb-8">
+              <div className="relative pb-20 md:pb-0">
                 <ImageWrapper
                   image={heroImageMobile}
                   className="w-full block md:hidden"
@@ -132,33 +140,41 @@ export default function Home(initialData) {
                 </div>
               </div>
 
-              <div className="absolute bottom-0 md:bottom-auto md:top-0 left-0 w-[70%] md:w-[45%] ml-2 md:ml-4 mt-4">
-                <div>
-                  <svg className="w-full" viewBox="0 0 712.422 360.72"><path data-name="Path 6" d="M77.655 350.7V0H0v350.7Zm8.517-95.19c20.043 70.641 76.653 105.21 140.781 105.21 96.693 0 146.292-63.627 146.292-160.32V0H295.59v200.4c0 53.607-24.048 82.665-67.635 82.665-35.07 0-58.116-21.543-70.641-61.623Zm499.5-21.042c84.168 0 126.753-56.613 126.753-117.735S669.336 0 585.168 0H396.792v350.7h77.655V234.468Zm-111.225-77.655V77.655h112.224c30.06 0 48.1 18.036 48.1 40.08s-18.036 39.078-48.1 39.078Z" fill="#db4623"/></svg>
-                </div>
+              <div className="absolute bottom-0 md:hidden md:top-0 left-0 w-[70%] md:w-[45%] ml-2 md:ml-4 mt-4">
+                <Logo/>
               </div>
-
-              <a className="items-center justify-end text-2xl lg:text-3xl font-book tracking-tighter leading-tight px-2 md:px-4 hidden md:inline-block hover:text-red" href="#">
-                <span className="flex flex-wrap items-center">
-                  <span className="md:h-3 lg:h-4 md:w-3 lg:w-4 md:mt-[-3px] lg:mt-[-4px] bg-red block rounded-full mr-1"></span>
-                  <span className="block leading-none overflow-hidden">
-                    <motion.span className="block" variants={reveal}>Email</motion.span>
-                  </span>
-                </span>
-              </a>
             </motion.div>
 
-            <div className="px-2 md:px-4 pb-12 md:pb-16 lg:pb-20 bg-white z-50 relative">
+            <div className="px-2 md:px-4 pb-12 md:pb-16 lg:pb-20 bg-white z-50 relative md:pt-4">
+
+              {/* <div className="flex justify-end">
+                <a className="items-center justify-end text-2xl lg:text-3xl font-book tracking-tighter leading-tight hidden md:inline-block hover:text-red ml-auto" href="mailto:hello@shiftwalk.studio">
+                  <span className="flex flex-wrap items-center">
+                    <span className="md:h-3 lg:h-4 md:w-3 lg:w-4 md:mt-[-3px] lg:mt-[-4px] bg-red block rounded-full mr-1"></span>
+                    <span className="block leading-none overflow-hidden">
+                      <motion.span className="block" variants={reveal}>Email</motion.span>
+                    </span>
+                  </span>
+                </a>
+              </div> */}
+
+
               <motion.div variants={fade} className="flex flex-wrap border-b items-end border-black mb-8 md:mb-10 lg:mb-16 pb-1 md:pb-0">
                 <div className="w-1/2 md:w-1/4">
-                  <span className="block uppercase tracking-tight text-xs md:text-base font-serif italic overflow-hidden"><motion.span variants={reveal} className="block">(1)</motion.span></span>
-                  <span className="block uppercase tracking-tight text-xs md:text-base lg:text-xl font-serif overflow-hidden"><motion.span variants={reveal} className="block">Selected Works</motion.span></span>
+                  <span className="block uppercase tracking-tight text-xs md:text-base font-serif italic overflow-hidden">
+                  <FadeInWhenInView><motion.span variants={reveal} className="block">(1)</motion.span></FadeInWhenInView></span>
+                  <span className="block uppercase tracking-tight text-xs md:text-base lg:text-xl font-serif overflow-hidden">
+                    <FadeInWhenInView>
+                      <motion.span variants={reveal} className="block">Selected Works</motion.span>
+                    </FadeInWhenInView>
+                  </span>
                 </div>
 
-                <span className="hidden md:block w-1/4 uppercase tracking-tight text-xs md:text-base lg:text-xl font-serif overflow-hidden"><motion.span variants={reveal} className="block">2016—{new Date().getFullYear().toString().substr(-2)}</motion.span></span>
+                <span className="hidden md:block w-1/4 uppercase tracking-tight text-xs md:text-base lg:text-xl font-serif overflow-hidden">
+                <FadeInWhenInView><motion.span variants={reveal} className="block">2016—{new Date().getFullYear().toString().substr(-2)}</motion.span></FadeInWhenInView></span>
 
                 <span className="block flex-1 text-right uppercase tracking-tight text-xs md:text-base lg:text-xl font-serif overflow-hidden">
-                  <motion.span variants={reveal} className="block">52.9548° N, 1.1581° W</motion.span></span>
+                <FadeInWhenInView><motion.span variants={reveal} className="block">52.9548° N, 1.1581° W</motion.span></FadeInWhenInView></span>
               </motion.div>
 
               
@@ -475,7 +491,8 @@ export default function Home(initialData) {
             <div className="flex md:hidden flex-wrap border-b items-end border-black mb-3 md:mb-12 lg:mb-16 pb-1 md:pb-0">
               <div className="flex-1">
                 <span className="block uppercase tracking-tight text-xs md:text-base font-serif italic overflow-hidden"><motion.span variants={reveal} className="block">(2)</motion.span></span>
-                <span className="block uppercase tracking-tight text-xs md:text-base lg:text-xl font-serif overflow-hidden"><motion.span variants={reveal} className="block">Biography</motion.span></span>
+                <span className="block uppercase tracking-tight text-xs md:text-base lg:text-xl font-serif overflow-hidden">
+                  <motion.span variants={reveal} className="block">Biography</motion.span></span>
               </div>
 
               <span className="flex-1 uppercase tracking-tight text-xs md:text-base lg:text-xl text-right font-serif overflow-hidden"><motion.span variants={reveal} className="block">2016—{new Date().getFullYear().toString().substr(-2)}</motion.span></span>
@@ -483,8 +500,8 @@ export default function Home(initialData) {
 
             <div className="flex flex-wrap">
               <div className="hidden md:block w-1/4">
-                <span className="block uppercase tracking-tight text-xs md:text-base font-serif italic overflow-hidden"><motion.span variants={reveal} className="block">(2)</motion.span></span>
-                <span className="block uppercase tracking-tight text-xs md:text-base lg:text-xl font-serif overflow-hidden"><motion.span variants={reveal} className="block">Biography</motion.span></span>
+                <span className="block uppercase tracking-tight text-xs md:text-base font-serif italic overflow-hidden"><FadeInWhenInView><motion.span variants={reveal} className="block">(2)</motion.span></FadeInWhenInView></span>
+                <span className="block uppercase tracking-tight text-xs md:text-base lg:text-xl font-serif overflow-hidden"><FadeInWhenInView><motion.span variants={reveal} className="block">Biography</motion.span></FadeInWhenInView></span>
               </div>
               
               {biography && (
@@ -495,7 +512,7 @@ export default function Home(initialData) {
             </div>
           </motion.div>
 
-          <motion.div variants={fade} className="px-2 md:px-4 pb-8 bg-white z-50 relative">
+          <motion.div variants={fade} className="px-2 md:px-4 bg-white z-50 relative">
             <div className="flex flex-wrap items-end pb-4">
               <div className="w-full md:w-1/3 lg:w-1/4 order-2 md:order-1">
                 <div className="max-w-sm md:max-w-xs">
@@ -506,29 +523,39 @@ export default function Home(initialData) {
                   {socialLinks.map((item, i) => {
                     return (
                       <a key={i} href={item.socialUrl} target="_blank" rel="noopener noreferrer" className="underline mb-1 block text-lg md:text-2xl tracking-tight font-serif uppercase leading-tight hover:text-red overflow-hidden">
-                        <motion.span variants={reveal} className="block">
-                          {item.socialTitle}
-                        </motion.span>
+                        <FadeInWhenInView delay={( i / 75)}>
+                          <motion.span variants={reveal} className="block">
+                            {item.socialTitle}
+                          </motion.span>
+                        </FadeInWhenInView>
                       </a>
                     )
                   })}
-                  
-                  <a href={`mailto:${emailAddress}`} className="underline block text-lg md:text-2xl tracking-tight font-serif uppercase leading-tight hover:text-red overflow-hidden"><motion.span variants={reveal} className="block">Email</motion.span></a>
+                    <a href={`mailto:${emailAddress}`} className="underline block text-lg md:text-2xl tracking-tight font-serif uppercase leading-tight hover:text-red overflow-hidden">
+                      <FadeInWhenInView>
+                        <span className="block">Email</span>
+                      </FadeInWhenInView>
+                    </a>
                 </div>
               </div>
 
               <div className="w-full md:w-1/2 lg:w-2/3 md:ml-auto order-1 md:order-2 mb-16 md:mb-0">
-                <ul className="text-sm md:text-lg tracking-tight font-book leading-none border-t border-black">
-                  {awards.map((item, i) => {
-                    return (
-                      <li key={i} className="mb-0 border-b border-black overflow-hidden">
-                        <motion.span variants={reveal} className="flex flex-wrap py-3">
-                          <span className="block">{item.awardWebsite}{ item.awardTimesWon && (<>&nbsp;<span className="text-[7px] md:text-2xs align-top">({item.awardTimesWon})</span></>)}</span><span className="block text-right ml-auto font-serif italic">{item.awardTitle}</span>
-                        </motion.span>
-                      </li>
-                    )
-                  })}
-                </ul>
+                  <FadeInWhenInView>
+                    <div className="w-full h-[1px] border-t border-black"></div>
+                  </FadeInWhenInView>
+                  <ul className="text-sm md:text-lg tracking-tight font-book leading-none">
+                    {awards.map((item, i) => {
+                      return (
+                        <FadeInWhenInView delay={( i / 75)}>
+                          <li key={i} className="mb-0 border-b border-black overflow-hidden">
+                            <motion.span variants={reveal} className="flex flex-wrap py-3">
+                              <span className="block">{item.awardWebsite}{ item.awardTimesWon && (<>&nbsp;<span className="text-[7px] md:text-2xs align-top">({item.awardTimesWon})</span></>)}</span><span className="block text-right ml-auto font-serif italic">{item.awardTitle}</span>
+                            </motion.span>
+                          </li>
+                        </FadeInWhenInView>
+                      )
+                    })}
+                  </ul>
               </div>
             </div>
           </motion.div>
