@@ -96,9 +96,10 @@ export default function Home(initialData) {
           initial="initial"
           animate="enter"
           exit="exit"
+          id="test"
         >
           <div className="relative">
-            <motion.div variants={fade} className="md:text-right mb-10 md:mb-8 lg:mb-16 relative md:pt-16 lg:pt-20">
+            <motion.div variants={fade} className="md:text-right relative md:pt-16 lg:pt-20 bg-white" data-scroll data-scroll-sticky data-scroll-target="#test">
               <div className="absolute top-0 left-0 md:relative z-10 md:mb-3 pt-2 md:pt-0">
                 <span className="block text-2xl lg:text-3xl font-sans tracking-tighter leading-tight px-2 md:px-4 overflow-hidden">
                   <motion.span className="block" variants={reveal}>Independant</motion.span></span>
@@ -112,23 +113,29 @@ export default function Home(initialData) {
                 </a>
               </div>
 
-              <div className="relative pb-20 md:pb-0">
+              <div className="relative pb-20 md:pb-8">
                 <ImageWrapper
                   image={heroImageMobile}
                   className="w-full block md:hidden"
                   widthOverride={900}
                   priority
                 />
-                <ImageWrapper
-                  image={heroImage}
-                  className="w-full hidden md:block md:mb-3"
-                  widthOverride={1800}
-                  priority
-                />
+                <div className="relative overflow-hidden">
+                  <div data-scroll data-scroll-speed={2} className="w-full hidden md:block md:mb-3">
+                    <ImageWrapper
+                      image={heroImage}
+                      className="w-full transform scale-[1.1]"
+                      widthOverride={1800}
+                      priority
+                    />
+                  </div>
+                </div>
               </div>
 
               <div className="absolute bottom-0 md:bottom-auto md:top-0 left-0 w-[70%] md:w-[45%] ml-2 md:ml-4 mt-4">
-                <svg className="w-full" viewBox="0 0 712.422 360.72"><path data-name="Path 6" d="M77.655 350.7V0H0v350.7Zm8.517-95.19c20.043 70.641 76.653 105.21 140.781 105.21 96.693 0 146.292-63.627 146.292-160.32V0H295.59v200.4c0 53.607-24.048 82.665-67.635 82.665-35.07 0-58.116-21.543-70.641-61.623Zm499.5-21.042c84.168 0 126.753-56.613 126.753-117.735S669.336 0 585.168 0H396.792v350.7h77.655V234.468Zm-111.225-77.655V77.655h112.224c30.06 0 48.1 18.036 48.1 40.08s-18.036 39.078-48.1 39.078Z" fill="#db4623"/></svg>
+                <div>
+                  <svg className="w-full" viewBox="0 0 712.422 360.72"><path data-name="Path 6" d="M77.655 350.7V0H0v350.7Zm8.517-95.19c20.043 70.641 76.653 105.21 140.781 105.21 96.693 0 146.292-63.627 146.292-160.32V0H295.59v200.4c0 53.607-24.048 82.665-67.635 82.665-35.07 0-58.116-21.543-70.641-61.623Zm499.5-21.042c84.168 0 126.753-56.613 126.753-117.735S669.336 0 585.168 0H396.792v350.7h77.655V234.468Zm-111.225-77.655V77.655h112.224c30.06 0 48.1 18.036 48.1 40.08s-18.036 39.078-48.1 39.078Z" fill="#db4623"/></svg>
+                </div>
               </div>
 
               <a className="items-center justify-end text-2xl lg:text-3xl font-book tracking-tighter leading-tight px-2 md:px-4 hidden md:inline-block hover:text-red" href="#">
@@ -141,7 +148,7 @@ export default function Home(initialData) {
               </a>
             </motion.div>
 
-            <div className="px-2 md:px-4 mb-12 md:mb-16 lg:mb-20">
+            <div className="px-2 md:px-4 pb-12 md:pb-16 lg:pb-20 bg-white z-50 relative">
               <motion.div variants={fade} className="flex flex-wrap border-b items-end border-black mb-8 md:mb-10 lg:mb-16 pb-1 md:pb-0">
                 <div className="w-1/2 md:w-1/4">
                   <span className="block uppercase tracking-tight text-xs md:text-base font-serif italic overflow-hidden"><motion.span variants={reveal} className="block">(1)</motion.span></span>
@@ -155,7 +162,7 @@ export default function Home(initialData) {
               </motion.div>
 
               
-              <motion.div variants={fade} className="mb-8 md:mb-12 lg:mb-0">
+              <motion.div variants={fade} className="pb-8 md:pb-12 lg:mb-0">
               <div className="">
                 
                 {/* LAYER 1 */}
@@ -464,7 +471,7 @@ export default function Home(initialData) {
             </div>
           </div>
 
-          <motion.div variants={fade} className="px-2 md:px-4 mb-16 md:mb-24 lg:mb-40">
+          <motion.div variants={fade} className="px-2 md:px-4 pb-16 md:pb-24 lg:pb-40 bg-white z-50 relative">
             <div className="flex md:hidden flex-wrap border-b items-end border-black mb-3 md:mb-12 lg:mb-16 pb-1 md:pb-0">
               <div className="flex-1">
                 <span className="block uppercase tracking-tight text-xs md:text-base font-serif italic overflow-hidden"><motion.span variants={reveal} className="block">(2)</motion.span></span>
@@ -488,7 +495,7 @@ export default function Home(initialData) {
             </div>
           </motion.div>
 
-          <motion.div variants={fade} className="px-2 md:px-4 mb-8">
+          <motion.div variants={fade} className="px-2 md:px-4 pb-8 bg-white z-50 relative">
             <div className="flex flex-wrap items-end pb-4">
               <div className="w-full md:w-1/3 lg:w-1/4 order-2 md:order-1">
                 <div className="max-w-sm md:max-w-xs">
