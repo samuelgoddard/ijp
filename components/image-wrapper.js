@@ -62,7 +62,7 @@ export default function ImageWrapper({ image, layout, widthOverride, heightOverr
   if (priority) { attributes.priority = true } else { attributes.priority = false }
 
 	return (
-    <figure className={`image bg-red ${className} ${fill && 'cover-image' }`}>
+    <figure className={`image ${className} ${fill && 'cover-image' }`}>
 		  <Img
         {...imageProps}
         {...attributes}
