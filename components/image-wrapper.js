@@ -36,7 +36,7 @@ import sanity from '../services/sanity'
 import { useNextSanityImage } from 'next-sanity-image'
 import { useState } from 'react';
 
-export default function ImageWrapper({ image, layout, widthOverride, heightOverride, focalPoint, className, priority, noCaption, fill }) {
+export default function ImageWrapper({ image, layout, widthOverride, heightOverride, focalPoint, className, priority, noCaption, fill, lerped }) {
   const [imageIsLoaded, setImageIsLoaded] = useState(false)
 
   // Pass in custom URL builder props

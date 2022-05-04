@@ -70,6 +70,12 @@ const pageService = new SanityPageService(query)
 export default function Home(initialData) {
   const containerRef = useRef(null)
   const [currentHoveredImage, setCurrentHoveredImage] = useState(null);
+  const [currentPosition, setCurrentPosition] = useState(null);
+  
+  const setCurrent = (image, position) => {
+    setCurrentHoveredImage(image)
+    setCurrentPosition(position)
+  }
 
   const { data: { title, awards, featuredProjects, projects, biography, emailAddress, socialLinks, heroImage, heroImageMobile, footerBlurb }  } = pageService.getPreviewHook(initialData)()
   return (
@@ -88,6 +94,22 @@ export default function Home(initialData) {
       </motion.div>
     </motion.div>
 
+      <div className={`fixed bottom-0 w-1/3 m-4 z-[100] pointer-events-none ${currentPosition == 'left' ? 'left-auto right-0' : 'left-0 right-auto'}`}>
+        { currentHoveredImage != null && (
+          <ImageWrapper
+            image={projects[currentHoveredImage].thumbnailImage} 
+            layout="responsive"
+            className="w-full transform"
+            widthOverride={920}
+            priority
+          />
+          // <video loop={true} autoPlay="autoplay" playsInline={true} muted className="object-cover w-full h-full will-change">
+          //   <source src="images/test.mp4" type="video/mp4" />
+          //     Sorry. Your browser does not support the video tag.
+          //   </video>
+        )}
+      </div>
+
     <div data-scroll-container ref={containerRef} id="scroll-container">
       <Layout>
         <Head>
@@ -101,7 +123,7 @@ export default function Home(initialData) {
           exit="exit"
           id="test"
         >
-          <div className="fixed top-0 left-0 w-[45%] ml-4 mt-4 hidden md:block z-[100]" data-scroll data-scroll-sticky data-scroll-target="#test">
+          <div className="fixed top-0 left-0 w-[45%] ml-4 mt-4 hidden md:block z-[100] pointer-events-none" data-scroll data-scroll-sticky data-scroll-target="#test">
             <Logo/>
           </div>
           <EmailReveal />
@@ -183,7 +205,13 @@ export default function Home(initialData) {
                 
                 {/* LAYER 1 */}
                 <div className="flex flex-wrap md:flex-none md:grid md:grid-cols-4 xl:grid-cols-5 md:gap-6 xl:gap-12 2xl:gap-16">
-                  <div className="w-9/12 md:w-full md:col-span-1 mb-8 md:mb-12 xl:mb-16" data-scroll data-scroll-speed={-0.8}>
+                  <a className="w-9/12 md:w-full md:col-span-1 mb-8 md:mb-12 xl:mb-16 block"
+                    href="#"
+                    data-scroll data-scroll-speed={-0.8}
+                    onMouseEnter={() => setCurrent(0, 'left')}
+                    onMouseLeave={() => setCurrent(null, null)}
+                  >
+                    {/* 0 */}
                     <Teaser
                       slug={projects[0].slug.current}
                       imageSrc={projects[0].thumbnailImage ? projects[0].thumbnailImage : null}
@@ -192,9 +220,13 @@ export default function Home(initialData) {
                       disciplines={projects[0].disciplines}
                       inverse
                     />
-                  </div>
+                  </a>
 
-                  <div className="w-9/12 ml-auto md:w-full md:col-span-1 md:col-start-4 xl:col-start-5 mb-8 md:mb-12 xl:mb-1">
+                  <div className="w-9/12 ml-auto md:w-full md:col-span-1 md:col-start-4 xl:col-start-5 mb-8 md:mb-12 xl:mb-1"
+                    onMouseEnter={() => setCurrent(1, 'right')}
+                    onMouseLeave={() => setCurrent(null, null)}
+                  >
+                    {/* 1 */}
                     <Teaser
                       slug={projects[1].slug.current}
                       imageSrc={projects[1].thumbnailImage ? projects[1].thumbnailImage : null}
@@ -209,7 +241,11 @@ export default function Home(initialData) {
                 
                 {/* LAYER 2 */}
                 <div className="flex flex-wrap md:flex-none md:grid md:grid-cols-4 xl:grid-cols-5 md:gap-6 xl:gap-12 2xl:gap-16">
-                  <div className="w-9/12 md:w-full md:col-span-1 md:col-start-2 xl:col-start-3 mb-8 md:mb-12 xl:mb-16" data-scroll data-scroll-speed={1}>
+                  <a href="#" className="w-9/12 md:w-full md:col-span-1 md:col-start-2 xl:col-start-3 mb-8 md:mb-12 xl:mb-16" data-scroll data-scroll-speed={1}
+                  onMouseEnter={() => setCurrent(2, 'right')}
+                  onMouseLeave={() => setCurrent(null, null)}
+                  >
+                    {/* 2 */}
                     <Teaser
                       slug={projects[2].slug.current}
                       imageSrc={projects[2].thumbnailImage ? projects[2].thumbnailImage : null}
@@ -219,9 +255,11 @@ export default function Home(initialData) {
                       disciplines={projects[2].disciplines}
                       inverse
                     />
-                  </div>
+                  </a>
 
-                  <div className="w-9/12 ml-auto md:w-full md:col-span-1 md:col-start-3 xl:col-start-4 mb-8 md:mb-12 xl:mb-1" data-scroll data-scroll-speed={-0.5}>
+                  <a href="#" className="w-9/12 ml-auto md:w-full md:col-span-1 md:col-start-3 xl:col-start-4 mb-8 md:mb-12 xl:mb-1" data-scroll data-scroll-speed={-0.5} onMouseEnter={() => setCurrent(3, 'right')}
+                  onMouseLeave={() => setCurrent(null, null)}>
+                    {/* 3 */}
                     <Teaser
                       slug={projects[3].slug.current}
                       imageSrc={projects[3].thumbnailImage ? projects[3].thumbnailImage : null}
@@ -229,13 +267,16 @@ export default function Home(initialData) {
                       imageHeight={projects[3].thumbnailImage.asset.metadata.dimensions.height / 2}
                       title={projects[3].title}
                       disciplines={projects[3].disciplines}
+                      negative
                     />
-                  </div>
+                  </a>
                 </div>
 
                 {/* LAYER 3 */}
                 <div className="flex flex-wrap md:flex-none md:grid md:grid-cols-4 xl:grid-cols-5 md:gap-6 xl:gap-12 2xl:gap-16">
-                  <div className="w-9/12 md:w-full md:col-span-1 md:col-start-2 xl:col-start-2 mb-8 md:mb-12 xl:mb-16" data-scroll data-scroll-speed={1.2}>
+                  <a href="#" className="w-9/12 md:w-full md:col-span-1 md:col-start-2 xl:col-start-2 mb-8 md:mb-12 xl:mb-16" data-scroll data-scroll-speed={1.2} onMouseEnter={() => setCurrent(4, 'left')}
+                  onMouseLeave={() => setCurrent(null, null)}>
+                    {/* 4 */}
                     <Teaser
                       slug={projects[4].slug.current}
                       imageSrc={projects[4].thumbnailImage ? projects[4].thumbnailImage : null}
@@ -245,9 +286,11 @@ export default function Home(initialData) {
                       disciplines={projects[4].disciplines}
                       inverse
                     />
-                  </div>
+                  </a>
 
-                  <div className="w-9/12 ml-auto md:w-full md:col-span-1 md:col-start-4 xl:col-start-5 mb-8 md:mb-12 xl:mb-1" data-scroll data-scroll-speed={-1.3}>
+                  <a href="#" className="w-9/12 ml-auto md:w-full md:col-span-1 md:col-start-4 xl:col-start-5 mb-8 md:mb-12 xl:mb-1" data-scroll data-scroll-speed={-1.3} onMouseEnter={() => setCurrent(5, 'right')}
+                  onMouseLeave={() => setCurrent(null, null)}>
+                    {/* 5 */}
                     <Teaser
                       slug={projects[5].slug.current}
                       imageSrc={projects[5].thumbnailImage ? projects[5].thumbnailImage : null}
@@ -255,13 +298,16 @@ export default function Home(initialData) {
                       imageHeight={projects[5].thumbnailImage.asset.metadata.dimensions.height / 2}
                       title={projects[5].title}
                       disciplines={projects[5].disciplines}
+                      negative
                     />
-                  </div>
+                  </a>
                 </div>
 
                 {/* LAYER 4 */}
                 <div className="flex flex-wrap md:flex-none md:grid md:grid-cols-4 xl:grid-cols-5 md:gap-6 xl:gap-12 2xl:gap-16">
-                  <div className="w-9/12 md:w-full md:col-span-1 md:col-start-1 xl:col-start-1 mb-8 md:mb-12 xl:mb-16" data-scroll data-scroll-speed={1.2}>
+                  <a href="#" className="w-9/12 md:w-full md:col-span-1 md:col-start-1 xl:col-start-1 mb-8 md:mb-12 xl:mb-16" data-scroll data-scroll-speed={1.2} onMouseEnter={() => setCurrent(6, 'left')}
+                  onMouseLeave={() => setCurrent(null, null)}>
+                    {/* 6 */}
                     <Teaser
                       slug={projects[6].slug.current}
                       imageSrc={projects[6].thumbnailImage ? projects[6].thumbnailImage : null}
@@ -271,9 +317,11 @@ export default function Home(initialData) {
                       disciplines={projects[6].disciplines}
                       inverse
                     />
-                  </div>
+                  </a>
 
-                  <div className="w-9/12 ml-auto md:w-full md:col-span-1 md:col-start-2 xl:col-start-3 mb-8 md:mb-12 xl:mb-1" data-scroll data-scroll-speed={-0.6}>
+                  <a href="#" className="w-9/12 ml-auto md:w-full md:col-span-1 md:col-start-2 xl:col-start-3 mb-8 md:mb-12 xl:mb-1" data-scroll data-scroll-speed={-0.6} onMouseEnter={() => setCurrent(7, 'right')}
+                  onMouseLeave={() => setCurrent(null, null)}>
+                    {/* 7 */}
                     <Teaser
                       slug={projects[7].slug.current}
                       imageSrc={projects[7].thumbnailImage ? projects[7].thumbnailImage : null}
@@ -281,13 +329,16 @@ export default function Home(initialData) {
                       imageHeight={projects[7].thumbnailImage.asset.metadata.dimensions.height / 2}
                       title={projects[7].title}
                       disciplines={projects[7].disciplines}
+                      negative
                     />
-                  </div>
+                  </a>
                 </div>
 
                 {/* LAYER 5 */}
                 <div className="flex flex-wrap md:flex-none md:grid md:grid-cols-4 xl:grid-cols-5 md:gap-6 xl:gap-12 2xl:gap-16">
-                  <div className="w-9/12 md:w-full md:col-span-1 md:col-start-3 xl:col-start-4 mb-8 md:mb-12 xl:mb-16" data-scroll data-scroll-speed={0.8}>
+                  <a href="#" className="w-9/12 md:w-full md:col-span-1 md:col-start-3 xl:col-start-4 mb-8 md:mb-12 xl:mb-16" data-scroll data-scroll-speed={0.8} onMouseEnter={() => setCurrent(8, 'right')}
+                  onMouseLeave={() => setCurrent(null, null)}>
+                    {/* 8 */}
                     <Teaser
                       slug={projects[8].slug.current}
                       imageSrc={projects[8].thumbnailImage ? projects[8].thumbnailImage : null}
@@ -297,12 +348,14 @@ export default function Home(initialData) {
                       disciplines={projects[8].disciplines}
                       inverse
                     />
-                  </div>
+                  </a>
                 </div>
 
                 {/* LAYER 6 */}
                 <div className="flex flex-wrap md:flex-none md:grid md:grid-cols-4 xl:grid-cols-5 md:gap-6 xl:gap-12 2xl:gap-16">
-                  <div className="w-9/12 ml-auto md:w-full md:col-span-1 md:col-start-1 xl:col-start-2 mb-8 md:mb-12 xl:mb-16" data-scroll data-scroll-speed={1.2}>
+                  <a href="#" className="w-9/12 ml-auto md:w-full md:col-span-1 md:col-start-1 xl:col-start-2 mb-8 md:mb-12 xl:mb-16" data-scroll data-scroll-speed={1.2} onMouseEnter={() => setCurrent(9, 'left')}
+                  onMouseLeave={() => setCurrent(null, null)}>
+                    {/* 9 */}
                     <Teaser
                       slug={projects[9].slug.current}
                       imageSrc={projects[9].thumbnailImage ? projects[9].thumbnailImage : null}
@@ -311,9 +364,11 @@ export default function Home(initialData) {
                       title={projects[9].title}
                       disciplines={projects[9].disciplines}
                     />
-                  </div>
+                  </a>
 
-                  <div className="w-9/12 md:w-full md:col-span-1 md:col-start-4 xl:col-start-5 mb-8 md:mb-12 xl:mb-1" data-scroll data-scroll-speed={-1.2}>
+                  <a href="#" className="w-9/12 md:w-full md:col-span-1 md:col-start-4 xl:col-start-5 mb-8 md:mb-12 xl:mb-1" data-scroll data-scroll-speed={-1.2} onMouseEnter={() => setCurrent(10, 'right')}
+                  onMouseLeave={() => setCurrent(null, null)}>
+                    {/* 10 */}
                     <Teaser
                       slug={projects[10].slug.current}
                       imageSrc={projects[10].thumbnailImage ? projects[10].thumbnailImage : null}
@@ -322,13 +377,16 @@ export default function Home(initialData) {
                       title={projects[10].title}
                       disciplines={projects[10].disciplines}
                       inverse
+                      negative
                     />
-                  </div>
+                  </a>
                 </div>
 
                 {/* LAYER 7 */}
                 <div className="flex flex-wrap md:flex-none md:grid md:grid-cols-4 xl:grid-cols-5 md:gap-6 xl:gap-12 2xl:gap-16">
-                  <div className="w-9/12 ml-auto md:w-full md:col-span-1 md:col-start-1 xl:col-start-1 mb-8 md:mb-12 xl:mb-16" data-scroll data-scroll-speed={-0.9}>
+                  <a href="#" className="w-9/12 ml-auto md:w-full md:col-span-1 md:col-start-1 xl:col-start-1 mb-8 md:mb-12 xl:mb-16" data-scroll data-scroll-speed={-0.9} onMouseEnter={() => setCurrent(11, 'left')}
+                  onMouseLeave={() => setCurrent(null, null)}>
+                    {/* 11 */}
                     <Teaser
                       slug={projects[11].slug.current}
                       imageSrc={projects[11].thumbnailImage ? projects[11].thumbnailImage : null}
@@ -336,10 +394,13 @@ export default function Home(initialData) {
                       imageHeight={projects[11].thumbnailImage.asset.metadata.dimensions.height / 2}
                       title={projects[11].title}
                       disciplines={projects[11].disciplines}
+                      negative
                     />
-                  </div>
+                  </a>
 
-                  <div className="w-9/12 md:w-full md:col-span-1 md:col-start-3 xl:col-start-3 mb-8 md:mb-12 xl:mb-1" data-scroll data-scroll-speed={0.8}>
+                  <a href="#" className="w-9/12 md:w-full md:col-span-1 md:col-start-3 xl:col-start-3 mb-8 md:mb-12 xl:mb-1" data-scroll data-scroll-speed={0.8} onMouseEnter={() => setCurrent(12, 'right')}
+                  onMouseLeave={() => setCurrent(null, null)}>
+                    {/* 12 */}
                     <Teaser
                       slug={projects[12].slug.current}
                       imageSrc={projects[12].thumbnailImage ? projects[12].thumbnailImage : null}
@@ -348,13 +409,16 @@ export default function Home(initialData) {
                       title={projects[12].title}
                       disciplines={projects[12].disciplines}
                       inverse
+
                     />
-                  </div>
+                  </a>
                 </div>
 
                 {/* LAYER 8 */}
                 <div className="flex flex-wrap md:flex-none md:grid md:grid-cols-4 xl:grid-cols-5 md:gap-6 xl:gap-12 2xl:gap-16">
-                  <div className="w-9/12 ml-auto md:w-full md:col-span-1 md:col-start-3 xl:col-start-4 mb-8 md:mb-12 xl:mb-16" data-scroll data-scroll-speed={1.5}>
+                  <a href="#" className="w-9/12 ml-auto md:w-full md:col-span-1 md:col-start-3 xl:col-start-4 mb-8 md:mb-12 xl:mb-16" data-scroll data-scroll-speed={1.5} onMouseEnter={() => setCurrent(13, 'right')}
+                  onMouseLeave={() => setCurrent(null, null)}>
+                    {/* 13 */}
                     <Teaser
                       slug={projects[13].slug.current}
                       imageSrc={projects[13].thumbnailImage ? projects[13].thumbnailImage : null}
@@ -363,7 +427,7 @@ export default function Home(initialData) {
                       title={projects[13].title}
                       disciplines={projects[13].disciplines}
                     />
-                  </div>
+                  </a>
                 </div>
               </div>
             </motion.div>
