@@ -20,11 +20,23 @@ export default function Logo() {
         }
       })
     }
+    
   }, [scroll])
 
+  const scrollToTop = () => {
+    scroll.scrollTo(0)
+  }
+
   return (
-    <div>
-      <svg className="logo w-full origin-top-left pointer-events-none " viewBox="0 0 712.422 360.72"><path data-name="Path 6" d="M77.655 350.7V0H0v350.7Zm8.517-95.19c20.043 70.641 76.653 105.21 140.781 105.21 96.693 0 146.292-63.627 146.292-160.32V0H295.59v200.4c0 53.607-24.048 82.665-67.635 82.665-35.07 0-58.116-21.543-70.641-61.623Zm499.5-21.042c84.168 0 126.753-56.613 126.753-117.735S669.336 0 585.168 0H396.792v350.7h77.655V234.468Zm-111.225-77.655V77.655h112.224c30.06 0 48.1 18.036 48.1 40.08s-18.036 39.078-48.1 39.078Z" fill="#db4623"/></svg>
-    </div>
+    <>
+      <div className="fixed top-0 left-0 w-[45%] ml-4 mt-4 hidden md:block z-[100] h-auto pointer-events-none" data-scroll data-scroll-sticky data-scroll-target="#test">
+        <svg className="logo w-full origin-top-left" viewBox="0 0 712.422 360.72"><path data-name="Path 6" d="M77.655 350.7V0H0v350.7Zm8.517-95.19c20.043 70.641 76.653 105.21 140.781 105.21 96.693 0 146.292-63.627 146.292-160.32V0H295.59v200.4c0 53.607-24.048 82.665-67.635 82.665-35.07 0-58.116-21.543-70.641-61.623Zm499.5-21.042c84.168 0 126.753-56.613 126.753-117.735S669.336 0 585.168 0H396.792v350.7h77.655V234.468Zm-111.225-77.655V77.655h112.224c30.06 0 48.1 18.036 48.1 40.08s-18.036 39.078-48.1 39.078Z" fill="#db4623"/></svg>
+      </div>
+
+      <div className="fixed top-0 left-0 w-[45%] ml-4 mt-4 hidden md:block z-[110] h-auto" data-scroll data-scroll-sticky data-scroll-target="#test">
+        <button onClick={scrollToTop} className="block w-[120px] h-[50px] border-none outline-none focus:outline-none focus:border-none">
+        </button>
+      </div>
+    </>
   )
 }
