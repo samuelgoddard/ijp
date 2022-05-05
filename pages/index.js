@@ -206,7 +206,7 @@ export default function Home(initialData) {
                     onMouseEnter={() => setCurrent(0, 'left')}
                     onMouseLeave={unSetCurrent}
                   >
-                    <div className={`${currentHoveredImage == 0 || currentHoveredImage !== null && 'opacity-down'}`}>
+                    <div className={`ease-in-out duration-500 transition-opacity ${currentHoveredImage == 0 || currentHoveredImage !== null && 'opacity-down'}`}>
                     {/* 0 */}
                       <Teaser
                         imageSrc={projects[0].thumbnailImage ? projects[0].thumbnailImage : null}
@@ -222,7 +222,7 @@ export default function Home(initialData) {
                     onMouseEnter={() => setCurrent(1, 'right')}
                     onMouseLeave={unSetCurrent}
                   >
-                    <div className={`${currentHoveredImage == 1 || currentHoveredImage !== null && 'opacity-down'}`}>
+                    <div className={`ease-in-out duration-500 transition-opacity ${currentHoveredImage == 1 || currentHoveredImage !== null && 'opacity-down'}`}>
                       <Teaser
                         imageSrc={projects[1].thumbnailImage ? projects[1].thumbnailImage : null}
                         imageWidth={700}
@@ -241,7 +241,7 @@ export default function Home(initialData) {
                   onMouseEnter={() => setCurrent(2, 'right')}
                   onMouseLeave={unSetCurrent}
                   >
-                    <div className={`${currentHoveredImage == 2 || currentHoveredImage !== null && 'opacity-down'}`}>
+                    <div className={`ease-in-out duration-500 transition-opacity ${currentHoveredImage == 2 || currentHoveredImage !== null && 'opacity-down'}`}>
                       <Teaser
                         imageSrc={projects[2].thumbnailImage ? projects[2].thumbnailImage : null}
                         imageWidth={700}
@@ -255,7 +255,7 @@ export default function Home(initialData) {
 
                   <a href="#" className="w-9/12 ml-auto md:w-full md:col-span-1 md:col-start-3 xl:col-start-4 mb-8 md:mb-12 xl:mb-1" data-scroll data-scroll-speed={-0.5} onMouseEnter={() => setCurrent(3, 'right')}
                   onMouseLeave={unSetCurrent}>
-                    <div className={`${currentHoveredImage == 3 || currentHoveredImage !== null && 'opacity-down'}`}>
+                    <div className={`ease-in-out duration-500 transition-opacity ${currentHoveredImage == 3 || currentHoveredImage !== null && 'opacity-down'}`}>
                       <Teaser
                         imageSrc={projects[3].thumbnailImage ? projects[3].thumbnailImage : null}
                         imageWidth={700}
@@ -272,7 +272,7 @@ export default function Home(initialData) {
                 <div className="flex flex-wrap md:flex-none md:grid md:grid-cols-4 xl:grid-cols-5 md:gap-6 xl:gap-12 2xl:gap-16">
                   <a href="#" className="w-9/12 md:w-full md:col-span-1 md:col-start-2 xl:col-start-2 mb-8 md:mb-12 xl:mb-16" data-scroll data-scroll-speed={1.2} onMouseEnter={() => setCurrent(4, 'left')}
                   onMouseLeave={unSetCurrent}>
-                    <div className={`${currentHoveredImage == 4 || currentHoveredImage !== null && 'opacity-down'}`}>
+                    <div className={`ease-in-out duration-500 transition-opacity ${currentHoveredImage == 4 || currentHoveredImage !== null && 'opacity-down'}`}>
                       <Teaser
                         imageSrc={projects[4].thumbnailImage ? projects[4].thumbnailImage : null}
                         imageWidth={700}
@@ -286,7 +286,7 @@ export default function Home(initialData) {
 
                   <a href="#" className="w-9/12 ml-auto md:w-full md:col-span-1 md:col-start-4 xl:col-start-5 mb-8 md:mb-12 xl:mb-1" data-scroll data-scroll-speed={-1.3} onMouseEnter={() => setCurrent(5, 'right')}
                   onMouseLeave={unSetCurrent}>
-                    <div className={`${currentHoveredImage == 5 || currentHoveredImage !== null && 'opacity-down'}`}>
+                    <div className={`ease-in-out duration-500 transition-opacity ${currentHoveredImage == 5 || currentHoveredImage !== null && 'opacity-down'}`}>
                       <Teaser
                         imageSrc={projects[5].thumbnailImage ? projects[5].thumbnailImage : null}
                         imageWidth={700}
@@ -303,7 +303,7 @@ export default function Home(initialData) {
                 <div className="flex flex-wrap md:flex-none md:grid md:grid-cols-4 xl:grid-cols-5 md:gap-6 xl:gap-12 2xl:gap-16">
                   <a href="#" className="w-9/12 md:w-full md:col-span-1 md:col-start-1 xl:col-start-1 mb-8 md:mb-12 xl:mb-16" data-scroll data-scroll-speed={1.2} onMouseEnter={() => setCurrent(6, 'left')}
                   onMouseLeave={unSetCurrent}>
-                    <div className={`${currentHoveredImage == 6 || currentHoveredImage !== null && 'opacity-down'}`}>
+                    <div className={`ease-in-out duration-500 transition-opacity ${currentHoveredImage == 6 || currentHoveredImage !== null && 'opacity-down'}`}>
                       <Teaser
                         imageSrc={projects[6].thumbnailImage ? projects[6].thumbnailImage : null}
                         imageWidth={700}
@@ -317,7 +317,7 @@ export default function Home(initialData) {
 
                   <a href="#" className="w-9/12 ml-auto md:w-full md:col-span-1 md:col-start-2 xl:col-start-3 mb-8 md:mb-12 xl:mb-1" data-scroll data-scroll-speed={-0.6} onMouseEnter={() => setCurrent(7, 'right')}
                   onMouseLeave={unSetCurrent}>
-                    <div className={`${currentHoveredImage == 7 || currentHoveredImage !== null && 'opacity-down'}`}>
+                    <div className={`ease-in-out duration-500 transition-opacity ${currentHoveredImage == 7 || currentHoveredImage !== null && 'opacity-down'}`}>
                       <Teaser
                         imageSrc={projects[7].thumbnailImage ? projects[7].thumbnailImage : null}
                         imageWidth={700}
@@ -334,7 +334,7 @@ export default function Home(initialData) {
                 <div className="flex flex-wrap md:flex-none md:grid md:grid-cols-4 xl:grid-cols-5 md:gap-6 xl:gap-12 2xl:gap-16">
                   <a href="#" className="w-9/12 md:w-full md:col-span-1 md:col-start-3 xl:col-start-4 mb-8 md:mb-12 xl:mb-16" data-scroll data-scroll-speed={0.8} onMouseEnter={() => setCurrent(8, 'right')}
                   onMouseLeave={unSetCurrent}>
-                    <div className={`${currentHoveredImage == 8 || currentHoveredImage !== null && 'opacity-down'}`}>
+                    <div className={`ease-in-out duration-500 transition-opacity ${currentHoveredImage == 8 || currentHoveredImage !== null && 'opacity-down'}`}>
                     <Teaser
                       imageSrc={projects[8].thumbnailImage ? projects[8].thumbnailImage : null}
                       imageWidth={700}
@@ -351,7 +351,7 @@ export default function Home(initialData) {
                 <div className="flex flex-wrap md:flex-none md:grid md:grid-cols-4 xl:grid-cols-5 md:gap-6 xl:gap-12 2xl:gap-16">
                   <a href="#" className="w-9/12 ml-auto md:w-full md:col-span-1 md:col-start-1 xl:col-start-2 mb-8 md:mb-12 xl:mb-16" data-scroll data-scroll-speed={1.2} onMouseEnter={() => setCurrent(9, 'left')}
                   onMouseLeave={unSetCurrent}>
-                    <div className={`${currentHoveredImage == 9 || currentHoveredImage !== null && 'opacity-down'}`}>
+                    <div className={`ease-in-out duration-500 transition-opacity ${currentHoveredImage == 9 || currentHoveredImage !== null && 'opacity-down'}`}>
                     <Teaser
                       imageSrc={projects[9].thumbnailImage ? projects[9].thumbnailImage : null}
                       imageWidth={700}
@@ -365,7 +365,7 @@ export default function Home(initialData) {
                   <a href="#" className="w-9/12 md:w-full md:col-span-1 md:col-start-4 xl:col-start-5 mb-8 md:mb-12 xl:mb-1" data-scroll data-scroll-speed={-1.2} onMouseEnter={() => setCurrent(10, 'right')}
                   onMouseLeave={unSetCurrent}>
                     {/* 10 */}
-                    <div className={`${currentHoveredImage == 0 || currentHoveredImage !== null && 'opacity-down'}`}>
+                    <div className={`ease-in-out duration-500 transition-opacity ${currentHoveredImage == 0 || currentHoveredImage !== null && 'opacity-down'}`}>
                       <Teaser
                         imageSrc={projects[10].thumbnailImage ? projects[10].thumbnailImage : null}
                         imageWidth={700}
@@ -383,7 +383,7 @@ export default function Home(initialData) {
                 <div className="flex flex-wrap md:flex-none md:grid md:grid-cols-4 xl:grid-cols-5 md:gap-6 xl:gap-12 2xl:gap-16">
                   <a href="#" className="w-9/12 ml-auto md:w-full md:col-span-1 md:col-start-1 xl:col-start-1 mb-8 md:mb-12 xl:mb-16" data-scroll data-scroll-speed={-0.9} onMouseEnter={() => setCurrent(11, 'left')}
                   onMouseLeave={unSetCurrent}>
-                    <div className={`${currentHoveredImage == 11 || currentHoveredImage !== null && 'opacity-down'}`}>
+                    <div className={`ease-in-out duration-500 transition-opacity ${currentHoveredImage == 11 || currentHoveredImage !== null && 'opacity-down'}`}>
                       <Teaser
                         imageSrc={projects[11].thumbnailImage ? projects[11].thumbnailImage : null}
                         imageWidth={700}
@@ -398,7 +398,7 @@ export default function Home(initialData) {
                   <a href="#" className="w-9/12 md:w-full md:col-span-1 md:col-start-3 xl:col-start-3 mb-8 md:mb-12 xl:mb-1" data-scroll data-scroll-speed={0.8} onMouseEnter={() => setCurrent(12, 'right')}
                   onMouseLeave={unSetCurrent}>
                     {/* 12 */}
-                    <div className={`${currentHoveredImage == 12 || currentHoveredImage !== null && 'opacity-down'}`}>
+                    <div className={`ease-in-out duration-500 transition-opacity ${currentHoveredImage == 12 || currentHoveredImage !== null && 'opacity-down'}`}>
                     <Teaser
                       imageSrc={projects[12].thumbnailImage ? projects[12].thumbnailImage : null}
                       imageWidth={700}
