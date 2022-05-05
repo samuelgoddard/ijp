@@ -90,7 +90,7 @@ export default function Home(initialData) {
       </motion.div>
     </motion.div>
 
-      <div className={`fixed bottom-0 w-1/3 m-4 z-[100] pointer-events-none transition-transform ease-in-out duration-500 transform h-[400px] bg-gray-300 ${currentPosition == 'left' ? 'left-auto right-0 origin-bottom-right' : 'left-0 right-auto origin-bottom-left'} ${ hovering == null ? 'scale-0' : 'scale-1' }`}>
+      <div className={`fixed bottom-0 w-1/3 m-4 overflow-hidden z-[100] pointer-events-none  h-[400px] ${currentPosition == 'left' ? 'left-auto right-0 origin-bottom-right' : 'left-0 right-auto origin-bottom-left'}`}>
         { currentHoveredImage !== null && (
           <ImageWrapper
             image={projects[currentHoveredImage].thumbnailImage} 
@@ -206,28 +206,31 @@ export default function Home(initialData) {
                     onMouseEnter={() => setCurrent(0, 'left')}
                     onMouseLeave={unSetCurrent}
                   >
+                    <div className={`${currentHoveredImage == 0 || currentHoveredImage !== null && 'opacity-down'}`}>
                     {/* 0 */}
-                    <Teaser
-                      imageSrc={projects[0].thumbnailImage ? projects[0].thumbnailImage : null}
-                      imageWidth={700}
-                      title={projects[0].title}
-                      disciplines={projects[0].disciplines}
-                      inverse
-                    />
+                      <Teaser
+                        imageSrc={projects[0].thumbnailImage ? projects[0].thumbnailImage : null}
+                        imageWidth={700}
+                        title={projects[0].title}
+                        disciplines={projects[0].disciplines}
+                        inverse
+                      />
+                    </div>
                   </a>
 
                   <div className="w-9/12 ml-auto md:w-full md:col-span-1 md:col-start-4 xl:col-start-5 mb-8 md:mb-12 xl:mb-1"
                     onMouseEnter={() => setCurrent(1, 'right')}
                     onMouseLeave={unSetCurrent}
                   >
-                    {/* 1 */}
-                    <Teaser
-                      imageSrc={projects[1].thumbnailImage ? projects[1].thumbnailImage : null}
-                      imageWidth={700}
-                      imageHeight={projects[1].thumbnailImage.asset.metadata.dimensions.height / 2}
-                      title={projects[1].title}
-                      disciplines={projects[1].disciplines}
-                    />
+                    <div className={`${currentHoveredImage == 1 || currentHoveredImage !== null && 'opacity-down'}`}>
+                      <Teaser
+                        imageSrc={projects[1].thumbnailImage ? projects[1].thumbnailImage : null}
+                        imageWidth={700}
+                        imageHeight={projects[1].thumbnailImage.asset.metadata.dimensions.height / 2}
+                        title={projects[1].title}
+                        disciplines={projects[1].disciplines}
+                      />
+                    </div>
                   </div>
                 </div>
 
@@ -238,28 +241,30 @@ export default function Home(initialData) {
                   onMouseEnter={() => setCurrent(2, 'right')}
                   onMouseLeave={unSetCurrent}
                   >
-                    {/* 2 */}
-                    <Teaser
-                      imageSrc={projects[2].thumbnailImage ? projects[2].thumbnailImage : null}
-                      imageWidth={700}
-                      imageHeight={projects[2].thumbnailImage.asset.metadata.dimensions.height / 2}
-                      title={projects[2].title}
-                      disciplines={projects[2].disciplines}
-                      inverse
-                    />
+                    <div className={`${currentHoveredImage == 2 || currentHoveredImage !== null && 'opacity-down'}`}>
+                      <Teaser
+                        imageSrc={projects[2].thumbnailImage ? projects[2].thumbnailImage : null}
+                        imageWidth={700}
+                        imageHeight={projects[2].thumbnailImage.asset.metadata.dimensions.height / 2}
+                        title={projects[2].title}
+                        disciplines={projects[2].disciplines}
+                        inverse
+                      />
+                    </div>
                   </a>
 
                   <a href="#" className="w-9/12 ml-auto md:w-full md:col-span-1 md:col-start-3 xl:col-start-4 mb-8 md:mb-12 xl:mb-1" data-scroll data-scroll-speed={-0.5} onMouseEnter={() => setCurrent(3, 'right')}
                   onMouseLeave={unSetCurrent}>
-                    {/* 3 */}
-                    <Teaser
-                      imageSrc={projects[3].thumbnailImage ? projects[3].thumbnailImage : null}
-                      imageWidth={700}
-                      imageHeight={projects[3].thumbnailImage.asset.metadata.dimensions.height / 2}
-                      title={projects[3].title}
-                      disciplines={projects[3].disciplines}
-                      negative
-                    />
+                    <div className={`${currentHoveredImage == 3 || currentHoveredImage !== null && 'opacity-down'}`}>
+                      <Teaser
+                        imageSrc={projects[3].thumbnailImage ? projects[3].thumbnailImage : null}
+                        imageWidth={700}
+                        imageHeight={projects[3].thumbnailImage.asset.metadata.dimensions.height / 2}
+                        title={projects[3].title}
+                        disciplines={projects[3].disciplines}
+                        negative
+                      />
+                    </div>
                   </a>
                 </div>
 
@@ -267,28 +272,30 @@ export default function Home(initialData) {
                 <div className="flex flex-wrap md:flex-none md:grid md:grid-cols-4 xl:grid-cols-5 md:gap-6 xl:gap-12 2xl:gap-16">
                   <a href="#" className="w-9/12 md:w-full md:col-span-1 md:col-start-2 xl:col-start-2 mb-8 md:mb-12 xl:mb-16" data-scroll data-scroll-speed={1.2} onMouseEnter={() => setCurrent(4, 'left')}
                   onMouseLeave={unSetCurrent}>
-                    {/* 4 */}
-                    <Teaser
-                      imageSrc={projects[4].thumbnailImage ? projects[4].thumbnailImage : null}
-                      imageWidth={700}
-                      imageHeight={projects[4].thumbnailImage.asset.metadata.dimensions.height / 2}
-                      title={projects[4].title}
-                      disciplines={projects[4].disciplines}
-                      inverse
-                    />
+                    <div className={`${currentHoveredImage == 4 || currentHoveredImage !== null && 'opacity-down'}`}>
+                      <Teaser
+                        imageSrc={projects[4].thumbnailImage ? projects[4].thumbnailImage : null}
+                        imageWidth={700}
+                        imageHeight={projects[4].thumbnailImage.asset.metadata.dimensions.height / 2}
+                        title={projects[4].title}
+                        disciplines={projects[4].disciplines}
+                        inverse
+                      />
+                    </div>
                   </a>
 
                   <a href="#" className="w-9/12 ml-auto md:w-full md:col-span-1 md:col-start-4 xl:col-start-5 mb-8 md:mb-12 xl:mb-1" data-scroll data-scroll-speed={-1.3} onMouseEnter={() => setCurrent(5, 'right')}
                   onMouseLeave={unSetCurrent}>
-                    {/* 5 */}
-                    <Teaser
-                      imageSrc={projects[5].thumbnailImage ? projects[5].thumbnailImage : null}
-                      imageWidth={700}
-                      imageHeight={projects[5].thumbnailImage.asset.metadata.dimensions.height / 2}
-                      title={projects[5].title}
-                      disciplines={projects[5].disciplines}
-                      negative
-                    />
+                    <div className={`${currentHoveredImage == 5 || currentHoveredImage !== null && 'opacity-down'}`}>
+                      <Teaser
+                        imageSrc={projects[5].thumbnailImage ? projects[5].thumbnailImage : null}
+                        imageWidth={700}
+                        imageHeight={projects[5].thumbnailImage.asset.metadata.dimensions.height / 2}
+                        title={projects[5].title}
+                        disciplines={projects[5].disciplines}
+                        negative
+                      />
+                    </div>
                   </a>
                 </div>
 
@@ -296,28 +303,30 @@ export default function Home(initialData) {
                 <div className="flex flex-wrap md:flex-none md:grid md:grid-cols-4 xl:grid-cols-5 md:gap-6 xl:gap-12 2xl:gap-16">
                   <a href="#" className="w-9/12 md:w-full md:col-span-1 md:col-start-1 xl:col-start-1 mb-8 md:mb-12 xl:mb-16" data-scroll data-scroll-speed={1.2} onMouseEnter={() => setCurrent(6, 'left')}
                   onMouseLeave={unSetCurrent}>
-                    {/* 6 */}
-                    <Teaser
-                      imageSrc={projects[6].thumbnailImage ? projects[6].thumbnailImage : null}
-                      imageWidth={700}
-                      imageHeight={projects[6].thumbnailImage.asset.metadata.dimensions.height / 2}
-                      title={projects[6].title}
-                      disciplines={projects[6].disciplines}
-                      inverse
-                    />
+                    <div className={`${currentHoveredImage == 6 || currentHoveredImage !== null && 'opacity-down'}`}>
+                      <Teaser
+                        imageSrc={projects[6].thumbnailImage ? projects[6].thumbnailImage : null}
+                        imageWidth={700}
+                        imageHeight={projects[6].thumbnailImage.asset.metadata.dimensions.height / 2}
+                        title={projects[6].title}
+                        disciplines={projects[6].disciplines}
+                        inverse
+                      />
+                    </div>
                   </a>
 
                   <a href="#" className="w-9/12 ml-auto md:w-full md:col-span-1 md:col-start-2 xl:col-start-3 mb-8 md:mb-12 xl:mb-1" data-scroll data-scroll-speed={-0.6} onMouseEnter={() => setCurrent(7, 'right')}
                   onMouseLeave={unSetCurrent}>
-                    {/* 7 */}
-                    <Teaser
-                      imageSrc={projects[7].thumbnailImage ? projects[7].thumbnailImage : null}
-                      imageWidth={700}
-                      imageHeight={projects[7].thumbnailImage.asset.metadata.dimensions.height / 2}
-                      title={projects[7].title}
-                      disciplines={projects[7].disciplines}
-                      negative
-                    />
+                    <div className={`${currentHoveredImage == 7 || currentHoveredImage !== null && 'opacity-down'}`}>
+                      <Teaser
+                        imageSrc={projects[7].thumbnailImage ? projects[7].thumbnailImage : null}
+                        imageWidth={700}
+                        imageHeight={projects[7].thumbnailImage.asset.metadata.dimensions.height / 2}
+                        title={projects[7].title}
+                        disciplines={projects[7].disciplines}
+                        negative
+                      />
+                    </div>
                   </a>
                 </div>
 
@@ -325,7 +334,7 @@ export default function Home(initialData) {
                 <div className="flex flex-wrap md:flex-none md:grid md:grid-cols-4 xl:grid-cols-5 md:gap-6 xl:gap-12 2xl:gap-16">
                   <a href="#" className="w-9/12 md:w-full md:col-span-1 md:col-start-3 xl:col-start-4 mb-8 md:mb-12 xl:mb-16" data-scroll data-scroll-speed={0.8} onMouseEnter={() => setCurrent(8, 'right')}
                   onMouseLeave={unSetCurrent}>
-                    {/* 8 */}
+                    <div className={`${currentHoveredImage == 8 || currentHoveredImage !== null && 'opacity-down'}`}>
                     <Teaser
                       imageSrc={projects[8].thumbnailImage ? projects[8].thumbnailImage : null}
                       imageWidth={700}
@@ -334,6 +343,7 @@ export default function Home(initialData) {
                       disciplines={projects[8].disciplines}
                       inverse
                     />
+                    </div>
                   </a>
                 </div>
 
@@ -341,7 +351,7 @@ export default function Home(initialData) {
                 <div className="flex flex-wrap md:flex-none md:grid md:grid-cols-4 xl:grid-cols-5 md:gap-6 xl:gap-12 2xl:gap-16">
                   <a href="#" className="w-9/12 ml-auto md:w-full md:col-span-1 md:col-start-1 xl:col-start-2 mb-8 md:mb-12 xl:mb-16" data-scroll data-scroll-speed={1.2} onMouseEnter={() => setCurrent(9, 'left')}
                   onMouseLeave={unSetCurrent}>
-                    {/* 9 */}
+                    <div className={`${currentHoveredImage == 9 || currentHoveredImage !== null && 'opacity-down'}`}>
                     <Teaser
                       imageSrc={projects[9].thumbnailImage ? projects[9].thumbnailImage : null}
                       imageWidth={700}
@@ -349,20 +359,23 @@ export default function Home(initialData) {
                       title={projects[9].title}
                       disciplines={projects[9].disciplines}
                     />
+                    </div>
                   </a>
 
                   <a href="#" className="w-9/12 md:w-full md:col-span-1 md:col-start-4 xl:col-start-5 mb-8 md:mb-12 xl:mb-1" data-scroll data-scroll-speed={-1.2} onMouseEnter={() => setCurrent(10, 'right')}
                   onMouseLeave={unSetCurrent}>
                     {/* 10 */}
-                    <Teaser
-                      imageSrc={projects[10].thumbnailImage ? projects[10].thumbnailImage : null}
-                      imageWidth={700}
-                      imageHeight={projects[10].thumbnailImage.asset.metadata.dimensions.height / 2}
-                      title={projects[10].title}
-                      disciplines={projects[10].disciplines}
-                      inverse
-                      negative
-                    />
+                    <div className={`${currentHoveredImage == 0 || currentHoveredImage !== null && 'opacity-down'}`}>
+                      <Teaser
+                        imageSrc={projects[10].thumbnailImage ? projects[10].thumbnailImage : null}
+                        imageWidth={700}
+                        imageHeight={projects[10].thumbnailImage.asset.metadata.dimensions.height / 2}
+                        title={projects[10].title}
+                        disciplines={projects[10].disciplines}
+                        inverse
+                        negative
+                      />
+                    </div>
                   </a>
                 </div>
 
@@ -370,20 +383,22 @@ export default function Home(initialData) {
                 <div className="flex flex-wrap md:flex-none md:grid md:grid-cols-4 xl:grid-cols-5 md:gap-6 xl:gap-12 2xl:gap-16">
                   <a href="#" className="w-9/12 ml-auto md:w-full md:col-span-1 md:col-start-1 xl:col-start-1 mb-8 md:mb-12 xl:mb-16" data-scroll data-scroll-speed={-0.9} onMouseEnter={() => setCurrent(11, 'left')}
                   onMouseLeave={unSetCurrent}>
-                    {/* 11 */}
-                    <Teaser
-                      imageSrc={projects[11].thumbnailImage ? projects[11].thumbnailImage : null}
-                      imageWidth={700}
-                      imageHeight={projects[11].thumbnailImage.asset.metadata.dimensions.height / 2}
-                      title={projects[11].title}
-                      disciplines={projects[11].disciplines}
-                      negative
-                    />
+                    <div className={`${currentHoveredImage == 11 || currentHoveredImage !== null && 'opacity-down'}`}>
+                      <Teaser
+                        imageSrc={projects[11].thumbnailImage ? projects[11].thumbnailImage : null}
+                        imageWidth={700}
+                        imageHeight={projects[11].thumbnailImage.asset.metadata.dimensions.height / 2}
+                        title={projects[11].title}
+                        disciplines={projects[11].disciplines}
+                        negative
+                      />
+                    </div>
                   </a>
 
                   <a href="#" className="w-9/12 md:w-full md:col-span-1 md:col-start-3 xl:col-start-3 mb-8 md:mb-12 xl:mb-1" data-scroll data-scroll-speed={0.8} onMouseEnter={() => setCurrent(12, 'right')}
                   onMouseLeave={unSetCurrent}>
                     {/* 12 */}
+                    <div className={`${currentHoveredImage == 12 || currentHoveredImage !== null && 'opacity-down'}`}>
                     <Teaser
                       imageSrc={projects[12].thumbnailImage ? projects[12].thumbnailImage : null}
                       imageWidth={700}
@@ -393,6 +408,7 @@ export default function Home(initialData) {
                       inverse
 
                     />
+                    </div>
                   </a>
                 </div>
 
