@@ -101,7 +101,7 @@ export default function Home(initialData) {
               image={projects[currentHoveredImage].hoverImage} 
               layout="responsive"
               className={`w-full transform ease-in-out transition-all duration-500 ${hovering == true ? 'opacity-100' : 'opacity-0'}`}
-              widthOverride={1000}
+              widthOverride={1600}
               priority
             />
           )}
