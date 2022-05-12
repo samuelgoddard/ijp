@@ -18,6 +18,5 @@
 }
 
 .opacity-down {
-  @apply opacity-10 grayscale !important;
-  filter: grayscale(100%) !important;
+  @apply opacity-[0.075] !important;
 }
