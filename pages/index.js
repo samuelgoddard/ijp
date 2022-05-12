@@ -38,7 +38,7 @@ const query = `*[_type == "home"][0]{
   biography,
   emailAddress,
   footerBlurb,
-  'projects': *[_type == "project"] {
+  'projects': *[_type == "project"] | order(order, asc) {
     title,
     thumbnailImage {
       asset->{
@@ -101,7 +101,7 @@ export default function Home(initialData) {
               image={projects[currentHoveredImage].hoverImage} 
               layout="responsive"
               className={`w-full transform ease-in-out transition-all duration-500 ${hovering == true ? 'opacity-100' : 'opacity-0'}`}
-              widthOverride={920}
+              widthOverride={1000}
               priority
             />
           )}
@@ -110,8 +110,7 @@ export default function Home(initialData) {
     <div data-scroll-container ref={containerRef} id="scroll-container">
       <Layout>
         <Head>
-          <link rel="icon" href="/favicon.ico" />
-          <title>{ title } - Isaac Powell</title>
+          <title>Interaction, Brand, Art Direction - Isaac Powell</title>
         </Head>
 
         <motion.div
@@ -142,7 +141,7 @@ export default function Home(initialData) {
                 <ImageWrapper
                   image={heroImageMobile}
                   className="w-full block md:hidden"
-                  widthOverride={900}
+                  widthOverride={1200}
                   priority
                 />
                 <div className="relative overflow-hidden">
@@ -150,15 +149,22 @@ export default function Home(initialData) {
                     <ImageWrapper
                       image={heroImage}
                       className="w-full transform scale-[1.1]"
-                      widthOverride={1800}
+                      widthOverride={2000}
                       priority
                     />
                   </div>
                 </div>
               </div>
 
-              <div className="absolute bottom-0 md:hidden md:top-0 left-0 w-[70%] md:w-[45%] ml-2 md:ml-4 mt-4">
-                <Logo/>
+              <div className="absolute bottom-0 md:hidden md:top-0 left-0 w-[90%] md:w-[45%] ml-2 md:ml-4 md:mt-4">
+                <div className="md:hidden">
+                  <div className="w-[50%] block z-[100] h-auto -mt-32 pointer-events-none">
+                    <svg className="logo w-full origin-top-left" viewBox="0 0 712.422 360.72"><path data-name="Path 6" d="M77.655 350.7V0H0v350.7Zm8.517-95.19c20.043 70.641 76.653 105.21 140.781 105.21 96.693 0 146.292-63.627 146.292-160.32V0H295.59v200.4c0 53.607-24.048 82.665-67.635 82.665-35.07 0-58.116-21.543-70.641-61.623Zm499.5-21.042c84.168 0 126.753-56.613 126.753-117.735S669.336 0 585.168 0H396.792v350.7h77.655V234.468Zm-111.225-77.655V77.655h112.224c30.06 0 48.1 18.036 48.1 40.08s-18.036 39.078-48.1 39.078Z" fill="#db4623"/></svg>
+                  </div>
+                </div>
+                <div className="hidden md:block">
+                  <Logo/>
+                </div>
               </div>
             </motion.div>
 
@@ -210,7 +216,7 @@ export default function Home(initialData) {
                     {/* 0 */}
                       <Teaser
                         imageSrc={projects[0].thumbnailImage ? projects[0].thumbnailImage : null}
-                        imageWidth={700}
+                        imageWidth={900}
                         title={projects[0].title}
                         disciplines={projects[0].disciplines}
                         inverse
@@ -218,19 +224,19 @@ export default function Home(initialData) {
                     </div>
                   </a>
 
-                  <div className="w-9/12 ml-auto md:w-full md:col-span-1 md:col-start-4 xl:col-start-5 mb-8 md:mb-12 xl:mb-1"
-                    onMouseEnter={() => setCurrent(1, 'right')}
-                    onMouseLeave={unSetCurrent}
-                  >
-                    <div className={`ease-in-out duration-[375ms] transition-all ${currentHoveredImage == 1 || currentHoveredImage !== null && 'opacity-down'}`}>
-                      <Teaser
-                        imageSrc={projects[1].thumbnailImage ? projects[1].thumbnailImage : null}
-                        imageWidth={700}
-                        imageHeight={projects[1].thumbnailImage.asset.metadata.dimensions.height / 2}
-                        title={projects[1].title}
-                        disciplines={projects[1].disciplines}
-                      />
-                    </div>
+                  <div className="w-9/12 ml-auto md:w-full md:col-span-1 md:col-start-4 xl:col-start-5 mb-8 md:mb-12 xl:mb-1">
+                    <a href="#" onMouseEnter={() => setCurrent(1, 'right')}
+                    onMouseLeave={unSetCurrent}>
+                      <div className={`ease-in-out duration-[375ms] transition-all ${currentHoveredImage == 1 || currentHoveredImage !== null && 'opacity-down'}`}>
+                        <Teaser
+                          imageSrc={projects[1].thumbnailImage ? projects[1].thumbnailImage : null}
+                          imageWidth={900}
+                          imageHeight={projects[1].thumbnailImage.asset.metadata.dimensions.height / 2}
+                          title={projects[1].title}
+                          disciplines={projects[1].disciplines}
+                        />
+                      </div>
+                    </a>
                   </div>
                 </div>
 
@@ -244,7 +250,7 @@ export default function Home(initialData) {
                     <div className={`ease-in-out duration-[375ms] transition-all ${currentHoveredImage == 2 || currentHoveredImage !== null && 'opacity-down'}`}>
                       <Teaser
                         imageSrc={projects[2].thumbnailImage ? projects[2].thumbnailImage : null}
-                        imageWidth={700}
+                        imageWidth={900}
                         imageHeight={projects[2].thumbnailImage.asset.metadata.dimensions.height / 2}
                         title={projects[2].title}
                         disciplines={projects[2].disciplines}
@@ -253,19 +259,21 @@ export default function Home(initialData) {
                     </div>
                   </a>
 
-                  <a href="#" className="w-9/12 ml-auto md:w-full md:col-span-1 md:col-start-3 xl:col-start-4 mb-8 md:mb-12 xl:mb-1" data-scroll data-scroll-speed={-0.5} onMouseEnter={() => setCurrent(3, 'right')}
-                  onMouseLeave={unSetCurrent}>
-                    <div className={`ease-in-out duration-[375ms] transition-all ${currentHoveredImage == 3 || currentHoveredImage !== null && 'opacity-down'}`}>
-                      <Teaser
-                        imageSrc={projects[3].thumbnailImage ? projects[3].thumbnailImage : null}
-                        imageWidth={700}
-                        imageHeight={projects[3].thumbnailImage.asset.metadata.dimensions.height / 2}
-                        title={projects[3].title}
-                        disciplines={projects[3].disciplines}
-                        negative
-                      />
-                    </div>
-                  </a>
+                  <div className="w-9/12 ml-auto md:w-full md:col-span-1 md:col-start-3 xl:col-start-4 mb-8 md:mb-12 xl:mb-1 inline-block">
+                    <a href="#" className="w-full block" data-scroll data-scroll-speed={-0.5} onMouseEnter={() => setCurrent(3, 'right')}
+                    onMouseLeave={unSetCurrent}>
+                      <div className={`ease-in-out duration-[375ms] transition-all ${currentHoveredImage == 3 || currentHoveredImage !== null && 'opacity-down'}`}>
+                        <Teaser
+                          imageSrc={projects[3].thumbnailImage ? projects[3].thumbnailImage : null}
+                          imageWidth={900}
+                          imageHeight={projects[3].thumbnailImage.asset.metadata.dimensions.height / 2}
+                          title={projects[3].title}
+                          disciplines={projects[3].disciplines}
+                          negative
+                        />
+                      </div>
+                    </a>
+                  </div>
                 </div>
 
                 {/* LAYER 3 */}
@@ -275,7 +283,7 @@ export default function Home(initialData) {
                     <div className={`ease-in-out duration-[375ms] transition-all ${currentHoveredImage == 4 || currentHoveredImage !== null && 'opacity-down'}`}>
                       <Teaser
                         imageSrc={projects[4].thumbnailImage ? projects[4].thumbnailImage : null}
-                        imageWidth={700}
+                        imageWidth={900}
                         imageHeight={projects[4].thumbnailImage.asset.metadata.dimensions.height / 2}
                         title={projects[4].title}
                         disciplines={projects[4].disciplines}
@@ -283,20 +291,22 @@ export default function Home(initialData) {
                       />
                     </div>
                   </a>
-
-                  <a href="#" className="w-9/12 ml-auto md:w-full md:col-span-1 md:col-start-4 xl:col-start-5 mb-8 md:mb-12 xl:mb-1" data-scroll data-scroll-speed={-1.3} onMouseEnter={() => setCurrent(5, 'right')}
-                  onMouseLeave={unSetCurrent}>
-                    <div className={`ease-in-out duration-[375ms] transition-all ${currentHoveredImage == 5 || currentHoveredImage !== null && 'opacity-down'}`}>
-                      <Teaser
-                        imageSrc={projects[5].thumbnailImage ? projects[5].thumbnailImage : null}
-                        imageWidth={700}
-                        imageHeight={projects[5].thumbnailImage.asset.metadata.dimensions.height / 2}
-                        title={projects[5].title}
-                        disciplines={projects[5].disciplines}
-                        negative
-                      />
-                    </div>
-                  </a>
+                  
+                  <div className="w-9/12 ml-auto md:w-full md:col-span-1 md:col-start-4 xl:col-start-5 mb-8 md:mb-12 xl:mb-1">
+                    <a href="#" className="block w-full" data-scroll data-scroll-speed={-1.3} onMouseEnter={() => setCurrent(5, 'right')}
+                    onMouseLeave={unSetCurrent}>
+                      <div className={`ease-in-out duration-[375ms] transition-all ${currentHoveredImage == 5 || currentHoveredImage !== null && 'opacity-down'}`}>
+                        <Teaser
+                          imageSrc={projects[5].thumbnailImage ? projects[5].thumbnailImage : null}
+                          imageWidth={900}
+                          imageHeight={projects[5].thumbnailImage.asset.metadata.dimensions.height / 2}
+                          title={projects[5].title}
+                          disciplines={projects[5].disciplines}
+                          negative
+                        />
+                      </div>
+                    </a>
+                  </div>
                 </div>
 
                 {/* LAYER 4 */}
@@ -306,7 +316,7 @@ export default function Home(initialData) {
                     <div className={`ease-in-out duration-[375ms] transition-all ${currentHoveredImage == 6 || currentHoveredImage !== null && 'opacity-down'}`}>
                       <Teaser
                         imageSrc={projects[6].thumbnailImage ? projects[6].thumbnailImage : null}
-                        imageWidth={700}
+                        imageWidth={900}
                         imageHeight={projects[6].thumbnailImage.asset.metadata.dimensions.height / 2}
                         title={projects[6].title}
                         disciplines={projects[6].disciplines}
@@ -315,19 +325,21 @@ export default function Home(initialData) {
                     </div>
                   </a>
 
-                  <a href="#" className="w-9/12 ml-auto md:w-full md:col-span-1 md:col-start-2 xl:col-start-3 mb-8 md:mb-12 xl:mb-1" data-scroll data-scroll-speed={-0.6} onMouseEnter={() => setCurrent(7, 'right')}
-                  onMouseLeave={unSetCurrent}>
-                    <div className={`ease-in-out duration-[375ms] transition-all ${currentHoveredImage == 7 || currentHoveredImage !== null && 'opacity-down'}`}>
-                      <Teaser
-                        imageSrc={projects[7].thumbnailImage ? projects[7].thumbnailImage : null}
-                        imageWidth={700}
-                        imageHeight={projects[7].thumbnailImage.asset.metadata.dimensions.height / 2}
-                        title={projects[7].title}
-                        disciplines={projects[7].disciplines}
-                        negative
-                      />
-                    </div>
-                  </a>
+                  <div className="w-9/12 ml-auto md:w-full md:col-span-1 md:col-start-2 xl:col-start-3 mb-8 md:mb-12 xl:mb-1">
+                    <a href="#" className="w-full block" data-scroll data-scroll-speed={-0.6} onMouseEnter={() => setCurrent(7, 'right')}
+                    onMouseLeave={unSetCurrent}>
+                      <div className={`ease-in-out duration-[375ms] transition-all ${currentHoveredImage == 7 || currentHoveredImage !== null && 'opacity-down'}`}>
+                        <Teaser
+                          imageSrc={projects[7].thumbnailImage ? projects[7].thumbnailImage : null}
+                          imageWidth={900}
+                          imageHeight={projects[7].thumbnailImage.asset.metadata.dimensions.height / 2}
+                          title={projects[7].title}
+                          disciplines={projects[7].disciplines}
+                          negative
+                        />
+                      </div>
+                    </a>
+                  </div>
                 </div>
 
                 {/* LAYER 5 */}
@@ -337,7 +349,7 @@ export default function Home(initialData) {
                     <div className={`ease-in-out duration-[375ms] transition-all ${currentHoveredImage == 8 || currentHoveredImage !== null && 'opacity-down'}`}>
                     <Teaser
                       imageSrc={projects[8].thumbnailImage ? projects[8].thumbnailImage : null}
-                      imageWidth={700}
+                      imageWidth={900}
                       imageHeight={projects[8].thumbnailImage.asset.metadata.dimensions.height / 2}
                       title={projects[8].title}
                       disciplines={projects[8].disciplines}
@@ -354,7 +366,7 @@ export default function Home(initialData) {
                     <div className={`ease-in-out duration-[375ms] transition-all ${currentHoveredImage == 9 || currentHoveredImage !== null && 'opacity-down'}`}>
                     <Teaser
                       imageSrc={projects[9].thumbnailImage ? projects[9].thumbnailImage : null}
-                      imageWidth={700}
+                      imageWidth={900}
                       imageHeight={projects[9].thumbnailImage.asset.metadata.dimensions.height / 2}
                       title={projects[9].title}
                       disciplines={projects[9].disciplines}
@@ -362,21 +374,23 @@ export default function Home(initialData) {
                     </div>
                   </a>
 
-                  <a href="#" className="w-9/12 md:w-full md:col-span-1 md:col-start-4 xl:col-start-5 mb-8 md:mb-12 xl:mb-1" data-scroll data-scroll-speed={-1.2} onMouseEnter={() => setCurrent(10, 'right')}
-                  onMouseLeave={unSetCurrent}>
-                    {/* 10 */}
-                    <div className={`ease-in-out duration-[375ms] transition-all ${currentHoveredImage == 10 || currentHoveredImage !== null && 'opacity-down'}`}>
-                      <Teaser
-                        imageSrc={projects[10].thumbnailImage ? projects[10].thumbnailImage : null}
-                        imageWidth={700}
-                        imageHeight={projects[10].thumbnailImage.asset.metadata.dimensions.height / 2}
-                        title={projects[10].title}
-                        disciplines={projects[10].disciplines}
-                        inverse
-                        negative
-                      />
-                    </div>
-                  </a>
+                  <div className="w-9/12 md:w-full md:col-span-1 md:col-start-4 xl:col-start-5 mb-8 md:mb-12 xl:mb-1">
+                    <a href="#" className="block w-full" data-scroll data-scroll-speed={-1.2} onMouseEnter={() => setCurrent(10, 'right')}
+                    onMouseLeave={unSetCurrent}>
+                      {/* 10 */}
+                      <div className={`ease-in-out duration-[375ms] transition-all ${currentHoveredImage == 10 || currentHoveredImage !== null && 'opacity-down'}`}>
+                        <Teaser
+                          imageSrc={projects[10].thumbnailImage ? projects[10].thumbnailImage : null}
+                          imageWidth={900}
+                          imageHeight={projects[10].thumbnailImage.asset.metadata.dimensions.height / 2}
+                          title={projects[10].title}
+                          disciplines={projects[10].disciplines}
+                          inverse
+                          negative
+                        />
+                      </div>
+                    </a>
+                  </div>
                 </div>
 
                 {/* LAYER 7 */}
@@ -386,7 +400,7 @@ export default function Home(initialData) {
                     <div className={`ease-in-out duration-[375ms] transition-all ${currentHoveredImage == 11 || currentHoveredImage !== null && 'opacity-down'}`}>
                       <Teaser
                         imageSrc={projects[11].thumbnailImage ? projects[11].thumbnailImage : null}
-                        imageWidth={700}
+                        imageWidth={900}
                         imageHeight={projects[11].thumbnailImage.asset.metadata.dimensions.height / 2}
                         title={projects[11].title}
                         disciplines={projects[11].disciplines}
