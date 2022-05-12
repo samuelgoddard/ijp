@@ -45,6 +45,11 @@ const query = `*[_type == "home"][0]{
         ...
       },
     },
+    hoverImage {
+      asset->{
+        ...
+      },
+    },
     indexLetter,
     disciplines,
     slug {
@@ -100,7 +105,7 @@ export default function Home(initialData) {
               transition={{ duration: .500 }}
             >
               <ImageWrapper
-                image={projects[currentHoveredImage].thumbnailImage} 
+                image={projects[currentHoveredImage].hoverImage} 
                 layout="responsive"
                 className={`w-full transform ease-in-out transition-all duration-500 ${hovering == true ? 'opacity-100' : 'opacity-0'}`}
                 widthOverride={920}
@@ -400,20 +405,7 @@ export default function Home(initialData) {
                     </div>
                   </a>
 
-                  {/* <a href="#" className="w-9/12 md:w-full md:col-span-1 md:col-start-3 xl:col-start-3 mb-8 md:mb-12 xl:mb-1" data-scroll data-scroll-speed={0.8} onMouseEnter={() => setCurrent(12, 'right')}
-                  onMouseLeave={unSetCurrent}>
-                    <div className={`ease-in-out duration-[750ms] transition-opacity ${currentHoveredImage == 12 || currentHoveredImage !== null && 'opacity-down'}`}>
-                    <Teaser
-                      imageSrc={projects[12].thumbnailImage ? projects[12].thumbnailImage : null}
-                      imageWidth={700}
-                      imageHeight={projects[12].thumbnailImage.asset.metadata.dimensions.height / 2}
-                      title={projects[12].title}
-                      disciplines={projects[12].disciplines}
-                      inverse
-
-                    />
-                    </div>
-                  </a> */}
+                  {/* <a hec i */}
                 </div>
 
                 {/* LAYER 8 */}
