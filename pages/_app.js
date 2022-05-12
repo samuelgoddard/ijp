@@ -15,7 +15,9 @@ export default function App({ Component, pageProps }) {
         <div className="">
           <span className="block text-2xl lg:text-3xl font-sans tracking-tighter leading-tight px-2 md:px-4 mb-8 md:mb-0 overflow-hidden">
             <span className="block overflow-hidden relative">
-              <span className="block intro-words">Interaction, Brand, Art Direction</span>
+              <span className="block intro-words-wrap">
+                <span className="block intro-words">Interaction, Brand, Art Direction</span>
+              </span>
             </span>
           </span>
         </div>

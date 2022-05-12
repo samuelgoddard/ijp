@@ -25,12 +25,19 @@
 
 .intro-fade-out {
   animation: fadeOut 0.6s cubic-bezier(0.77,0,0.18,1) forwards;
-  animation-delay: 1s;
+  animation-delay: 1.4s;
 }
 
 .intro-words {
   animation: rollOut 0.6s cubic-bezier(0.77,0,0.18,1) forwards;
-  animation-delay: 0.8s;
+  animation-delay: 1.2s;
+
+  @apply transform transition-transform ease-in-out duration-500;
+}
+
+.intro-words-wrap {
+  animation: rollIn 0.8s cubic-bezier(0.77,0,0.18,1) forwards;
+  transform: translate(-20px, 100%);
 
   @apply transform transition-transform ease-in-out duration-500;
 }
@@ -46,9 +53,18 @@
 
 @keyframes rollOut {
   0% {
-    transform: translateY(0);
+    transform: translate(0, 0);
   }
   100% {
-    transform: translateY(100%);
+    transform: translate(20px, 100%);
+  }  
+}
+
+@keyframes rollIn {
+  0% {
+    transform: translate(-20px, 100%);
+  }
+  100% {
+    transform: translate(0, 0);
   }  
 }
