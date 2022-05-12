@@ -12,8 +12,7 @@ module.exports = {
     fontFamily: {
       'serif': ['Editorial New', 'Georgia', 'serif'],
       'sans': ['Favorit', 'Arial', 'sans-serif'],
-      'book': ['Favorit Book', 'Arial', 'sans-serif'],
-      'display': ['Plaak', 'Arial', 'sans-serif'],
+      'book': ['Favorit Book', 'Arial', 'sans-serif']
     },
     screens: {
       sm: "640px",
