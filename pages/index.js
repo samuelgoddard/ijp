@@ -273,6 +273,7 @@ export default function Home(initialData) {
                     wrap={children => (
                       <a 
                         className={`w-9/12 md:w-full md:col-span-1 md:col-start-2 xl:col-start-3 mb-8 md:mb-12 xl:mb-16`}
+                        data-scroll data-scroll-speed={1}
                         href={projects[2].externalUrl}
                         target="_blank"
                         rel="noopener noreferrer"
@@ -283,7 +284,7 @@ export default function Home(initialData) {
                       </a>
                     )}
                   >
-                    <div data-scroll data-scroll-speed={1} className={`ease-in-out duration-[375ms] transition-all ${currentHoveredImage == 2 || currentHoveredImage !== null && 'opacity-down'}`}>
+                    <div  className={`ease-in-out duration-[375ms] transition-all ${currentHoveredImage == 2 || currentHoveredImage !== null && 'opacity-down'}`}>
                       <Teaser
                         imageSrc={projects[2].thumbnailImage ? projects[2].thumbnailImage : null}
                         imageWidth={900}
@@ -318,6 +319,7 @@ export default function Home(initialData) {
                     condition={!!projects[4].externalUrl}
                     wrap={children => (
                       <a 
+                      data-scroll data-scroll-speed={1.2}
                         className={`w-9/12 md:w-full md:col-span-1 md:col-start-2 xl:col-start-2 mb-8 md:mb-12 xl:mb-16`}
                         href={projects[4].externalUrl}
                         target="_blank"
@@ -329,7 +331,7 @@ export default function Home(initialData) {
                       </a>
                     )}
                   >
-                    <div data-scroll data-scroll-speed={1.2} className={`ease-in-out duration-[375ms] transition-all ${currentHoveredImage == 4 || currentHoveredImage !== null && 'opacity-down'}`}>
+                    <div className={`ease-in-out duration-[375ms] transition-all ${currentHoveredImage == 4 || currentHoveredImage !== null && 'opacity-down'}`}>
                       <Teaser
                         imageSrc={projects[4].thumbnailImage ? projects[4].thumbnailImage : null}
                         imageWidth={900}
