@@ -297,7 +297,7 @@ export default function Home(initialData) {
                   </ConditionalWrap>
 
                   <div className="w-9/12 ml-auto md:w-full md:col-span-1 md:col-start-3 xl:col-start-4 mb-8 md:mb-12 xl:mb-1 inline-block">
-                    <a href="#" className="w-full block" data-scroll data-scroll-speed={0.5} onMouseEnter={() => setCurrent(3, 'right')}
+                    <div className="w-full block" data-scroll data-scroll-speed={0.5} onMouseEnter={() => setCurrent(3, 'right')}
                     onMouseLeave={unSetCurrent}>
                       <div className={`ease-in-out duration-[375ms] transition-all ${currentHoveredImage == 3 || currentHoveredImage !== null && 'opacity-down'}`}>
                         <Teaser
@@ -309,7 +309,7 @@ export default function Home(initialData) {
                           negative
                         />
                       </div>
-                    </a>
+                    </div>
                   </div>
                 </div>
 
@@ -344,8 +344,22 @@ export default function Home(initialData) {
                   </ConditionalWrap>
                   
                   <div className="w-9/12 ml-auto md:w-full md:col-span-1 md:col-start-4 xl:col-start-5 mb-8 md:mb-12 xl:mb-1">
-                    <a href="#" className="block w-full" data-scroll data-scroll-speed={1.3} onMouseEnter={() => setCurrent(5, 'right')}
-                    onMouseLeave={unSetCurrent}>
+                      <ConditionalWrap
+                        condition={!!projects[4].externalUrl}
+                        wrap={children => (
+                          <a 
+                            className={`block w-full`}
+                            href={projects[5].externalUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onMouseEnter={() => setCurrent(5, 'right')}
+                            onMouseLeave={unSetCurrent}
+                            data-scroll data-scroll-speed={0.7}
+                          >
+                            {children}
+                          </a>
+                        )}
+                      >
                       <div className={`ease-in-out duration-[375ms] transition-all ${currentHoveredImage == 5 || currentHoveredImage !== null && 'opacity-down'}`}>
                         <Teaser
                           imageSrc={projects[5].thumbnailImage ? projects[5].thumbnailImage : null}
@@ -356,7 +370,7 @@ export default function Home(initialData) {
                           negative
                         />
                       </div>
-                    </a>
+                    </ConditionalWrap>
                   </div>
                 </div>
 
@@ -425,7 +439,7 @@ export default function Home(initialData) {
 
                 {/* LAYER 5 */}
                 <div className="flex flex-wrap md:flex-none md:grid md:grid-cols-4 xl:grid-cols-5 md:gap-6 xl:gap-12 2xl:gap-16">
-                  <a href="#" className="w-9/12 md:w-full md:col-span-1 md:col-start-3 xl:col-start-4 mb-8 md:mb-12 xl:mb-16" data-scroll data-scroll-speed={0.8} onMouseEnter={() => setCurrent(8, 'right')}
+                  <div className="w-9/12 md:w-full md:col-span-1 md:col-start-3 xl:col-start-4 mb-8 md:mb-12 xl:mb-16" data-scroll data-scroll-speed={0.8} onMouseEnter={() => setCurrent(8, 'right')}
                   onMouseLeave={unSetCurrent}>
                     <div className={`ease-in-out duration-[375ms] transition-all ${currentHoveredImage == 8 || currentHoveredImage !== null && 'opacity-down'}`}>
                     <Teaser
@@ -437,12 +451,12 @@ export default function Home(initialData) {
                       inverse
                     />
                     </div>
-                  </a>
+                  </div>
                 </div>
 
                 {/* LAYER 6 */}
                 <div className="flex flex-wrap md:flex-none md:grid md:grid-cols-4 xl:grid-cols-5 md:gap-6 xl:gap-12 2xl:gap-16">
-                  <a href="#" className="w-9/12 ml-auto md:w-full md:col-span-1 md:col-start-1 xl:col-start-2 mb-8 md:mb-12 xl:mb-16" data-scroll data-scroll-speed={0.2} onMouseEnter={() => setCurrent(9, 'left')}
+                  <div className="w-9/12 ml-auto md:w-full md:col-span-1 md:col-start-1 xl:col-start-2 mb-8 md:mb-12 xl:mb-16" data-scroll data-scroll-speed={0.2} onMouseEnter={() => setCurrent(9, 'left')}
                   onMouseLeave={unSetCurrent}>
                     <div className={`ease-in-out duration-[375ms] transition-all ${currentHoveredImage == 9 || currentHoveredImage !== null && 'opacity-down'}`}>
                     <Teaser
@@ -453,7 +467,7 @@ export default function Home(initialData) {
                       disciplines={projects[9].disciplines}
                     />
                     </div>
-                  </a>
+                  </div>
 
                   <div className="w-9/12 md:w-full md:col-span-1 md:col-start-4 xl:col-start-5 mb-8 md:mb-12 xl:mb-1">
                     <ConditionalWrap
@@ -520,10 +534,10 @@ export default function Home(initialData) {
                   <div className="w-9/12 md:w-full md:col-span-1 md:col-start-3 xl:col-start-4 mb-8 md:mb-12 xl:mb-1">
 
                     <ConditionalWrap
-                      condition={!!projects[11].externalUrl}
+                      condition={!!projects[12].externalUrl}
                       wrap={children => (
                         <a 
-                          href={projects[11].externalUrl}
+                          href={projects[12].externalUrl}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="w-9/12 md:w-full md:col-span-1 md:col-start-3 xl:col-start-4 mb-8 md:mb-12 xl:mb-1" data-scroll data-scroll-speed={0.9} onMouseEnter={() => setCurrent(12, 'right')}
