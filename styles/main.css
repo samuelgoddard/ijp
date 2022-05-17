@@ -18,8 +18,11 @@
 }
 
 .opacity-down {
-  @apply opacity-[0.1] !important;
-  filter: grayscale(100%);
+  @apply md:opacity-[0.1] !important;
+
+  @screen md {
+    filter: grayscale(100%);
+  }
 }
 
 
