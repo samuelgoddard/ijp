@@ -238,7 +238,7 @@ export default function Home(initialData) {
 
 
                   {currentHoveredImage !== 0 ? (
-                    <button onClick={() => setCurrent(0, 'left')} className="block md:hidden w-full text-left mb-8 focus:border-none focus:outline-none -mt-3">Show Work</button>
+                    <button onClick={() => setCurrent(0, 'left')} className="block md:hidden w-full text-left mb-8 focus:border-none focus:outline-none -mt-3">Preview Work</button>
                   ) : (
                     <button onClick={unSetCurrent} className="block md:hidden w-full text-left mb-8 focus:border-none focus:outline-none -mt-3">Hide Work</button>
                   )}
@@ -271,7 +271,7 @@ export default function Home(initialData) {
                     </ConditionalWrap>
 
                     {currentHoveredImage !== 1 ? (
-                      <button onClick={() => setCurrent(1, 'left')} className="block md:hidden w-full text-left mb-4 focus:border-none focus:outline-none mt-3 ml-3">Show Work</button>
+                      <button onClick={() => setCurrent(1, 'left')} className="block md:hidden w-full text-left mb-4 focus:border-none focus:outline-none mt-3 ml-3">Preview Work</button>
                     ) : (
                       <button onClick={unSetCurrent} className="block md:hidden w-full text-left mb-4 focus:border-none focus:outline-none mt-3 ml-3">Hide Work</button>
                     )}
@@ -310,7 +310,7 @@ export default function Home(initialData) {
                   </ConditionalWrap>
 
                   {currentHoveredImage !== 2 ? (
-                    <button onClick={() => setCurrent(2, 'left')} className="block md:hidden w-full text-left mb-8 focus:border-none focus:outline-none -mt-3">Show Work</button>
+                    <button onClick={() => setCurrent(2, 'left')} className="block md:hidden w-full text-left mb-8 focus:border-none focus:outline-none -mt-3">Preview Work</button>
                   ) : (
                     <button onClick={unSetCurrent} className="block md:hidden w-full text-left mb-8 focus:border-none focus:outline-none -mt-3">Hide Work</button>
                   )}
@@ -331,7 +331,7 @@ export default function Home(initialData) {
                     </div>
 
                     {currentHoveredImage !== 3 ? (
-                      <button onClick={() => setCurrent(3, 'left')} className="block md:hidden w-full text-left mb-4 focus:border-none focus:outline-none mt-3 ml-3">Show Work</button>
+                      <button onClick={() => setCurrent(3, 'left')} className="block md:hidden w-full text-left mb-4 focus:border-none focus:outline-none mt-3 ml-3">Preview Work</button>
                     ) : (
                       <button onClick={unSetCurrent} className="block md:hidden w-full text-left mb-4 focus:border-none focus:outline-none mt-3 ml-3">Hide Work</button>
                     )}
@@ -369,7 +369,7 @@ export default function Home(initialData) {
                   </ConditionalWrap>
 
                   {currentHoveredImage !== 4 ? (
-                    <button onClick={() => setCurrent(4, 'left')} className="block md:hidden w-full text-left mb-8 focus:border-none focus:outline-none -mt-3">Show Work</button>
+                    <button onClick={() => setCurrent(4, 'left')} className="block md:hidden w-full text-left mb-8 focus:border-none focus:outline-none -mt-3">Preview Work</button>
                   ) : (
                     <button onClick={unSetCurrent} className="block md:hidden w-full text-left mb-8 focus:border-none focus:outline-none -mt-3">Hide Work</button>
                   )}
@@ -404,7 +404,7 @@ export default function Home(initialData) {
                     </ConditionalWrap>
 
                     {currentHoveredImage !== 5 ? (
-                      <button onClick={() => setCurrent(5, 'left')} className="block md:hidden w-full text-left mb-4 focus:border-none focus:outline-none mt-3 ml-3">Show Work</button>
+                      <button onClick={() => setCurrent(5, 'left')} className="block md:hidden w-full text-left mb-4 focus:border-none focus:outline-none mt-3 ml-3">Preview Work</button>
                     ) : (
                       <button onClick={unSetCurrent} className="block md:hidden w-full text-left mb-4 focus:border-none focus:outline-none mt-3 ml-3">Hide Work</button>
                     )}
@@ -442,7 +442,7 @@ export default function Home(initialData) {
                   </ConditionalWrap>
 
                   {currentHoveredImage !== 6 ? (
-                    <button onClick={() => setCurrent(6, 'left')} className="block md:hidden w-full text-left mb-8 focus:border-none focus:outline-none -mt-3">Show Work</button>
+                    <button onClick={() => setCurrent(6, 'left')} className="block md:hidden w-full text-left mb-8 focus:border-none focus:outline-none -mt-3">Preview Work</button>
                   ) : (
                     <button onClick={unSetCurrent} className="block md:hidden w-full text-left mb-8 focus:border-none focus:outline-none -mt-3">Hide Work</button>
                   )}
@@ -479,7 +479,7 @@ export default function Home(initialData) {
                     </ConditionalWrap>
 
                     {currentHoveredImage !== 7 ? (
-                      <button onClick={() => setCurrent(7, 'left')} className="block md:hidden w-full text-left mb-4 focus:border-none focus:outline-none mt-3 ml-3">Show Work</button>
+                      <button onClick={() => setCurrent(7, 'left')} className="block md:hidden w-full text-left mb-4 focus:border-none focus:outline-none mt-3 ml-3">Preview Work</button>
                     ) : (
                       <button onClick={unSetCurrent} className="block md:hidden w-full text-left mb-4 focus:border-none focus:outline-none mt-3 ml-3">Hide Work</button>
                     )}
@@ -502,7 +502,7 @@ export default function Home(initialData) {
                     </div>
                   </div>
                   {currentHoveredImage !== 8 ? (
-                    <button onClick={() => setCurrent(8, 'left')} className="block md:hidden w-full text-left mb-8 focus:border-none focus:outline-none -mt-3">Show Work</button>
+                    <button onClick={() => setCurrent(8, 'left')} className="block md:hidden w-full text-left mb-8 focus:border-none focus:outline-none -mt-3">Preview Work</button>
                   ) : (
                     <button onClick={unSetCurrent} className="block md:hidden w-full text-left mb-8 focus:border-none focus:outline-none -mt-3">Hide Work</button>
                   )}
@@ -523,7 +523,7 @@ export default function Home(initialData) {
                     </div>
                     
                     {currentHoveredImage !== 9 ? (
-                      <button onClick={() => setCurrent(9, 'left')} className="block md:hidden w-full text-left mb-4 focus:border-none focus:outline-none mt-3 ml-3">Show Work</button>
+                      <button onClick={() => setCurrent(9, 'left')} className="block md:hidden w-full text-left mb-4 focus:border-none focus:outline-none mt-3 ml-3">Preview Work</button>
                     ) : (
                       <button onClick={unSetCurrent} className="block md:hidden w-full text-left mb-4 focus:border-none focus:outline-none mt-3 ml-3">Hide Work</button>
                     )}
@@ -562,7 +562,7 @@ export default function Home(initialData) {
                     </ConditionalWrap>
                   </div>
                   {currentHoveredImage !== 10 ? (
-                      <button onClick={() => setCurrent(10, 'left')} className="block md:hidden w-full text-left mb-8 focus:border-none focus:outline-none -mt-3">Show Work</button>
+                      <button onClick={() => setCurrent(10, 'left')} className="block md:hidden w-full text-left mb-8 focus:border-none focus:outline-none -mt-3">Preview Work</button>
                     ) : (
                       <button onClick={unSetCurrent} className="block md:hidden w-full text-left mb-8 focus:border-none focus:outline-none -mt-3">Hide Work</button>
                     )}
@@ -597,7 +597,7 @@ export default function Home(initialData) {
                   </ConditionalWrap>
 
                   {currentHoveredImage !== 11 ? (
-                    <button onClick={() => setCurrent(11, 'left')} className="block md:hidden w-full text-left mb-8 focus:border-none focus:outline-none -mt-3 ml-[27.5%]">Show Work</button>
+                    <button onClick={() => setCurrent(11, 'left')} className="block md:hidden w-full text-left mb-8 focus:border-none focus:outline-none -mt-3 ml-[27.5%]">Preview Work</button>
                   ) : (
                     <button onClick={unSetCurrent} className="block md:hidden w-full text-left mb-8 focus:border-none focus:outline-none -mt-3 ml-[27.5%]">Hide Work</button>
                   )}
@@ -634,7 +634,7 @@ export default function Home(initialData) {
 
                   </div>                  
                   {currentHoveredImage !== 12 ? (
-                      <button onClick={() => setCurrent(12, 'left')} className="block md:hidden w-full text-left mb-8 focus:border-none focus:outline-none -mt-3">Show Work</button>
+                      <button onClick={() => setCurrent(12, 'left')} className="block md:hidden w-full text-left mb-8 focus:border-none focus:outline-none -mt-3">Preview Work</button>
                     ) : (
                       <button onClick={unSetCurrent} className="block md:hidden w-full text-left mb-8 focus:border-none focus:outline-none -mt-3">Hide Work</button>
                     )}
