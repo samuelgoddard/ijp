@@ -570,19 +570,12 @@ export default function Home(initialData) {
 
                 {/* LAYER 7 */}
                 <div className="flex flex-wrap md:flex-none md:grid md:grid-cols-4 xl:grid-cols-5 md:gap-6 xl:gap-12 2xl:gap-16">
-                  <ConditionalWrap
-                    condition={!!projects[11].externalUrl}
-                    wrap={children => (
-                      <a 
-                        href={projects[11].externalUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="w-9/12 ml-auto md:w-full md:col-span-1 md:col-start-1 xl:col-start-1 mb-8 md:mb-12 xl:mb-16" data-scroll data-scroll-speed={0.7} onMouseEnter={() => setCurrent(11, 'left')}
-                        onMouseLeave={unSetCurrent}                        
-                      >
-                        {children}
-                      </a>
-                    )}
+                  <div 
+                    // href={projects[11].externalUrl}
+                    // target="_blank"
+                    // rel="noopener noreferrer"
+                    className="w-9/12 ml-auto md:w-full md:col-span-1 md:col-start-1 xl:col-start-1 mb-8 md:mb-12 xl:mb-16 block" data-scroll data-scroll-speed={0.7} onMouseEnter={() => setCurrent(11, 'left')}
+                    onMouseLeave={unSetCurrent}                        
                   >
                     <div className={`ease-in-out duration-[375ms] transition-all ${currentHoveredImage == 11 || currentHoveredImage !== null && 'opacity-down'}`}>
                       <Teaser
@@ -594,7 +587,7 @@ export default function Home(initialData) {
                         negative
                       />
                     </div>
-                  </ConditionalWrap>
+                  </div>
 
                   {currentHoveredImage !== 11 ? (
                     <button onClick={() => setCurrent(11, 'left')} className="block md:hidden w-full text-left mb-8 focus:border-none focus:outline-none -mt-3 ml-[27.5%]">Preview Work</button>
