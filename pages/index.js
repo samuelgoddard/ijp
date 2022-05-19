@@ -247,16 +247,16 @@ export default function Home(initialData) {
                     <ConditionalWrap
                       condition={!!projects[1].externalUrl}
                       wrap={children => (
-                        <a 
+                        <div 
                           className={`w-full md:col-span-1 block`}
-                          href={projects[1].externalUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
+                          // href={projects[1].externalUrl}
+                          // target="_blank"
+                          // rel="noopener noreferrer"
                           onMouseEnter={() => setCurrent(1, 'right')}
                           onMouseLeave={unSetCurrent}
                         >
                           {children}
-                        </a>
+                        </div>
                       )}
                     >
                       <div className={`ease-in-out duration-[375ms] transition-all ${currentHoveredImage == 1 || currentHoveredImage !== null && 'opacity-down'}`}>
